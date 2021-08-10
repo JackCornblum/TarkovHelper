@@ -15,6 +15,8 @@ WeaponForegrip.destroy_all
 WeaponForegrip.reset_pk_sequence
 Barrel.destroy_all
 Barrel.reset_pk_sequence
+WeaponBarrel.destroy_all
+WeaponBarrel.reset_pk_sequence
 
 puts "seeding dealers"
 
@@ -238,6 +240,51 @@ Barrel.create(name: '5" barrel for Vector 9x19', recoil: 3, ergonomics: 0, deale
 Barrel.create(name: '6" barrel for Vector 9x19', recoil: 4, ergonomics: -2, dealer_id: 4, price: 11155, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d9/Vector_9mm_6in_icon.png/revision/latest/scale-to-width-down/127?cb=20201227060628')
 Barrel.create(name: '5" Vector barrel .45 ACP', recoil: 3, ergonomics: 0, dealer_id: 4, price: 10235, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/74/Vector45_barrel_5inch_icon.png/revision/latest/scale-to-width-down/127?cb=20210107163929')
 Barrel.create(name: '6" Vector barrel .45 ACP', recoil: 4, ergonomics: -2, dealer_id: 4, price: 12305, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/.45_ACP_Vector6inch_icon.png/revision/latest/scale-to-width-down/127?cb=20201227222129')
+
+puts "seeding weapon_barrels"
+
+WeaponBarrel.create(weapon_id: 68, barrel_id:7)
+WeaponBarrel.create(weapon_id: 68, barrel_id:8)
+WeaponBarrel.create(weapon_id: 69, barrel_id:9)
+WeaponBarrel.create(weapon_id: 70, barrel_id:9)
+WeaponBarrel.create(weapon_id: 69, barrel_id:10)
+WeaponBarrel.create(weapon_id: 70, barrel_id:10)
+WeaponBarrel.create(weapon_id: 35, barrel_id:11)
+WeaponBarrel.create(weapon_id: 28, barrel_id:16)
+WeaponBarrel.create(weapon_id: 28, barrel_id:17)
+WeaponBarrel.create(weapon_id: 28, barrel_id:18)
+WeaponBarrel.create(weapon_id: 61, barrel_id:19)
+WeaponBarrel.create(weapon_id: 61, barrel_id:20)
+WeaponBarrel.create(weapon_id: 61, barrel_id:21)
+WeaponBarrel.create(weapon_id: 55, barrel_id:22)
+WeaponBarrel.create(weapon_id: 67, barrel_id:23)
+WeaponBarrel.create(weapon_id: 55, barrel_id:27)
+WeaponBarrel.create(weapon_id: 55, barrel_id:28)
+WeaponBarrel.create(weapon_id: 55, barrel_id:29)
+WeaponBarrel.create(weapon_id: 55, barrel_id:30)
+WeaponBarrel.create(weapon_id: 55, barrel_id:31)
+WeaponBarrel.create(weapon_id: 55, barrel_id:32)
+WeaponBarrel.create(weapon_id: 55, barrel_id:33)
+WeaponBarrel.create(weapon_id: 55, barrel_id:34)
+WeaponBarrel.create(weapon_id: 55, barrel_id:35)
+WeaponBarrel.create(weapon_id: 55, barrel_id:36)
+WeaponBarrel.create(weapon_id: 55, barrel_id:37)
+WeaponBarrel.create(weapon_id: 56, barrel_id:38)
+WeaponBarrel.create(weapon_id: 56, barrel_id:39)
+WeaponBarrel.create(weapon_id: 56, barrel_id:40)
+WeaponBarrel.create(weapon_id: 63, barrel_id:41)
+WeaponBarrel.create(weapon_id: 56, barrel_id:42)
+WeaponBarrel.create(weapon_id: 54, barrel_id:43)
+WeaponBarrel.create(weapon_id: 54, barrel_id:44)
+WeaponBarrel.create(weapon_id: 54, barrel_id:45)
+WeaponBarrel.create(weapon_id: 43, barrel_id:46)
+WeaponBarrel.create(weapon_id: 43, barrel_id:47)
+WeaponBarrel.create(weapon_id: 68, barrel_id:48)
+WeaponBarrel.create(weapon_id: 68, barrel_id:49)
+WeaponBarrel.create(weapon_id: 52, barrel_id:55)
+WeaponBarrel.create(weapon_id: 52, barrel_id:56)
+WeaponBarrel.create(weapon_id: 51, barrel_id:57)
+WeaponBarrel.create(weapon_id: 51, barrel_id:58)
 
 
 puts 'Finished seeding'
