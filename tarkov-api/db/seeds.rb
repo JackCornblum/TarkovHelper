@@ -37,6 +37,8 @@ MuzzleAdapterBarrel.destroy_all
 MuzzleAdapterBarrel.reset_pk_sequence
 WeaponMuzzleAdapter.destroy_all
 WeaponMuzzleAdapter.reset_pk_sequence
+ChargingHandle.destroy_all
+ChargingHandle.reset_pk_sequence
 
 puts "seeding dealers"
 
@@ -48,7 +50,7 @@ Dealer.create(name: 'Peacekeeper', image: 'https://static.wikia.nocookie.net/esc
 Dealer.create(name: 'Mechanic', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ef/Mechanic_Portrait.png/revision/latest/scale-to-width-down/127?cb=20180425012513')
 Dealer.create(name: 'Ragman', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/Ragman_Portrait.png/revision/latest/scale-to-width-down/127?cb=20180425012401')
 Dealer.create(name: 'Jaeger', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Jaeger_Portrait.png/revision/latest/scale-to-width-down/127?cb=20191102063456')
-
+Dealer.create(name: 'no one')
 puts "seeding weapons"
 
 Weapon.create(name: 'ADAR 2-15', caliber: '5.56x45mm NATO', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3c/ADAR2-15Image.png/revision/latest/scale-to-width-down/320?cb=20190226190907', weapon_type: 'Assault rifle')
@@ -1162,6 +1164,29 @@ WeaponMuzzleAdapter.create(weapon_id: 40, muzzle_adapter_id: 16)
 WeaponMuzzleAdapter.create(weapon_id: 41, muzzle_adapter_id: 16)
 WeaponMuzzleAdapter.create(weapon_id: 2, muzzle_adapter_id: 17)
 WeaponMuzzleAdapter.create(weapon_id: 3, muzzle_adapter_id: 17)
+
+puts "seeding chargin handles"
+
+ChargingHandle.create(name: 'Geissele "SCH" charging handle for MPX', ergonomics: 2, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/SCH_Icon.png/revision/latest/scale-to-width-down/64?cb=20190414152756')
+ChargingHandle.create(name: 'ADAR 2-15 charging handle', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/70/ADAR2-15ChargingHandleicon.png/revision/latest/scale-to-width-down/64?cb=20200501131458')
+ChargingHandle.create(name: 'HK Extended latch Charging Handle', ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/76/Hkchargehandleicon.png/revision/latest/scale-to-width-down/64?cb=20190106142114')
+ChargingHandle.create(name: 'AK Zenit RP-1 charging handle', ergonomics: 1, dealer_id: 4, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f8/Rp-1icon.png/revision/latest/scale-to-width-down/64?cb=20190517213214')
+ChargingHandle.create(name: 'Badger Ordnance Tactical Charging Handle Latch	', ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/21/Botlicon.png/revision/latest/scale-to-width-down/64?cb=20190517230354')
+ChargingHandle.create(name: 'Raptor charging handle for AR-15', ergonomics: 3, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9c/Raptor_charging_handle_for_AR-15_icon.gif/revision/latest/scale-to-width-down/64?cb=20200326203222')
+ChargingHandle.create(name: 'AR-15 charging handle', ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/06/Ar15handleicon.png/revision/latest/scale-to-width-down/64?cb=20190517230529')
+ChargingHandle.create(name: 'MP5 Cocking Handle', ergonomics: 0, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/da/Mp5handleicon.png/revision/latest/scale-to-width-down/64?cb=20180325183003')
+ChargingHandle.create(name: 'SIG double latch charging handle for MPX', ergonomics: 1, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4f/Mpxdoublelatchicon.png/revision/latest/scale-to-width-down/64?cb=20180817232156')
+ChargingHandle.create(name: 'SIG single latch charging handle for MPX', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/54/Mpxhandleicon.png/revision/latest/scale-to-width-down/64?cb=20180325183004')
+ChargingHandle.create(name: 'FN charge handle for P90', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/FN_charge_handle_for_P90_Icon.png/revision/latest/scale-to-width-down/64?cb=20200502195625')
+ChargingHandle.create(name: 'K&M The Handler charge handle for P90', ergonomics: 1, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d0/K%26M_The_Handler_charge_handle_for_P90_icon.png/revision/latest/scale-to-width-down/64?cb=20200104162411')
+ChargingHandle.create(name: 'MP5 Kurz Cocking Handle', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/91/MP5_Kurz_Cocking_Handle_icon.png/revision/latest/scale-to-width-down/64?cb=20191119102407')
+ChargingHandle.create(name: 'KAC Ambidextrous Charging Handle for AR-10', ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ee/KAC_Ambidextrous_Charging_Handle_for_AR-10_icon.png/revision/latest/scale-to-width-down/64?cb=20191229110146')
+ChargingHandle.create(name: 'B&T charging handle for MP9', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9d/B%26T_charging_handle_for_MP9_icon.png/revision/latest/scale-to-width-down/64?cb=20191229111139')
+ChargingHandle.create(name: 'KAC Charging Handle for SR-25', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/95/KAC_Charging_Handle_for_SR-25_icon.png/revision/latest/scale-to-width-down/64?cb=20191229112436')
+ChargingHandle.create(name: 'Geissele ACH charging handle for AR-15', ergonomics: 2, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6d/ACH_Charging_handle_Icon.png/revision/latest/scale-to-width-down/64?cb=20200921203921')
+ChargingHandle.create(name: 'Avalanche Mod.2 charging handle for AR-15', ergonomics: 3, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/48/Avalanche_Mod.2_charging_handle_for_AR-15_icon.png/revision/latest/scale-to-width-down/64?cb=20201020135542')
+ChargingHandle.create(name: 'Sig-Sauer charging handle for MCX', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/MCX_Charging_Handle_Icon.png/revision/latest/scale-to-width-down/64?cb=20201228212218')
+ChargingHandle.create(name: 'MASP Ambi battle charging handle for AR-15', ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/MASP_CHar_Icon.png/revision/latest/scale-to-width-down/64?cb=20210330191231')
 
 
 
