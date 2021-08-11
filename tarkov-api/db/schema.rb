@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_153112) do
+ActiveRecord::Schema.define(version: 2021_08_11_201811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,12 +55,37 @@ ActiveRecord::Schema.define(version: 2021_08_11_153112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "muzzle_adapter_barrels", force: :cascade do |t|
+    t.integer "muzzle_adapter_id"
+    t.integer "barrel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "muzzle_adapters", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "dealer_id"
+    t.integer "price"
+    t.integer "recoil"
+    t.integer "ergonomics"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pistol_grips", force: :cascade do |t|
     t.string "name"
     t.integer "dealer_id"
     t.integer "ergonomics"
     t.integer "price"
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stock_buffer_tubes", force: :cascade do |t|
+    t.integer "buffer_tube_id"
+    t.integer "stock_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -97,9 +122,23 @@ ActiveRecord::Schema.define(version: 2021_08_11_153112) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "weapon_muzzle_adapters", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "muzzle_adapter_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "weapon_pistol_grips", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "pistol_grip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weapon_stocks", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "stock_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
