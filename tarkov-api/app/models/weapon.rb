@@ -11,4 +11,6 @@ class Weapon < ApplicationRecord
     has_many :stocks, through: :weapon_stocks
     has_many :weapon_muzzle_adapters
     has_many :muzzle_adapters, through: :weapon_muzzle_adapters
+    has_many :weapon_charging_handles
+    has_many :charging_handles, through: :weapon_charging_handles
 end
