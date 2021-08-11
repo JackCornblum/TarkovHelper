@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_10_210756) do
+ActiveRecord::Schema.define(version: 2021_08_11_153112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "barrels", force: :cascade do |t|
+    t.string "name"
+    t.integer "ergonomics"
+    t.integer "recoil"
+    t.integer "dealer_id"
+    t.integer "price"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "buffer_tubes", force: :cascade do |t|
     t.string "name"
     t.integer "ergonomics"
     t.integer "recoil"
@@ -44,6 +55,27 @@ ActiveRecord::Schema.define(version: 2021_08_10_210756) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pistol_grips", force: :cascade do |t|
+    t.string "name"
+    t.integer "dealer_id"
+    t.integer "ergonomics"
+    t.integer "price"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "dealer_id"
+    t.integer "recoil"
+    t.integer "ergonomics"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "weapon_barrels", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "barrel_id"
@@ -51,9 +83,23 @@ ActiveRecord::Schema.define(version: 2021_08_10_210756) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "weapon_buffer_tubes", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "buffer_tube_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "weapon_foregrips", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "foregrip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weapon_pistol_grips", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "pistol_grip_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
