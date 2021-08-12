@@ -4,4 +4,6 @@ class Handguard < ApplicationRecord
     has_many :weapons, through: :weapon_handguards
     has_many :handguard_receivers
     has_many :receivers, through: :handguard_receivers
+    has_many :handguard_foregrips
+    has_many :foregrips, through: :handguard_foregrips
 end

@@ -19,4 +19,46 @@ class Weapon < ApplicationRecord
     has_many :receivers, through: :weapon_receivers
     has_many :weapon_handguards
     has_many :handguards, through: :weapon_handguards
+
+    def best_pistol_grip
+        if self.pistol_grips.count > 0
+            grips = self.pistol_grips
+            best_grip = grips.max_by{|g| g[:ergonomics]}
+            best_grip
+        else
+            "No pistol Grips"
+        end
+        # byebug
+    end
+
+    def best_receiver_recoil
+        if self.receivers.count > 0
+            receivers = self.receivers
+            best_receiver = receivers.max_by{|receiver| receiver[:recoil]}
+            best_receiver
+        else
+            "No receivers"
+        end
+        # byebug
+    end
+
+    def best_handguard_recoil
+        if self.handguards.count > 0
+            handguards = self.handguards
+            best_handguard = handguards.max_by{|handguard| handguard[:recoil]}
+            best_handguard
+            
+        else
+            if self.receivers.count > 0
+                receivers = self.receivers
+                best_receiver = receivers.max_by{|receiver| receiver[:recoil]}
+                handguards = best_receiver.handguards
+                byebug
+            else
+            end
+            
+        end
+    end
+
+
 end
