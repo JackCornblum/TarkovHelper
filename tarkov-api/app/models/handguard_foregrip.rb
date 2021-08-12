@@ -1,0 +1,2 @@
+class HandguardForegrip < ApplicationRecord
+end

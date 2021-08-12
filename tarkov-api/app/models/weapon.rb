@@ -17,4 +17,6 @@ class Weapon < ApplicationRecord
     has_many :muzzles, through: :weapon_muzzles
     has_many :weapon_receivers
     has_many :receivers, through: :weapon_receivers
+    has_many :weapon_handguards
+    has_many :handguards, through: :weapon_handguards
 end

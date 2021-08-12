@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_184853) do
+ActiveRecord::Schema.define(version: 2021_08_12_202329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,20 @@ ActiveRecord::Schema.define(version: 2021_08_12_184853) do
     t.integer "dealer_id"
     t.integer "recoil"
     t.integer "ergonomics"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "handguard_foregrips", force: :cascade do |t|
+    t.integer "handguard_id"
+    t.integer "foregrip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "handguard_receivers", force: :cascade do |t|
+    t.integer "handguard_id"
+    t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -198,6 +212,13 @@ ActiveRecord::Schema.define(version: 2021_08_12_184853) do
   create_table "weapon_foregrips", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "foregrip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weapon_handguards", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "handguard_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
