@@ -6,4 +6,6 @@ class Barrel < ApplicationRecord
     has_many :muzzle_adapters, through: :muzzle_adapter_barrels
     has_many :muzzle_barrels
     has_many :muzzles, through: :muzzle_barrels
+    has_many :barrel_gasblocks
+    has_many :gasblocks, through: :barrel_gasblocks
 end

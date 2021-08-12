@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "beginning seeding"
+
+puts "clearing tables..."
 Weapon.destroy_all
 Weapon.reset_pk_sequence
 Dealer.destroy_all
@@ -47,8 +50,18 @@ WeaponMuzzle.destroy_all
 WeaponMuzzle.reset_pk_sequence
 MuzzleBarrel.destroy_all
 MuzzleBarrel.reset_pk_sequence
+MuzzleAdapterMuzzle.destroy_all
+MuzzleAdapterMuzzle.reset_pk_sequence
+Receiver.destroy_all
+Receiver.reset_pk_sequence
+WeaponReceiver.destroy_all
+WeaponReceiver.reset_pk_sequence
+Gasblock.destroy_all
+Gasblock.reset_pk_sequence
+BarrelGasblock.destroy_all
+BarrelGasblock.reset_pk_sequence
 
-puts "seeding dealers"
+puts "seeding dealers..."
 
 Dealer.create(name: 'Prapor', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6b/Prapor_Portrait.png/revision/latest/scale-to-width-down/127?cb=20180425012550' )
 Dealer.create(name: 'Therapist', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c7/Therapist_Portrait.png/revision/latest/scale-to-width-down/120?cb=20200812165537')
@@ -59,7 +72,7 @@ Dealer.create(name: 'Mechanic', image: 'https://static.wikia.nocookie.net/escape
 Dealer.create(name: 'Ragman', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8b/Ragman_Portrait.png/revision/latest/scale-to-width-down/127?cb=20180425012401')
 Dealer.create(name: 'Jaeger', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d1/Jaeger_Portrait.png/revision/latest/scale-to-width-down/127?cb=20191102063456')
 Dealer.create(name: 'no one')
-puts "seeding weapons"
+puts "seeding weapons..."
 
 Weapon.create(name: 'ADAR 2-15', caliber: '5.56x45mm NATO', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3c/ADAR2-15Image.png/revision/latest/scale-to-width-down/320?cb=20190226190907', weapon_type: 'Assault rifle')
 Weapon.create(name: 'AK-101', caliber: '5.56x45mm NATO', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/AK101_Image.png/revision/latest/scale-to-width-down/180?cb=20180502204454', weapon_type: 'Assault rifle')
@@ -141,7 +154,7 @@ Weapon.create(name: 'SV-98', caliber: '7.62x54mmR', image: 'https://static.wikia
 Weapon.create(name: 'T-5000', caliber: '7.62x51mm NATO', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ea/T-5000_View.png/revision/latest/scale-to-width-down/180?cb=20200216013517', weapon_type: 'Sniper rifle')
 Weapon.create(name: 'VPO-215', caliber: '.366 TKM', image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4e/VPO-215_View.png/revision/latest/scale-to-width-down/180?cb=20200216013459', weapon_type: 'Sniper rifle')
 
-puts 'seeding forgrips'
+puts 'seeding forgrips...'
 
 Foregrip.create(name: 'KAC Vertical pistol grip', ergonomics: 7, recoil: 0, dealer_id: 5, price: 3906, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6e/KACVPGIcon.png/revision/latest/scale-to-width-down/64?cb=20190411050204')
 Foregrip.create(name: 'BCM MOD.3 Tactical grip', ergonomics: 6, recoil: 1, dealer_id: 6, price: 5488, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d8/BCMMOD3GripIcon.png/revision/latest/scale-to-width-down/64?cb=20190411103250')
@@ -168,7 +181,7 @@ Foregrip.create(name: 'TD Aluminium skeletonized vertical grip', ergonomics: 6, 
 Foregrip.create(name: 'MVF001 A3 Vertical Grip KeyMod black', ergonomics: 10, recoil: 0, dealer_id: 6, price: 8747, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cd/A3_handguard_icon.png/revision/latest/scale-to-width-down/64?cb=20201224200500')
 Foregrip.create(name: 'Sig Sauer Vertical Foregrip Keymod Black', ergonomics: 5, recoil: 2, dealer_id: 5, price: 8064, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/77/Sig_grip_icon.png/revision/latest/scale-to-width-down/64?cb=20210503055140')
 
-puts "seeding weapon_foregrips"
+puts "seeding weapon_foregrips..."
 
 WeaponForegrip.create(weapon_id: 19, foregrip_id: 1)
 WeaponForegrip.create(weapon_id: 39, foregrip_id: 1)
@@ -210,7 +223,7 @@ WeaponForegrip.create(weapon_id: 39, foregrip_id: 20)
 WeaponForegrip.create(weapon_id: 19, foregrip_id: 22)
 WeaponForegrip.create(weapon_id: 39, foregrip_id: 22)
 
-puts "seeding barrels"
+puts "seeding barrels..."
 
 Barrel.create(name: 'HK 416A5 5.56x45 10.6 inch barrel', recoil: 1, ergonomics: -5, dealer_id: 6, price: 23666, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/26/10.6Inch416BarrelIcon.png/revision/latest/scale-to-width-down/127?cb=20190419201406')
 Barrel.create(name: 'MPX 9x19 10.5 inch barrel', recoil: 4, ergonomics: -9, dealer_id: 5, price: 9954, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/89/10.5BarrelMPXIcon.png/revision/latest/scale-to-width-down/190?cb=20190415134028')
@@ -271,7 +284,7 @@ Barrel.create(name: '6" barrel for Vector 9x19', recoil: 4, ergonomics: -2, deal
 Barrel.create(name: '5" Vector barrel .45 ACP', recoil: 3, ergonomics: 0, dealer_id: 4, price: 10235, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/74/Vector45_barrel_5inch_icon.png/revision/latest/scale-to-width-down/127?cb=20210107163929')
 Barrel.create(name: '6" Vector barrel .45 ACP', recoil: 4, ergonomics: -2, dealer_id: 4, price: 12305, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/fe/.45_ACP_Vector6inch_icon.png/revision/latest/scale-to-width-down/127?cb=20201227222129')
 
-puts "seeding weapon_barrels"
+puts "seeding weapon_barrels..."
 
 WeaponBarrel.create(weapon_id: 68, barrel_id:7)
 WeaponBarrel.create(weapon_id: 68, barrel_id:8)
@@ -316,7 +329,7 @@ WeaponBarrel.create(weapon_id: 52, barrel_id:56)
 WeaponBarrel.create(weapon_id: 51, barrel_id:57)
 WeaponBarrel.create(weapon_id: 51, barrel_id:58)
 
-puts "seeding pistol grips"
+puts "seeding pistol grips..."
 PistolGrip.create(name: 'US Palm pistol grip for AK', ergonomics: 12, dealer_id: 5, price: 8946, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c3/USPalmIcon.png/revision/latest/scale-to-width-down/64?cb=20190411050222')
 PistolGrip.create(name: 'HK Grip V.2 pistol grip for AR-15 based systems', ergonomics: 7, dealer_id: 5, price: 3780, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/15/Grip_v2_Icon.png/revision/latest/scale-to-width-down/64?cb=20190414151429')
 PistolGrip.create(name: 'Desert Tech pistol grip for MDR', ergonomics: 5, dealer_id: 6, price: 2599, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/43/Desert_Tech_pistol_grip_for_MDR_icon.gif/revision/latest/scale-to-width-down/64?cb=20191230180853')
@@ -351,7 +364,7 @@ PistolGrip.create(name: 'HK Ergo PSG-1 style pistol grip for AR-15 based systems
 PistolGrip.create(name: 'AK Aeroknox Scorpius pistol grip', ergonomics: 12, dealer_id: 6, price: 6496, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/11/Aeroknox_scorpius_pistol_grip_for_AK_icon.png/revision/latest/scale-to-width-down/64?cb=20201020134139')
 PistolGrip.create(name: 'SIG MCX pistol grip', ergonomics: 6, dealer_id: 4, price: 2760, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/ff/MCX_Pistolgrip_Icon.png/revision/latest/scale-to-width-down/64?cb=20201227040641')
 
-puts "seeding WeaponPistolGrips"
+puts "seeding WeaponPistolGrips..."
 
 WeaponPistolGrip.create(weapon_id: 2, pistol_grip_id: 1)
 WeaponPistolGrip.create(weapon_id: 3, pistol_grip_id: 1)
@@ -719,7 +732,7 @@ WeaponPistolGrip.create(weapon_id: 42, pistol_grip_id: 33)
 WeaponPistolGrip.create(weapon_id: 62, pistol_grip_id: 33)
 WeaponPistolGrip.create(weapon_id: 27, pistol_grip_id: 33)
 
-puts "seeding buffer tubes"
+puts "seeding buffer tubes..."
 
 BufferTube.create(name: 'ADAR buffer tube', recoil: 0, ergonomics: 0, dealer_id: 4, price: 920, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6e/ADARBufferTubeIcon.png/revision/latest/scale-to-width-down/127?cb=20191031142454')
 BufferTube.create(name: 'CAA AKTS AK-74 Buffer Tube for AK and compatible', recoil: 3, ergonomics: -1, dealer_id: 6, price: 7280, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/13/AKTS_icon.png/revision/latest/scale-to-width-down/127?cb=20200203142106')
@@ -732,7 +745,7 @@ BufferTube.create(name: 'Izhmash RPK-16 buffer tube', recoil: 4, ergonomics: 0, 
 BufferTube.create(name: 'AKS-74/AKS-74U PT Lock', recoil: 0, ergonomics: 0, dealer_id: 4, price: 3120, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6e/PT74SIcon.png/revision/latest/scale-to-width-down/64?cb=20180728185017')
 BufferTube.create(name: 'AK74/AK100 PT Lock', recoil: 0, ergonomics: 0, dealer_id: 4, price: 3713, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/ab/Ptlockicon.png/revision/latest/scale-to-width-down/64?cb=20180728185006')
 
-puts "seeding WeaponBufferTubes"
+puts "seeding WeaponBufferTubes..."
 
 WeaponBufferTube.create(weapon_id: 1, buffer_tube_id: 1)
 WeaponBufferTube.create(weapon_id: 26, buffer_tube_id: 1)
@@ -788,7 +801,7 @@ WeaponBufferTube.create(weapon_id: 49, buffer_tube_id: 10)
 WeaponBufferTube.create(weapon_id: 58, buffer_tube_id: 10)
 WeaponBufferTube.create(weapon_id: 44, buffer_tube_id: 10)
 
-puts "seeding stocks"
+puts "seeding stocks..."
 
 Stock.create(name: 'Magpul PRS GEN2 FDE stock', recoil: 34, ergonomics: 2, dealer_id: 5, price: 20790, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c1/Prsgen2icon.png/revision/latest/scale-to-width-down/127?cb=20180326123518')
 Stock.create(name: 'Izhmash wooden AK-74 stock (6P20 Sb.5)', recoil: 33, ergonomics: 3, dealer_id: 1, price: 2014, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/5e/6p20sb5icon.png/revision/latest/scale-to-width-down/127?cb=20210130162812')
@@ -844,7 +857,7 @@ Stock.create(name: 'TSNIITochMash VSS Vintorez stock', recoil: 33, ergonomics: 1
 Stock.create(name: 'Zenit PT-1 "Klassika" stock', recoil: 37, ergonomics: 9, dealer_id: 4, price: 13522, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3d/Zenit_PT-1_Klassika_stock_icon.png/revision/latest/scale-to-width-down/127?cb=20180721205715')
 Stock.create(name: 'Zhukov-S for AK', recoil: 40, ergonomics: 15, dealer_id: 5, price: 22554, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8f/ZhukovS_Icon.png/revision/latest/scale-to-width-down/127?cb=20180801132653')
 
-puts "seeding stock_buffer_tubes"
+puts "seeding stock_buffer_tubes..."
 
 StockBufferTube.create(stock_id: 22, buffer_tube_id: 1)
 StockBufferTube.create(stock_id: 23, buffer_tube_id: 1)
@@ -937,7 +950,7 @@ StockBufferTube.create(stock_id: 39, buffer_tube_id: 9)
 StockBufferTube.create(stock_id: 52, buffer_tube_id: 10)
 StockBufferTube.create(stock_id: 39, buffer_tube_id: 10)
 
-puts "seeding weapon_stocks"
+puts "seeding weapon_stocks..."
 
 WeaponStock.create(weapon_id: 7, stock_id: 2)
 WeaponStock.create(weapon_id: 9, stock_id: 2)
@@ -1024,7 +1037,7 @@ WeaponStock.create(weapon_id: 11, stock_id: 53)
 WeaponStock.create(weapon_id: 30, stock_id: 53)
 WeaponStock.create(weapon_id: 31, stock_id: 53)
 
-puts "seeding muzzle adapters"
+puts "seeding muzzle adapters..."
 
 MuzzleAdapter.create(name: 'Taktika Tula AK and AKM adapter', recoil: 0, ergonomics: 0, dealer_id: 4, price: 708, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/ff/Ttakm.png/revision/latest/scale-to-width-down/64?cb=20180828160747')
 MuzzleAdapter.create(name: 'Direct Thread Mount adapter for Gemtech ONE.', recoil: 0, ergonomics: 0, dealer_id: 5, price: 4914, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9e/ONE_Mount_Icon.png/revision/latest/scale-to-width-down/64?cb=20190414145640')
@@ -1048,7 +1061,7 @@ MuzzleAdapter.create(name: 'SIG Taper-LOK Muzzle Adapter', recoil: 0, ergonomics
 MuzzleAdapter.create(name: 'Direct Thread Mount adapter for Silencerco Omega 45k', recoil: 0, ergonomics: 0, dealer_id: 6, price: 4200, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/63/Omega_thread_icon.png/revision/latest/scale-to-width-down/64?cb=20201224200504')
 
 
-puts "seeding MuzzleAdapterBarrels"
+puts "seeding MuzzleAdapterBarrels..."
 
 MuzzleAdapterBarrel.create(barrel_id: 18, muzzle_adapter_id: 2)
 MuzzleAdapterBarrel.create(barrel_id: 7, muzzle_adapter_id: 2)
@@ -1139,7 +1152,7 @@ MuzzleAdapterBarrel.create(barrel_id: 51, muzzle_adapter_id: 19)
 MuzzleAdapterBarrel.create(barrel_id: 57, muzzle_adapter_id: 20)
 MuzzleAdapterBarrel.create(barrel_id: 58, muzzle_adapter_id: 20)
 
-puts "seeding WeaponMuzzleAdapters"
+puts "seeding WeaponMuzzleAdapters..."
 
 WeaponMuzzleAdapter.create(weapon_id: 10, muzzle_adapter_id: 1)
 WeaponMuzzleAdapter.create(weapon_id: 11, muzzle_adapter_id: 1)
@@ -1173,7 +1186,7 @@ WeaponMuzzleAdapter.create(weapon_id: 41, muzzle_adapter_id: 16)
 WeaponMuzzleAdapter.create(weapon_id: 2, muzzle_adapter_id: 17)
 WeaponMuzzleAdapter.create(weapon_id: 3, muzzle_adapter_id: 17)
 
-puts "seeding chargin handles"
+puts "seeding chargin handles..."
 
 ChargingHandle.create(name: 'Geissele "SCH" charging handle for MPX', ergonomics: 2, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/35/SCH_Icon.png/revision/latest/scale-to-width-down/64?cb=20190414152756')
 ChargingHandle.create(name: 'ADAR 2-15 charging handle', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/70/ADAR2-15ChargingHandleicon.png/revision/latest/scale-to-width-down/64?cb=20200501131458')
@@ -1196,7 +1209,7 @@ ChargingHandle.create(name: 'Avalanche Mod.2 charging handle for AR-15', ergonom
 ChargingHandle.create(name: 'Sig-Sauer charging handle for MCX', ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/be/MCX_Charging_Handle_Icon.png/revision/latest/scale-to-width-down/64?cb=20201228212218')
 ChargingHandle.create(name: 'MASP Ambi battle charging handle for AR-15', ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ed/MASP_CHar_Icon.png/revision/latest/scale-to-width-down/64?cb=20210330191231')
 
-puts "seeding chargin handle weapons"
+puts "seeding chargin handle weapons..."
 
 WeaponChargingHandle.create(weapon_id: 42, charging_handle_id: 1)
 WeaponChargingHandle.create(weapon_id: 1, charging_handle_id: 2)
@@ -1266,7 +1279,7 @@ WeaponChargingHandle.create(weapon_id: 24, charging_handle_id: 20)
 WeaponChargingHandle.create(weapon_id: 26, charging_handle_id: 20)
 WeaponChargingHandle.create(weapon_id: 29, charging_handle_id: 20)
 
-puts "seeding muzzles"
+puts "seeding muzzles..."
 
 
 Muzzle.create(name: 'Izhmash 7.62x39 AKM muzzle brake & compensator (6P1 0-14)', recoil: 7, ergonomics: 0, dealer_id: 6, price: 681, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/ba/6p1.png/revision/latest/scale-to-width-down/64?cb=20180729200314')
@@ -1334,7 +1347,7 @@ Muzzle.create(name: '3-prong SIG Flash hider 7.62x51', recoil: 5, ergonomics: -1
 Muzzle.create(name: 'SIG micro brake muzzle brake 7.62x51', recoil: 6, ergonomics: -1, dealer_id: 4, price: 2691, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/Micro_thread_icon.png/revision/latest/scale-to-width-down/64?cb=20201224200502')
 Muzzle.create(name: 'SIG Two Port brake muzzle brake 7.62x51', recoil: 8, ergonomics: -1, dealer_id: 5, price: 7056, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/26/SIG_Two_port_Icon.png/revision/latest/scale-to-width-down/64?cb=20210130113216')
 
-puts "seeding WeaponMuzzles"
+puts "seeding WeaponMuzzles..."
 
 WeaponMuzzle.create(weapon_id: 10, muzzle_id: 1)
 WeaponMuzzle.create(weapon_id: 11, muzzle_id: 1)
@@ -1443,7 +1456,7 @@ WeaponMuzzle.create(weapon_id: 17, muzzle_id: 60)
 WeaponMuzzle.create(weapon_id: 18, muzzle_id: 60)
 WeaponMuzzle.create(weapon_id: 15, muzzle_id: 60)
 
-puts "seeding MuzzleBarrels"
+puts "seeding MuzzleBarrels..."
 
 # 5.56 weapons
 MuzzleBarrel.create(barrel_id: 1, muzzle_id: 2)
@@ -1701,6 +1714,257 @@ MuzzleBarrel.create(barrel_id: 7, muzzle_id: 57)
 MuzzleBarrel.create(barrel_id: 18, muzzle_id: 57)
 MuzzleBarrel.create(barrel_id: 41, muzzle_id: 57)
 MuzzleBarrel.create(barrel_id: 19, muzzle_id: 57)
+
+puts "seeding muzzle_muzzle_adapters..."
+
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 27, muzzle_id: 1)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 44, muzzle_id: 1)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 60, muzzle_id: 1)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 36, muzzle_id: 3)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 35, muzzle_id: 3)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 15, muzzle_id: 4)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 15, muzzle_id: 8)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 44, muzzle_id: 9)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 60, muzzle_id: 9)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 27, muzzle_id: 10)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 44, muzzle_id: 10)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 10, muzzle_id: 11)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 50, muzzle_id: 11)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 1, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 3, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 5, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 39, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 44, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 13, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 59, muzzle_id: 12)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 21, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 4, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 54, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 57, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 46, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 10, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 51, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 17, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 47, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 56, muzzle_id: 13)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 7, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 49, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 29, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 53, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 2, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 31, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 52, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 16, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 30, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 14, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 9, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 55, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 45, muzzle_id: 17)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 62, muzzle_id: 19)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 63, muzzle_id: 19)
+MuzzleAdapterMuzzle.create(muzzle_adapter_id: 64, muzzle_id: 19)
+
+puts "seeding receivers..."
+
+Receiver.create(name: 'Noveske Gen.3 5.56x45 Upper receiver for AR systems', recoil: 2, ergonomics: 13, dealer_id: 6, price: 28168, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/66/Noveskeuppericon.png/revision/latest/scale-to-width-down/127?cb=20190106133508')
+Receiver.create(name: 'Izhmash regular dust cover for RPK-16', recoil: 0, ergonomics: 4, dealer_id: 1, price: 7848, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/f/f2/Izhmash_regual_dust_cover_for_RPK-16_icon.png/revision/latest/scale-to-width-down/127?cb=20181230160611')
+Receiver.create(name: 'Upper receiver HK 416A5 5.56x45 for 416A5', recoil: 1, ergonomics: 6, dealer_id: 5, price: 7938, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/26/Hk416uppericon.png/revision/latest/scale-to-width-down/127?cb=20190106142303')
+Receiver.create(name: 'Regular dust cover for FAL', recoil: 0, ergonomics: 2, dealer_id: 6, price: 2802, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/01/FAL_Dustcover_icon.png/revision/latest/scale-to-width-down/127?cb=20180923092054')
+Receiver.create(name: 'DS Arms Extreme Duty dust cover for SA58', recoil: 0, ergonomics: 4, dealer_id: 6, price: 12957, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/2b/SA58_DUST_Icon.png/revision/latest/scale-to-width-down/127?cb=20180804170616')
+Receiver.create(name: 'Izhmash AK-74 dust cover (6P1 0-1)', recoil: 0, ergonomics: 5, dealer_id: 1, price: 1136, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d8/6p1_0-1akn.png/revision/latest/scale-to-width-down/127?cb=20180326162527')
+Receiver.create(name: 'Izhmash AKM dust cover (6P1 0-1)', recoil: 0, ergonomics: 5, dealer_id: 1, price: 1106, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/68/6p1-01akm.png/revision/latest/scale-to-width-down/127?cb=20180326162528')
+Receiver.create(name: 'Molot AKM type dust cover', recoil: 0, ergonomics: 5, dealer_id: 4, price: 1148, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/bd/Akmtype.png/revision/latest/scale-to-width-down/127?cb=20180326162531')
+Receiver.create(name: 'AKS-74U Dust cover (6P26 Sb.7)', recoil: 0, ergonomics: 5, dealer_id: 1, price: 1306, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e6/6p26sb.7.png/revision/latest/scale-to-width-down/127?cb=20180326162529')
+Receiver.create(name: 'Izhmash Vityaz receiver cover', recoil: 0, ergonomics: 5, dealer_id: 1, price: 1307, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3b/Rec.cov._vityaz.png/revision/latest/scale-to-width-down/127?cb=20180326162548')
+Receiver.create(name: 'Izhmash SOK-12 Sb.0-2 dust cover', recoil: 0, ergonomics: 6, dealer_id: 8, price: 1255, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4b/Sb.0-2.png/revision/latest/scale-to-width-down/127?cb=20180326162551')
+Receiver.create(name: 'AS VAL Dust cover', recoil: 0, ergonomics: 2, dealer_id: 1, price: 1766, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/6a/Valdust.png/revision/latest/scale-to-width-down/127?cb=20180326162552')
+Receiver.create(name: 'VSS Vintorez dust cover', recoil: 0, ergonomics: 2, dealer_id: 1, price: 1743, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/ef/Vssdust.png/revision/latest/scale-to-width-down/127?cb=20180326162553')
+Receiver.create(name: 'Zenit B-33 dust cover for AK-74', recoil: 1, ergonomics: 7, dealer_id: 4, price: 15582, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/e4/B-33.png/revision/latest/scale-to-width-down/127?cb=20180831201510')
+Receiver.create(name: 'Vltor MUR-1S 5.56x45 Upper receiver for AR systems', recoil: 4, ergonomics: 8, dealer_id: 5, price: 39690, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/48/Murupper.png/revision/latest/scale-to-width-down/127?cb=20180326162543')
+Receiver.create(name: 'HK MP5SD Upper receiver', recoil: 0, ergonomics: 5, dealer_id: 5, price: 9576, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/87/Mp5sdupper.png/revision/latest/scale-to-width-down/127?cb=20200620111804')
+Receiver.create(name: 'HK MP5 Upper receiver', recoil: 0, ergonomics: 5, dealer_id: 5, price: 4032, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/63/Mp5upper.png/revision/latest/scale-to-width-down/127?cb=20180326162541')
+Receiver.create(name: 'Upper receiver of the first generation SIG MPX', recoil: 0, ergonomics: 5, dealer_id: 6, price: 4030, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/9e/Mpx1gen..png/revision/latest/scale-to-width-down/127?cb=20180326162542')
+Receiver.create(name: 'Izhmash Vityaz-SN receiver cover', recoil: 0, ergonomics: 5, dealer_id: 1, price: 2634, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/78/Rec.cover._vityaz-sn.png/revision/latest/scale-to-width-down/127?cb=20180326162549')
+Receiver.create(name: 'FN EFFEN 90 Upper receiver for P90', recoil: 0, ergonomics: -1, dealer_id: 6, price: 4256, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c3/Effen90tn.png/revision/latest/scale-to-width-down/127?cb=20200316091456')
+Receiver.create(name: 'FN Upper receiver for P90', recoil: 0, ergonomics: -5, dealer_id: 5, price: 3024, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/b/b2/FN_Upper_receiver_for_P90_icon.png/revision/latest/scale-to-width-down/127?cb=20191119090530')
+Receiver.create(name: 'FN Upper receiver for PS90', recoil: 0, ergonomics: -5, dealer_id: 4, price: 2530, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/32/PS90euppertn.png/revision/latest/scale-to-width-down/127?cb=20200316091524')
+Receiver.create(name: 'AKademia Bastion dust cover for AK', recoil: 1, ergonomics: 5, dealer_id: 4, price: 6325, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/31/AKademia_Bastion_dust_cover_for_AK.PNG/revision/latest/scale-to-width-down/127?cb=20191108182734')
+Receiver.create(name: 'Fab Defence PDC dust cover for AK-74', recoil: 1, ergonomics: 5, dealer_id: 4, price: 18786, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/e/eb/PDCicon.png/revision/latest/scale-to-width-down/127?cb=20191216173013')
+Receiver.create(name: 'TWS Dog leg rail dust cover for AK', recoil: 0, ergonomics: 7, dealer_id: 6, price: 12992, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c2/TWS_Dog_leg_rail_dust_cover_for_AK.png/revision/latest/scale-to-width-down/127?cb=20191105021625')
+
+puts "seeding WeaponReceivers..."
+
+WeaponReceiver.create(weapon_id: 1, receiver_id: 1)
+WeaponReceiver.create(weapon_id: 26, receiver_id: 1)
+WeaponReceiver.create(weapon_id: 29, receiver_id: 1)
+WeaponReceiver.create(weapon_id: 35, receiver_id: 2)
+WeaponReceiver.create(weapon_id: 24, receiver_id: 3)
+WeaponReceiver.create(weapon_id: 28, receiver_id: 4)
+WeaponReceiver.create(weapon_id: 28, receiver_id: 5)
+WeaponReceiver.create(weapon_id: 2, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 3, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 4, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 5, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 6, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 7, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 8, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 9, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 14, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 15, receiver_id: 6)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 7)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 8)
+WeaponReceiver.create(weapon_id: 16, receiver_id: 9)
+WeaponReceiver.create(weapon_id: 17, receiver_id: 9)
+WeaponReceiver.create(weapon_id: 18, receiver_id: 9)
+WeaponReceiver.create(weapon_id: 49, receiver_id: 10)
+WeaponReceiver.create(weapon_id: 44, receiver_id: 10)
+WeaponReceiver.create(weapon_id: 58, receiver_id: 11)
+WeaponReceiver.create(weapon_id: 20, receiver_id: 12)
+WeaponReceiver.create(weapon_id: 66, receiver_id: 13)
+WeaponReceiver.create(weapon_id: 2, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 3, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 4, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 5, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 6, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 7, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 8, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 9, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 14, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 15, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 14)
+WeaponReceiver.create(weapon_id: 1, receiver_id: 15)
+WeaponReceiver.create(weapon_id: 26, receiver_id: 15)
+WeaponReceiver.create(weapon_id: 29, receiver_id: 15)
+WeaponReceiver.create(weapon_id: 36, receiver_id: 16)
+WeaponReceiver.create(weapon_id: 36, receiver_id: 17)
+WeaponReceiver.create(weapon_id: 42, receiver_id: 18)
+WeaponReceiver.create(weapon_id: 44, receiver_id: 19)
+WeaponReceiver.create(weapon_id: 49, receiver_id: 19)
+WeaponReceiver.create(weapon_id: 43, receiver_id: 20)
+WeaponReceiver.create(weapon_id: 43, receiver_id: 21)
+WeaponReceiver.create(weapon_id: 43, receiver_id: 22)
+WeaponReceiver.create(weapon_id: 2, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 3, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 4, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 5, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 6, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 7, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 8, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 9, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 14, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 15, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 23)
+WeaponReceiver.create(weapon_id: 2, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 3, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 4, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 5, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 6, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 7, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 8, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 9, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 14, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 15, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 24)
+WeaponReceiver.create(weapon_id: 2, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 3, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 4, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 5, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 6, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 7, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 8, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 9, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 10, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 11, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 12, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 13, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 14, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 15, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 30, receiver_id: 25)
+WeaponReceiver.create(weapon_id: 31, receiver_id: 25)
+
+puts "seeding Gasblocks..."
+
+Gasblock.create(name: 'VPO-101 Gas tube', recoil: 0, ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/14/VPO-101GTIcon.png/revision/latest/scale-to-width-down/64?cb=20190411050306')
+Gasblock.create(name: 'SVDS Gas tube', recoil: 2, ergonomics: 0, dealer_id: 1, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/0/0e/SVDS_Gas_tube_icon.png/revision/latest/scale-to-width-down/64?cb=20190410231531')
+Gasblock.create(name: 'HK 416A5 Regular Low Profile Gas Block', recoil: 0, ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/11/Hk416gasicon.png/revision/latest/scale-to-width-down/64?cb=20190106142320')
+Gasblock.create(name: 'AK-74 Gas tube', recoil: 0, ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/9/94/Ak74.png/revision/latest/scale-to-width-down/64?cb=20180318180634')
+Gasblock.create(name: 'AKM (6P1 Sb.1-2) gas tube', recoil: 0, ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/27/6p1sb.png/revision/latest/scale-to-width-down/64?cb=20180318180633')
+Gasblock.create(name: 'Molot AKM type gas tube', recoil: 0, ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/6/67/Akmgas.png/revision/latest/scale-to-width-down/64?cb=20180318180635')
+Gasblock.create(name: 'Kiba Arms VDM CS gas tube', recoil: 0, ergonomics: 0, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/5/58/Vdmcs.png/revision/latest/scale-to-width-down/64?cb=20180318180643')
+Gasblock.create(name: 'PP-19-01 gas tube', recoil: 0, ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/4/4a/Pp19gas.png/revision/latest/scale-to-width-down/64?cb=20180318180641')
+Gasblock.create(name: 'AKS-74U Gas tube', recoil: 0, ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/7/77/Aksu.png/revision/latest/scale-to-width-down/64?cb=20180318180636')
+Gasblock.create(name: 'MK12 Low Profile Gas Block', recoil: 2, ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/cc/Mk12.png/revision/latest/scale-to-width-down/64?cb=20190517221107')
+Gasblock.create(name: 'Colt M4 Front sight', recoil: 0, ergonomics: -1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/df/M4frontsighticon.png/revision/latest/scale-to-width-down/64?cb=20180513141441')
+Gasblock.create(name: 'Windham Weaponry Rail Gas Block', recoil: 2, ergonomics: 0, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/8/8f/Picblock.png/revision/latest/scale-to-width-down/64?cb=20180318180640')
+Gasblock.create(name: 'JP Enterprises Gas System-6', recoil: 4, ergonomics: 2, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/2/26/Jpgs6.png/revision/latest/scale-to-width-down/64?cb=20180318180637')
+Gasblock.create(name: 'JP Enterprises Gas System-5b', recoil: 3, ergonomics: 1, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/c/c3/JPG_Icon.PNG/revision/latest/scale-to-width-down/64?cb=20191213005346')
+Gasblock.create(name: 'KAC Low Profile Gas Block', recoil: 2, ergonomics: 1, dealer_id: 5, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/d/d9/KAC_Low_Profile_Gas_Block_icon.png/revision/latest/scale-to-width-down/64?cb=20191229123250')
+Gasblock.create(name: 'SIG MCX Gas Block', recoil: 3, ergonomics: 1, dealer_id: 6, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/a/a6/MCX_Gas_Block_Icon.png/revision/latest/scale-to-width-down/64?cb=20201228212220')
+Gasblock.create(name: 'Mk-18 Gas Block', recoil: 0, ergonomics: 0, dealer_id: 9, image: 'https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/1/1a/Mk-18_Gas_Block_icon.png/revision/latest/scale-to-width-down/64?cb=20210127172328')
+
+puts "seeding BarrelGasblocks..."
+
+BarrelGasblock.create(barrel_id: 1, gasblock_id: 3)
+BarrelGasblock.create(barrel_id: 13, gasblock_id: 3)
+BarrelGasblock.create(barrel_id: 14, gasblock_id: 3)
+BarrelGasblock.create(barrel_id: 15, gasblock_id: 3)
+BarrelGasblock.create(barrel_id: 24, gasblock_id: 10)
+BarrelGasblock.create(barrel_id: 25, gasblock_id: 10)
+BarrelGasblock.create(barrel_id: 6, gasblock_id: 10)
+BarrelGasblock.create(barrel_id: 50, gasblock_id: 10)
+BarrelGasblock.create(barrel_id: 24, gasblock_id: 11)
+BarrelGasblock.create(barrel_id: 25, gasblock_id: 11)
+BarrelGasblock.create(barrel_id: 6, gasblock_id: 11)
+BarrelGasblock.create(barrel_id: 50, gasblock_id: 11)
+BarrelGasblock.create(barrel_id: 24, gasblock_id: 12)
+BarrelGasblock.create(barrel_id: 25, gasblock_id: 12)
+BarrelGasblock.create(barrel_id: 6, gasblock_id: 12)
+BarrelGasblock.create(barrel_id: 50, gasblock_id: 12)
+BarrelGasblock.create(barrel_id: 24, gasblock_id: 13)
+BarrelGasblock.create(barrel_id: 25, gasblock_id: 13)
+BarrelGasblock.create(barrel_id: 6, gasblock_id: 13)
+BarrelGasblock.create(barrel_id: 50, gasblock_id: 13)
+BarrelGasblock.create(barrel_id: 24, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 25, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 6, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 50, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 21, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 41, gasblock_id: 14)
+BarrelGasblock.create(barrel_id: 51, gasblock_id: 15)
+BarrelGasblock.create(barrel_id: 52, gasblock_id: 15)
+BarrelGasblock.create(barrel_id: 53, gasblock_id: 16)
+BarrelGasblock.create(barrel_id: 54, gasblock_id: 16)
+
+
+
+
+
+
 
 
 puts 'Finished seeding'

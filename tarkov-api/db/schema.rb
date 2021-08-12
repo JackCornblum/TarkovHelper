@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_150614) do
+ActiveRecord::Schema.define(version: 2021_08_12_182733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "barrel_gasblocks", force: :cascade do |t|
+    t.integer "barrel_id"
+    t.integer "gasblock_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "barrels", force: :cascade do |t|
     t.string "name"
@@ -64,9 +71,26 @@ ActiveRecord::Schema.define(version: 2021_08_12_150614) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "gasblocks", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "dealer_id"
+    t.integer "recoil"
+    t.integer "ergonomics"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "muzzle_adapter_barrels", force: :cascade do |t|
     t.integer "muzzle_adapter_id"
     t.integer "barrel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "muzzle_adapter_muzzles", force: :cascade do |t|
+    t.integer "muzzle_id"
+    t.integer "muzzle_adapter_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -106,6 +130,17 @@ ActiveRecord::Schema.define(version: 2021_08_12_150614) do
     t.integer "ergonomics"
     t.integer "price"
     t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "receivers", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.integer "recoil"
+    t.integer "ergonomics"
+    t.integer "dealer_id"
+    t.integer "price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -173,6 +208,13 @@ ActiveRecord::Schema.define(version: 2021_08_12_150614) do
   create_table "weapon_pistol_grips", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "pistol_grip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weapon_receivers", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
