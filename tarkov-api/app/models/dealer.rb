@@ -9,4 +9,5 @@ class Dealer < ApplicationRecord
     has_many :muzzle_adapters
     has_many :receivers
     has_many :gasblocks
+    has_many :handguards
 end
