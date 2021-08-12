@@ -4,4 +4,6 @@ class Barrel < ApplicationRecord
     has_many :weapons, through: :weapon_barrels
     has_many :muzzle_adapter_barrels
     has_many :muzzle_adapters, through: :muzzle_adapter_barrels
+    has_many :muzzle_barrels
+    has_many :muzzles, through: :muzzle_barrels
 end

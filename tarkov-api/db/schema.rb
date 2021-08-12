@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_11_225459) do
+ActiveRecord::Schema.define(version: 2021_08_12_150614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,24 @@ ActiveRecord::Schema.define(version: 2021_08_11_225459) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "muzzle_barrels", force: :cascade do |t|
+    t.integer "muzzle_id"
+    t.integer "barrel_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "muzzles", force: :cascade do |t|
+    t.string "name"
+    t.integer "recoil"
+    t.integer "ergonomics"
+    t.integer "dealer_id"
+    t.integer "price"
+    t.string "image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "pistol_grips", force: :cascade do |t|
     t.string "name"
     t.integer "dealer_id"
@@ -141,6 +159,13 @@ ActiveRecord::Schema.define(version: 2021_08_11_225459) do
   create_table "weapon_muzzle_adapters", force: :cascade do |t|
     t.integer "weapon_id"
     t.integer "muzzle_adapter_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "weapon_muzzles", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "muzzle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
