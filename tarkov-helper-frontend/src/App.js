@@ -1,11 +1,35 @@
 import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Route, Switch } from "react-router"
+import { useEffect, useState } from "react"
+import { Navbar, Container, Nav } from "react-bootstrap"
+import NavBar from './Components/NavBar.js'
+import Weapons from './Components/Weapons.js'
 
 function App() {
+  const [weapons, setWeapons] = useState([])
+  const [dealers, setDealers] = useState([])
+
+  useEffect(() => {
+    fetch('/weapons')
+    .then(res => res.json())
+    .then(data => setWeapons(data))
+
+    fetch('/dealers')
+    .then(res => res.json())
+    .then(data => setDealers(data))
+  }, [])
+
   return (
     <div className="App">
-      <img src="https://static.wikia.nocookie.net/escapefromtarkov_gamepedia/images/3/3c/ADAR2-15Image.png" />
-      <p>tarky image</p>
+      <NavBar />
+
+      <Switch>
+        <Route exact path="/weapons">
+          <Weapons weapons={weapons}/>
+        </Route>
+      </Switch>
     </div>
   );
 }
