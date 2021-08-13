@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_202329) do
+ActiveRecord::Schema.define(version: 2021_08_13_172143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2021_08_12_202329) do
   create_table "barrel_gasblocks", force: :cascade do |t|
     t.integer "barrel_id"
     t.integer "gasblock_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "barrel_receivers", force: :cascade do |t|
+    t.integer "barrel_id"
+    t.integer "receiver_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -99,6 +106,37 @@ ActiveRecord::Schema.define(version: 2021_08_12_202329) do
     t.string "name"
     t.string "image"
     t.integer "recoil"
+    t.integer "ergonomics"
+    t.integer "dealer_id"
+    t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mount_foregrips", force: :cascade do |t|
+    t.integer "mount_id"
+    t.integer "foregrip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mount_handguards", force: :cascade do |t|
+    t.integer "mount_id"
+    t.integer "handguard_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mount_weapons", force: :cascade do |t|
+    t.integer "weapon_id"
+    t.integer "mount_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mounts", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
     t.integer "ergonomics"
     t.integer "dealer_id"
     t.integer "price"

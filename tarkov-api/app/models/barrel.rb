@@ -8,4 +8,6 @@ class Barrel < ApplicationRecord
     has_many :muzzles, through: :muzzle_barrels
     has_many :barrel_gasblocks
     has_many :gasblocks, through: :barrel_gasblocks
+    has_many :barrel_receivers
+    has_many :receivers, through: :barrel_receivers
 end

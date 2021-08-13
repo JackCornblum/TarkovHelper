@@ -10,4 +10,5 @@ class Dealer < ApplicationRecord
     has_many :receivers
     has_many :gasblocks
     has_many :handguards
+    has_many :mounts
 end
