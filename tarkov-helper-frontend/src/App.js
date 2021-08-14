@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Navbar, Container, Nav } from "react-bootstrap"
 import NavBar from './Components/NavBar.js'
 import Weapons from './Components/Weapons.js'
+import Dealers from './Components/Dealers.js'
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -28,6 +29,9 @@ function App() {
       <Switch>
         <Route exact path="/weapons">
           <Weapons weapons={weapons}/>
+        </Route>
+        <Route exact path="/dealers">
+          <Dealers dealers={dealers}/>
         </Route>
       </Switch>
     </div>
