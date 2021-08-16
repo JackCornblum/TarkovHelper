@@ -6,7 +6,9 @@ class WeaponsController < ApplicationController
     end
 
     def recoil_build
-        gun = Weapon.find
+        gun = Weapon.find(params[:id])
+        parts = gun.best_gun_build_recoil
+        render json: parts
     end
 
     def weapon_items

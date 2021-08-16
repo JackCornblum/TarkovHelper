@@ -19,6 +19,9 @@ function Weapons({weapons}) {
     const [singleGun, setSingleGun] = useState([])
     const [weaponParts, setWeaponParts] = useState([])
     const [weaponBuild, setWeaponBuild] = useState("")
+    const [weaponBuildParts, setWeaponBuildParts] = useState([])
+    const [allParts, setAllParts] = useState(false)
+    const [buildParts, setBuildParts] = useState(false)
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -57,6 +60,10 @@ function Weapons({weapons}) {
     })
 
     let renderParts = weaponParts.map(part => {
+        return <Part name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
+    })
+
+    let renderBuildParts = weaponBuildParts.map(part => {
         return <Part name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
     })
 
@@ -129,15 +136,35 @@ function Weapons({weapons}) {
         setShotty(false)
         setSnipers(false)
         setMarksman(false)
+        setBuildParts(false)
         let copyOfGuns = [...renderWeapons]
         let filterGun = copyOfGuns.filter(gun => gun.props.gun_id === id)
         setSingleGun(filterGun)
         setOneGun(true)
+        setAllParts(true)
     }
 
     function handleSubmit(e) {
         e.preventDefault()
         console.log(weaponBuild)
+        let gunId = singleGun[0].props.gun_id
+        if (weaponBuild === 'recoil') {
+            fetch(`recoil_build/${gunId}`)
+            .then(res => res.json())
+            .then(data => {
+                let merged = [].concat.apply([], data)
+                let merged2 = [].concat.apply([], merged)
+                let uniq = [...new Set(merged2)]
+                let final = uniq.filter(item => typeof item === 'object')
+                setAllParts(false)
+                setBuildParts(true)
+                setWeaponBuildParts(final)
+            })
+        } else if(weaponBuild === 'ergonomics') {
+
+        } else {
+
+        }
     }
 
     function handleRadio(e) {
@@ -213,7 +240,8 @@ function Weapons({weapons}) {
                     </tr>
                 </thead>
                 <tbody>
-                    {oneGun ? renderParts : null}
+                    {(oneGun && allParts) ? renderParts : null}
+                    {(oneGun && buildParts) ? renderBuildParts : null}
                 </tbody>
             </Table>
                 
