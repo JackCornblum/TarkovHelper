@@ -5,6 +5,11 @@ class DealersController < ApplicationController
         render json: dealers
     end
 
+    def show
+        dealer = Dealer.find(params[:id])
+        render json: dealer
+    end
+
     def dealer_items
         dealer = Dealer.find(params[:id])
         items = dealer.all_items

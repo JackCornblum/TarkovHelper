@@ -1,11 +1,13 @@
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from "react"
-import {useHistory} from 'react-router-dom'
-import {Container, Row, Button, Dropdown} from 'react-bootstrap'
+import {useHistory, useParams, Link} from 'react-router-dom'
+import {Container, Row, Button, Dropdown, Table} from 'react-bootstrap'
 import Part from './Part.js'
 
 function SingleDealer({name, image, id, fetchItems, dealerItems}){
+
+    const { dealerId } = useParams()
 
     let goodImage = image.split('/revision')[0]
     console.log(dealerItems)
@@ -23,9 +25,23 @@ function SingleDealer({name, image, id, fetchItems, dealerItems}){
                 </Card.Body>
             </Card>
             {(dealerItems.length > 0) ? <Container fluid="md">
-                <Row md={6}>
-                    {renderItems}
-                </Row>
+                
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Name</th>
+                            <th>Recoil</th>
+                            <th>Ergonomics</th>
+                            <th>Price</th>
+                            <th>Dealer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderItems} 
+                    </tbody>
+                </Table>
+                
             </Container> : null }
             
         </>

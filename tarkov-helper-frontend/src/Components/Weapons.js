@@ -1,6 +1,6 @@
 import Gun from './Gun.js'
 import { useEffect, useState } from "react"
-import {Container, Row, Button, Dropdown, Form} from 'react-bootstrap'
+import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import Part from './Part.js'
 import Popup from 'reactjs-popup';
@@ -156,9 +156,11 @@ function Weapons({weapons}) {
                     {oneGun ? <Popup trigger={<button>Generate Gun Build</button>} position="bottom center">
                                 <div>
                                 <form onSubmit={handleSubmit}>
-                                    <Form.Check type='radio' label="recoil"/>
-                                    <Form.Check type='radio' label="ergonomics"/>
-                                    <Form.Check type='radio' label="price"/>
+                                    <div className="inline-radio">
+                                        <Form.Check inline type='radio' name="group1" label="recoil"/>
+                                        <Form.Check inline type='radio' name="group1" label="ergonomics"/>
+                                        <Form.Check inline type='radio' name="group1" label="price"/>
+                                    </div>
                                     <Button type="submit">Generate Parts</Button>
                                 </form>
                                 </div>
@@ -194,9 +196,23 @@ function Weapons({weapons}) {
                 </Container>
             <Container fluid="md">
             {oneGun ? singleGun : null}
-                <Row md={5}>
+            <Table striped bordered hover variant="dark">
+                <thead>
+                    <tr>
+                        <th>Img</th>
+                        <th>Name</th>
+                        <th>Recoil</th>
+                        <th>Ergonomics</th>
+                        <th>Price</th>
+                        <th>Dealer</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {oneGun ? renderParts : null}
-                </Row>
+                </tbody>
+            </Table>
+                
+                
             </Container>
 
         </div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :weapons, only: [:index]
-  resources :dealers, only: [:index]
+  resources :dealers, only: [:index, :show]
 
   get "/recoil/:id", to: "weapons#recoil_build"
   get "/dealer_items/:id", to: "dealers#dealer_items"

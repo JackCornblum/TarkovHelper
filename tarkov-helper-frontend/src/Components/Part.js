@@ -2,14 +2,24 @@ import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
-import {Container, Row, Button, Dropdown, Item, Popover, OverlayTrigger} from 'react-bootstrap'
+import {Container, Row, Button, Dropdown, Item, Popover, OverlayTrigger, Table} from 'react-bootstrap'
 
 
 function Part({name, image, ergonomics, recoil, price, dealerId}){
 
     const [displayInfo, setDisplayInfo] = useState(false)
+    const [dealerPic, setDealerPic] = useState("")
 
     let goodImage = image.split('/revision')[0]
+
+    useEffect(() => {
+        fetch(`/dealers/${dealerId}`)
+        .then(res => res.json())
+        .then(data => {
+            let dealerImg = data.image.split('/revision')[0]
+            setDealerPic(dealerImg)
+        })
+    })
 
     function handleClick(e) {
         setDisplayInfo(!displayInfo)
@@ -25,27 +35,28 @@ function Part({name, image, ergonomics, recoil, price, dealerId}){
     )
 
     return(
-        <div className="weapon-part">
-
-            {/* <Card className="itemCard">
-                <Card.Body>
-                    <Card.Title>{name}</Card.Title>
-                    <Card.Img variant="bottom" src={goodImage} />
-                    <Button onClick={handleClick}>Click me</Button>
-                    {displayInfo ? partInfo : null}
-                </Card.Body>
-            </Card> */}
-            <h5>{name}</h5>
-            <img className="part-img" src={goodImage} alt={name} />
-            <p onClick={handleClick}>Stats & Info</p>
-            {displayInfo ? partInfo : null}
-            {/* <Accordion>
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>Stats and Info</Accordion.Header>
-                        <Accordion.Body>Hello</Accordion.Body>
-                    </Accordion.Item>
-                </Accordion> */}
-        </div>
+        <tr>
+            <td>
+                <img className="part-img" src={goodImage} alt={name} />
+            </td>
+            <td>
+                <h6>{name}</h6>
+            </td>
+            <td>
+                {recoil}
+            </td>
+            <td>
+                {ergonomics}
+            </td>
+            <td>
+                {price}
+            </td>
+            <td>
+                <img className='part-img' src={dealerPic} alt="dealer"/>
+            </td>
+            
+           
+        </tr>
     )
 }
 
