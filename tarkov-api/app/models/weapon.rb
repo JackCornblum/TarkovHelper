@@ -22,6 +22,35 @@ class Weapon < ApplicationRecord
     has_many :mount_weapons
     has_many :mounts, through: :mount_weapons
 
+    def all_items
+        items = []
+        foregrips = self.foregrips
+        barrels = self.receivers.map{|r| r.barrels}
+        pistol_grips = self.pistol_grips
+        buffer_tubes = self.buffer_tubes
+        stocks = self.stocks
+        muzzle_adapters = self.muzzle_adapters
+        muzzles = self.muzzles
+        receivers = self.receivers
+        handguards = self.handguards
+        mounts = self.mounts
+        items << foregrips
+        items << barrels
+        items << pistol_grips
+        items << buffer_tubes
+        items << stocks
+        items << muzzle_adapters
+        items << muzzles
+        items << receivers
+        items << handguards
+        items << mounts
+        more_handguards = receivers.map{|b| b.handguards}
+        more_foregrips = mounts.map{|m| m.foregrips}
+        items << more_handguards
+        items << more_foregrips
+        items
+    end
+
     def best_pistol_grip
         if self.pistol_grips.count > 0
             grips = self.pistol_grips

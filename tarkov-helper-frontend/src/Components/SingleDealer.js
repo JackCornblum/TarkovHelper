@@ -3,14 +3,14 @@ import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
 import {Container, Row, Button, Dropdown} from 'react-bootstrap'
-import Item from './Item.js'
+import Part from './Part.js'
 
 function SingleDealer({name, image, id, fetchItems, dealerItems}){
 
     let goodImage = image.split('/revision')[0]
     console.log(dealerItems)
     let renderItems = dealerItems.map(item => {
-        return <Item key={item.id} ergonomics={item.ergonomics} image={item.image} name={item.name} price={item.price} recoil={item.recoil} dealerId={item.dealer_id} />
+        return <Part key={item.name} ergonomics={item.ergonomics} image={item.image} name={item.name} price={item.price} recoil={item.recoil} dealerId={item.dealer_id} />
     })
 
     return(

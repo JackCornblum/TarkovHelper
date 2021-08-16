@@ -2,6 +2,9 @@ import Gun from './Gun.js'
 import { useEffect, useState } from "react"
 import {Container, Row, Button, Dropdown} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
+import Part from './Part.js'
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 function Weapons({weapons}) {
 
@@ -14,6 +17,7 @@ function Weapons({weapons}) {
     const [marksman, setMarksman] = useState(false)
     const [oneGun, setOneGun] = useState(false)
     const [singleGun, setSingleGun] = useState([])
+    const [weaponParts, setWeaponParts] = useState([])
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -21,6 +25,7 @@ function Weapons({weapons}) {
     let shotguns = weapons.filter(gun => gun.weapon_type === 'Shotgun')
     let marksmanRifles = weapons.filter(gun => gun.weapon_type === 'Marskman rifle')
     let sniperRifles = weapons.filter(gun => gun.weapon_type === 'Sniper rifle')
+
 
 
     let renderWeapons = weapons.map(gun => {
@@ -32,22 +37,26 @@ function Weapons({weapons}) {
     })
 
     let renderAssaultCarbines = assaultCarbines.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSubmachineGuns = submachineGuns.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderShotguns = shotguns.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSnipers = sniperRifles.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
     let renderMarksman = marksmanRifles.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+    })
+
+    let renderParts = weaponParts.map(part => {
+        return <Part name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
     })
 
     function filterGuns(e) {
@@ -99,12 +108,19 @@ function Weapons({weapons}) {
             setShotty(false)
             setSnipers(false)
             setMarksman(true)
-            console.log('hello')
         }
     }
 
     function renderGun(id){
         console.log(id)
+        fetch(`/weapon_items/${id}`)
+        .then(res => res.json())
+        .then(data => {
+            let merged = [].concat.apply([], data)
+            let merged2 = [].concat.apply([], merged)
+            let uniq = [...new Set(merged2)]
+            setWeaponParts(uniq)
+        })
         setAllWeapons(false)
         setArs(false)
         setAssaultCarb(false)
@@ -115,7 +131,6 @@ function Weapons({weapons}) {
         let copyOfGuns = [...renderWeapons]
         let filterGun = copyOfGuns.filter(gun => gun.props.gun_id === id)
         setSingleGun(filterGun)
-        console.log(filterGun[0].props.name)
         setOneGun(true)
     }
 
@@ -133,7 +148,8 @@ function Weapons({weapons}) {
                     {oneGun ? <h3>{singleGun[0].props.name}</h3> : null}
                 <Row md={2}>
 
-                    <Button>Generate build</Button>
+                    {oneGun ? <Button onClick={handleGenerate}>Generate build</Button> : null}
+                    
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
                             Filter Weapons
@@ -164,6 +180,9 @@ function Weapons({weapons}) {
                 </Container>
             <Container fluid="md">
             {oneGun ? singleGun : null}
+                <Row md={5}>
+                    {oneGun ? renderParts : null}
+                </Row>
             </Container>
 
         </div>

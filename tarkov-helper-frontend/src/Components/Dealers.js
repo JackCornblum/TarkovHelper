@@ -86,6 +86,7 @@ function Dealers({dealers}) {
                     {allDealers ? renderDealers : null}
                 </Row>
             </Container> : null}
+            <Container fluid="md">
                 {praporRendered ? 
                     renderDealers[0] : null
                 }
@@ -101,6 +102,7 @@ function Dealers({dealers}) {
                 {jaegerRendered ? 
                     renderDealers[7] : null
                 }
+            </Container>
         </div>
     )
 }

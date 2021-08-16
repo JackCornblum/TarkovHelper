@@ -9,5 +9,11 @@ class WeaponsController < ApplicationController
         gun = Weapon.find
     end
 
+    def weapon_items
+        weapon = Weapon.find(params[:id])
+        items = weapon.all_items
+        render json: items
+    end
+
 
 end
