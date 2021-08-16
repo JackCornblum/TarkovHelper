@@ -7,6 +7,7 @@ import { Navbar, Container, Nav } from "react-bootstrap"
 import NavBar from './Components/NavBar.js'
 import Weapons from './Components/Weapons.js'
 import Dealers from './Components/Dealers.js'
+import 'reactjs-popup/dist/index.css';
 
 function App() {
   const [weapons, setWeapons] = useState([])

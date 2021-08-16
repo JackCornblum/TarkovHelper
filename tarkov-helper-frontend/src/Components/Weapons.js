@@ -1,10 +1,10 @@
 import Gun from './Gun.js'
 import { useEffect, useState } from "react"
-import {Container, Row, Button, Dropdown} from 'react-bootstrap'
+import {Container, Row, Button, Dropdown, Form} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import Part from './Part.js'
 import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+
 
 function Weapons({weapons}) {
 
@@ -134,6 +134,11 @@ function Weapons({weapons}) {
         setOneGun(true)
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+        console.log(e)
+    }
+
     return(
         <div className="weapons-container">
             <Container fluid="md">
@@ -148,7 +153,16 @@ function Weapons({weapons}) {
                     {oneGun ? <h3>{singleGun[0].props.name}</h3> : null}
                 <Row md={2}>
 
-                    {oneGun ? <Button onClick={handleGenerate}>Generate build</Button> : null}
+                    {oneGun ? <Popup trigger={<button>Generate Gun Build</button>} position="bottom center">
+                                <div>
+                                <form onSubmit={handleSubmit}>
+                                    <Form.Check type='radio' label="recoil"/>
+                                    <Form.Check type='radio' label="ergonomics"/>
+                                    <Form.Check type='radio' label="price"/>
+                                    <Button type="submit">Generate Parts</Button>
+                                </form>
+                                </div>
+                              </Popup> : null}
                     
                     <Dropdown>
                         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
