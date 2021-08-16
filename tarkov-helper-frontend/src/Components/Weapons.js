@@ -12,6 +12,8 @@ function Weapons({weapons}) {
     const [shotty, setShotty] = useState(false)
     const [snipers, setSnipers] = useState(false)
     const [marksman, setMarksman] = useState(false)
+    const [oneGun, setOneGun] = useState(false)
+    const [singleGun, setSingleGun] = useState([])
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -22,30 +24,30 @@ function Weapons({weapons}) {
 
 
     let renderWeapons = weapons.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderAssaultRifles = assaultRifles.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderAssaultCarbines = assaultCarbines.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSubmachineGuns = submachineGuns.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderShotguns = shotguns.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSnipers = sniperRifles.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
     let renderMarksman = marksmanRifles.map(gun => {
-        return <Gun name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     function filterGuns(e) {
@@ -101,6 +103,22 @@ function Weapons({weapons}) {
         }
     }
 
+    function renderGun(id){
+        console.log(id)
+        setAllWeapons(false)
+        setArs(false)
+        setAssaultCarb(false)
+        setSubmachine(false)
+        setShotty(false)
+        setSnipers(false)
+        setMarksman(false)
+        let copyOfGuns = [...renderWeapons]
+        let filterGun = copyOfGuns.filter(gun => gun.props.gun_id === id)
+        setSingleGun(filterGun)
+        console.log(filterGun[0].props.name)
+        setOneGun(true)
+    }
+
     return(
         <div className="weapons-container">
             <Container fluid="md">
@@ -112,6 +130,7 @@ function Weapons({weapons}) {
                     {shotty ? <h3>Shotguns</h3> : null}
                     {snipers ? <h3>Sniper Rifles</h3> : null}
                     {marksman ? <h3>Marksman Rifles</h3> : null}
+                    {oneGun ? <h3>{singleGun[0].props.name}</h3> : null}
                 <Row md={2}>
 
                     <Button>Generate build</Button>
@@ -140,8 +159,12 @@ function Weapons({weapons}) {
                     {shotty ? renderShotguns : null}
                     {snipers ? renderSnipers : null}
                     {marksman ? renderMarksman : null}
+                    
                     </Row>
                 </Container>
+            <Container fluid="md">
+            {oneGun ? singleGun : null}
+            </Container>
 
         </div>
     )
