@@ -11,6 +11,12 @@ class WeaponsController < ApplicationController
         render json: parts
     end
 
+    def ergonomics_build
+        gun = Weapon.find(params[:id])
+        parts = gun.best_gun_build_ergonomics
+        render json: parts
+    end
+
     def weapon_items
         weapon = Weapon.find(params[:id])
         items = weapon.all_items

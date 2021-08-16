@@ -161,7 +161,17 @@ function Weapons({weapons}) {
                 setWeaponBuildParts(final)
             })
         } else if(weaponBuild === 'ergonomics') {
-
+            fetch(`ergonomics_build/${gunId}`)
+            .then(res => res.json())
+            .then(data => {
+                let merged = [].concat.apply([], data)
+                let merged2 = [].concat.apply([], merged)
+                let uniq = [...new Set(merged2)]
+                let final = uniq.filter(item => typeof item === 'object')
+                setAllParts(false)
+                setBuildParts(true)
+                setWeaponBuildParts(final)
+            })
         } else {
 
         }
