@@ -18,6 +18,7 @@ function Weapons({weapons}) {
     const [oneGun, setOneGun] = useState(false)
     const [singleGun, setSingleGun] = useState([])
     const [weaponParts, setWeaponParts] = useState([])
+    const [weaponBuild, setWeaponBuild] = useState("")
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -136,7 +137,11 @@ function Weapons({weapons}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(e)
+        console.log(weaponBuild)
+    }
+
+    function handleRadio(e) {
+        setWeaponBuild(e.target.value)
     }
 
     return(
@@ -154,12 +159,12 @@ function Weapons({weapons}) {
                 <Row md={2}>
 
                     {oneGun ? <Popup trigger={<button>Generate Gun Build</button>} position="bottom center">
-                                <div>
+                                <div onChange={handleRadio}>
                                 <form onSubmit={handleSubmit}>
                                     <div className="inline-radio">
-                                        <Form.Check inline type='radio' name="group1" label="recoil"/>
-                                        <Form.Check inline type='radio' name="group1" label="ergonomics"/>
-                                        <Form.Check inline type='radio' name="group1" label="price"/>
+                                        <Form.Check inline type='radio' name="group1" label="recoil" value="recoil"/>
+                                        <Form.Check inline type='radio' name="group1" label="ergonomics" value="ergonomics"/>
+                                        <Form.Check inline type='radio' name="group1" label="price" value="price"/>
                                     </div>
                                     <Button type="submit">Generate Parts</Button>
                                 </form>
