@@ -10,6 +10,8 @@ import Dealers from './Components/Dealers.js'
 import 'reactjs-popup/dist/index.css';
 import { useParams } from 'react-router-dom'
 import SingleDealer from './Components/SingleDealer';
+import Login from './Components/Login';
+import Signup from './Components/Signup';
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -21,9 +23,12 @@ function App() {
   const [peacekeeperRendered, setPeacekeeperRendered] = useState(false)
   const [mechanicRendered, setMechanicRendered] = useState(false)
   const [jaegerRendered, setJaegerRendered] = useState(false)
+  const [currentUser, setCurrentUser] = useState('')
 
   
-  
+  useEffect(() => {
+
+  }, [])
   
   useEffect(() => {
     fetch('/weapons')
@@ -90,7 +95,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar currentUser={currentUser} />
 
       <Switch>
         <Route exact path="/weapons">
@@ -101,6 +106,12 @@ function App() {
         </Route>
         <Route exact path="/dealers/:dealerId">
           <SingleDealer />
+        </Route>
+        <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/signup">
+          <Signup currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
       </Switch>
     </div>

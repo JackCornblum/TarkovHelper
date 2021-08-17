@@ -12,6 +12,20 @@ img.part-img {
   height: auto;
 }
 
+div.login { 
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  text-align: left;
+}
+
+div.signup { 
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-top: 5%;
+  text-align: left;
+}
+
 
 .App-logo {
   height: 40vmin;

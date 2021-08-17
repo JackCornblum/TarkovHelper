@@ -3,7 +3,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { Navbar, Container, Nav } from "react-bootstrap"
 
-function NavBar() {
+function NavBar({currentUser}) {
     return (
         <div>
              <Navbar style={{height: '5rem'}} className="tarkov-nav" bg="dark" variant="dark">
@@ -13,6 +13,8 @@ function NavBar() {
                         <Nav.Link href="/dealers">Dealers</Nav.Link>
                         <Nav.Link href="/weapons">Weapons</Nav.Link>
                         <Nav.Link href="/tasks">Tasks</Nav.Link>
+                        {currentUser.id ? <Nav.Link>Log out</Nav.Link> : <Nav.Link href="/login">Log In</Nav.Link> }
+                        
                     </Nav>
                 </Container>
             </Navbar>

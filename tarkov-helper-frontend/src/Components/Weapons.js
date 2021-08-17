@@ -293,7 +293,7 @@ function Weapons({weapons}) {
                 <h6>Total Ergonomics: {totalErgonomics}</h6>
                 <h6>Price: {totalPrice}</h6>
                 </div> : null}
-            <Table striped bordered hover variant="dark">
+            {allWeapons ? null :   <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Img</th>
@@ -308,7 +308,8 @@ function Weapons({weapons}) {
                     {(oneGun && allParts) ? renderParts : null}
                     {(oneGun && buildParts) ? renderBuildParts : null}
                 </tbody>
-            </Table>
+            </Table>}
+          
             
                 
                 
