@@ -22,6 +22,9 @@ function Weapons({weapons}) {
     const [weaponBuildParts, setWeaponBuildParts] = useState([])
     const [allParts, setAllParts] = useState(false)
     const [buildParts, setBuildParts] = useState(false)
+    const [totalRecoil, setTotalRecoil] = useState(0)
+    const [totalErgonomics, setTotalErgonomics] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -29,7 +32,6 @@ function Weapons({weapons}) {
     let shotguns = weapons.filter(gun => gun.weapon_type === 'Shotgun')
     let marksmanRifles = weapons.filter(gun => gun.weapon_type === 'Marskman rifle')
     let sniperRifles = weapons.filter(gun => gun.weapon_type === 'Sniper rifle')
-
 
 
     let renderWeapons = weapons.map(gun => {
@@ -146,7 +148,6 @@ function Weapons({weapons}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(weaponBuild)
         let gunId = singleGun[0].props.gun_id
         if (weaponBuild === 'recoil') {
             fetch(`recoil_build/${gunId}`)
@@ -158,6 +159,25 @@ function Weapons({weapons}) {
                 let final = uniq.filter(item => typeof item === 'object')
                 setAllParts(false)
                 setBuildParts(true)
+                let recoil = 0
+                let ergonomics = 0
+                let price = 0
+                final.forEach(part => {
+                    if (part.recoil) {
+                        
+                        recoil += part.recoil
+                        
+                    }
+                })
+                setTotalRecoil(recoil)
+                final.forEach(part => {
+                    if (part.ergonomics) {
+                        ergonomics += part.ergonomics
+                        price += part.price
+                    }
+                })
+                setTotalErgonomics(ergonomics)
+                setTotalPrice(price)
                 setWeaponBuildParts(final)
             })
         } else if(weaponBuild === 'ergonomics') {
@@ -170,6 +190,25 @@ function Weapons({weapons}) {
                 let final = uniq.filter(item => typeof item === 'object')
                 setAllParts(false)
                 setBuildParts(true)
+                let recoil = 0
+                let ergonomics = 0
+                let price = 0
+                final.forEach(part => {
+                    if (part.recoil) {
+                        
+                        recoil += part.recoil
+                        
+                    }
+                })
+                setTotalRecoil(recoil)
+                final.forEach(part => {
+                    if (part.ergonomics) {
+                        ergonomics += part.ergonomics
+                        price += part.price
+                    }
+                })
+                setTotalErgonomics(ergonomics)
+                setTotalPrice(price)
                 setWeaponBuildParts(final)
             })
         } else {
@@ -238,6 +277,11 @@ function Weapons({weapons}) {
                 </Container>
             <Container fluid="md">
             {oneGun ? singleGun : null}
+            {(oneGun && buildParts) ? <div>
+                <h7>Total Recoil: {totalRecoil}</h7>
+                <h7>Total Ergonomics: {totalErgonomics}</h7>
+                <h7>Price: {totalPrice}</h7>
+                </div> : null}
             <Table striped bordered hover variant="dark">
                 <thead>
                     <tr>
@@ -254,6 +298,7 @@ function Weapons({weapons}) {
                     {(oneGun && buildParts) ? renderBuildParts : null}
                 </tbody>
             </Table>
+            
                 
                 
             </Container>

@@ -10,7 +10,7 @@ function SingleDealer({name, image, id, fetchItems, dealerItems}){
     const { dealerId } = useParams()
 
     let goodImage = image.split('/revision')[0]
-    console.log(dealerItems)
+    
     let renderItems = dealerItems.map(item => {
         return <Part key={item.name} ergonomics={item.ergonomics} image={item.image} name={item.name} price={item.price} recoil={item.recoil} dealerId={item.dealer_id} />
     })

@@ -42,12 +42,18 @@ function Part({name, image, ergonomics, recoil, price, dealerId}){
             <td>
                 <h6>{name}</h6>
             </td>
-            <td>
+            {(recoil > 0) ?  <td style={{color: 'green'}}>
                 {recoil}
-            </td>
-            <td>
+            </td> :  <td style={{color: 'red'}}>
+                {recoil}
+            </td>}
+
+            {(ergonomics > 0) ?  <td style={{color: 'green'}}>
                 {ergonomics}
-            </td>
+            </td> :  <td style={{color: 'red'}}>
+                {ergonomics}
+            </td>}
+           
             <td>
                 {price}
             </td>
