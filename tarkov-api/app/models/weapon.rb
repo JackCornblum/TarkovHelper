@@ -21,6 +21,7 @@ class Weapon < ApplicationRecord
     has_many :handguards, through: :weapon_handguards
     has_many :mount_weapons
     has_many :mounts, through: :mount_weapons
+    has_many :saved_guns
 
     def all_items
         items = []

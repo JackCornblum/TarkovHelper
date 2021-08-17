@@ -8,4 +8,5 @@ class Handguard < ApplicationRecord
     has_many :foregrips, through: :handguard_foregrips
     has_many :mount_handguards
     has_many :mounts, through: :mount_handguards
+    has_many :saved_guns
 end

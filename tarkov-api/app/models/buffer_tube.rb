@@ -4,4 +4,5 @@ class BufferTube < ApplicationRecord
     has_many :weapons, through: :weapon_buffer_tubes
     has_many :stock_buffer_tubes
     has_many :stocks, through: :stock_buffer_tubes
+    has_many :saved_guns
 end

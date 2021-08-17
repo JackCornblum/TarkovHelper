@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_13_172143) do
+ActiveRecord::Schema.define(version: 2021_08_17_164154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -208,6 +208,24 @@ ActiveRecord::Schema.define(version: 2021_08_13_172143) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "saved_guns", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "weapon_id"
+    t.integer "barrel_id"
+    t.integer "buffer_tube_id"
+    t.integer "foregrip_id"
+    t.integer "gasblock_id"
+    t.integer "handguard_id"
+    t.integer "mount_id"
+    t.integer "muzzle_adapter_id"
+    t.integer "muzzle_id"
+    t.integer "pistol_grip_id"
+    t.integer "receiver_id"
+    t.integer "stock_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "stock_buffer_tubes", force: :cascade do |t|
     t.integer "buffer_tube_id"
     t.integer "stock_id"
@@ -222,6 +240,14 @@ ActiveRecord::Schema.define(version: 2021_08_13_172143) do
     t.integer "recoil"
     t.integer "ergonomics"
     t.integer "price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

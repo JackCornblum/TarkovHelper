@@ -10,4 +10,5 @@ class Barrel < ApplicationRecord
     has_many :gasblocks, through: :barrel_gasblocks
     has_many :barrel_receivers
     has_many :receivers, through: :barrel_receivers
+    has_many :saved_guns
 end

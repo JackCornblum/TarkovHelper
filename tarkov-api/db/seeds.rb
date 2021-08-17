@@ -76,6 +76,8 @@ MountHandguard.destroy_all
 MountHandguard.reset_pk_sequence
 MountForegrip.destroy_all
 MountForegrip.reset_pk_sequence
+SavedGun.destroy_all
+SavedGun.reset_pk_sequence
 
 puts "seeding dealers..."
 
@@ -2624,9 +2626,23 @@ MountForegrip.create(foregrip_id: 18, mount_id: 10)
 MountForegrip.create(foregrip_id: 22, mount_id: 10)
 
 
+puts "seeding savedgun"
 
+Mount.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, price: 0)
+PistolGrip.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, price: 0)
+Receiver.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Stock.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Foregrip.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Barrel.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Handguard.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+BufferTube.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Muzzle.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+MuzzleAdapter.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0, price: 0)
+Gasblock.create(name: 'Nil', image: 'Nil', dealer_id: 9, ergonomics: 0, recoil: 0)
 
+User.create(username: 'jack', email:'email@email.com', password: 'hello')
 
+SavedGun.create(user_id: 1, pistol_grip_id: 2, weapon_id: 1, mount_id: Mount.last.id, receiver_id: 1, stock_id: 1, foregrip_id: Foregrip.last.id, barrel_id: Barrel.last.id, gasblock_id: 1, muzzle_id: 1, muzzle_adapter_id: 1, handguard_id: 2, buffer_tube_id: 2)
 
 
 

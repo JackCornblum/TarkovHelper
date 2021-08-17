@@ -6,4 +6,5 @@ class Mount < ApplicationRecord
     has_many :handguards, through: :mount_handguards
     has_many :mount_foregrips
     has_many :foregrips, through: :mount_foregrips
+    has_many :saved_guns
 end

@@ -6,4 +6,5 @@ class Muzzle < ApplicationRecord
     has_many :barrels, through: :muzzle_barrels
     has_many :muzzle_adapter_muzzles
     has_many :muzzle_adapters, through: :muzzle_adapter_muzzles
+    has_many :saved_guns
 end
