@@ -220,6 +220,15 @@ function Weapons({weapons}) {
         setWeaponBuild(e.target.value)
     }
 
+    function displayAll(e) {
+        setOneGun(false)
+        setWeaponParts([])
+        setWeaponBuildParts([])
+        setAllWeapons(true)
+    }
+
+    
+
     return(
         <div className="weapons-container">
             <Container fluid="md">
@@ -247,7 +256,7 @@ function Weapons({weapons}) {
                                 </div>
                               </Popup> : null}
                     
-                    <Dropdown>
+                    {oneGun ? <Button onClick={displayAll} variant="dark">All Weapons</Button> : <Dropdown>
                         <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
                             Filter Weapons
                         </Dropdown.Toggle>
@@ -260,7 +269,9 @@ function Weapons({weapons}) {
                             <Dropdown.Item>Marksman rifles</Dropdown.Item>
                             <Dropdown.Item>Sniper rifles</Dropdown.Item>
                         </Dropdown.Menu>
-                    </Dropdown>
+                    </Dropdown> }
+                    
+                    
                 </Row>
             </Container>
                 <Container fluid="md">
@@ -278,9 +289,9 @@ function Weapons({weapons}) {
             <Container fluid="md">
             {oneGun ? singleGun : null}
             {(oneGun && buildParts) ? <div>
-                <h7>Total Recoil: {totalRecoil}</h7>
-                <h7>Total Ergonomics: {totalErgonomics}</h7>
-                <h7>Price: {totalPrice}</h7>
+                <h6>Total Recoil: {totalRecoil}</h6>
+                <h6>Total Ergonomics: {totalErgonomics}</h6>
+                <h6>Price: {totalPrice}</h6>
                 </div> : null}
             <Table striped bordered hover variant="dark">
                 <thead>
