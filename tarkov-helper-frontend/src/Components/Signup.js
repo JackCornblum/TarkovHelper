@@ -41,7 +41,9 @@ function Signup({setCurrentUser}) {
 
 
     return (
+        <>
         <div className="signup">
+        <h3>Create an account</h3>
             <Form onSubmit={handleSignup}>
                 <Form.Group id="username" >
                     <Form.Label>Username</Form.Label>
@@ -67,6 +69,7 @@ function Signup({setCurrentUser}) {
                 renderErrors
              : null }
         </div>
+        </>
     )
 }
 

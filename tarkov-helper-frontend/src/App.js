@@ -27,7 +27,13 @@ function App() {
 
   
   useEffect(() => {
-
+    fetch('/me')
+    .then(res => res.json())
+    .then(data => {
+      if (data.id) {
+        setCurrentUser(data)
+      }
+    })
   }, [])
   
   useEffect(() => {
@@ -95,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar currentUser={currentUser} />
+      <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
 
       <Switch>
         <Route exact path="/weapons">
@@ -108,7 +114,7 @@ function App() {
           <SingleDealer />
         </Route>
         <Route exact path="/login">
-          <Login />
+          <Login setCurrentUser={setCurrentUser}/>
         </Route>
         <Route exact path="/signup">
           <Signup currentUser={currentUser} setCurrentUser={setCurrentUser} />

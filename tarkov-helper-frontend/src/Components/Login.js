@@ -1,17 +1,39 @@
 import {Form, Button, FormFloating, Row} from "react-bootstrap"
 import { useState } from "react"
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 // import FloatingLabel from 'react-bootstrap-floating-label'
 
-function Login() {
+function Login({setCurrentUser}) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [isErrors, setIsErrors] = useState(false)
+    const [errors, setErrors] = useState([])
+
+    const history = useHistory()
 
     function handleLogin(e) {
         e.preventDefault()
-        fetch('/login')
-        console.log(username)
-        console.log(password)
+        let user = {
+            username,
+            password
+        }
+        fetch('/login', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.id) {
+                setCurrentUser(data)
+                history.push('/')
+            } else {
+                setErrors(data.error)
+                setIsErrors(true)
+            }
+        })
+        // console.log(username)
+        // console.log(password)
     }
 
     return (
