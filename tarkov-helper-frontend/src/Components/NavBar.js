@@ -30,6 +30,7 @@ function NavBar({currentUser, setCurrentUser}) {
                         <Nav.Link href="/dealers">Dealers</Nav.Link>
                         <Nav.Link href="/weapons">Weapons</Nav.Link>
                         <Nav.Link href="/tasks">Tasks</Nav.Link>
+                        {currentUser.id ? <Nav.Link href="/profile">Profile</Nav.Link> : null}
                         {currentUser.id ? <Nav.Link onClick={handleLogout}>Log out</Nav.Link> : <Nav.Link href="/login">Log In</Nav.Link> }
                         
                     </Nav>

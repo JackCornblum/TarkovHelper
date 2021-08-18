@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom'
 import SingleDealer from './Components/SingleDealer';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import Profile from './Components/Profile';
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -105,7 +106,7 @@ function App() {
 
       <Switch>
         <Route exact path="/weapons">
-          <Weapons weapons={weapons}/>
+          <Weapons currentUser={currentUser} weapons={weapons}/>
         </Route>
         <Route exact path="/dealers">
           <Dealers setDealerItems={setDealerItems} setAllDealers={setAllDealers} allDealers={allDealers} setAllDealers={setAllDealers} renderDealers={renderDealers} jaegerRendered={jaegerRendered} setJaegerRendered={setJaegerRendered} mechanicRendered={mechanicRendered} setMechanicRendered={setMechanicRendered} peacekeeperRendered={peacekeeperRendered} setPeacekeeperRendered={setPeacekeeperRendered} skierRendered={skierRendered} setSkierRendered={setSkierRendered} praporRendered={praporRendered} setPraporRendered={setPraporRendered} dealerItems={dealerItems} dealers={dealers}/>
@@ -118,6 +119,9 @@ function App() {
         </Route>
         <Route exact path="/signup">
           <Signup currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route exact path="/profile">
+          <Profile currentUser={currentUser} />
         </Route>
       </Switch>
     </div>

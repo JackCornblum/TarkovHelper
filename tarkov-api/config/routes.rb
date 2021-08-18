@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/me", to: "sessions#show"
   get '/logout', to: "sessions#destroy"
+  post 'save_loadout/:id', to: "users#save_loadout"
+  get '/my_guns', to: 'users#my_guns'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

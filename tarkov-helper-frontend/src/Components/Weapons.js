@@ -4,9 +4,10 @@ import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import Part from './Part.js'
 import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
-function Weapons({weapons}) {
+function Weapons({weapons, currentUser}) {
 
     const [allWeapons, setAllWeapons] = useState(true)
     const [ars, setArs] = useState(false)
@@ -25,6 +26,7 @@ function Weapons({weapons}) {
     const [totalRecoil, setTotalRecoil] = useState(0)
     const [totalErgonomics, setTotalErgonomics] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0)
+    const [successfulSave, setSuccessfulSave] = useState(false)
     
     let assaultRifles = weapons.filter(gun => gun.weapon_type === 'Assault rifle')
     let assaultCarbines = weapons.filter(gun => gun.weapon_type === 'Assault carbine')
@@ -226,7 +228,26 @@ function Weapons({weapons}) {
         setWeaponBuildParts([])
         setAllWeapons(true)
     }
+    
 
+    function saveLoadout(e) {
+        let info = {
+            parts: weaponBuildParts,
+            gun_id: singleGun[0].props.gun_id
+        }
+        fetch(`/save_loadout/${currentUser.id}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(info)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.id) {
+                console.log('success')
+                setSuccessfulSave(true)
+            }
+        })
+    }
     
 
     return(
@@ -293,22 +314,70 @@ function Weapons({weapons}) {
                 <h6>Total Ergonomics: {totalErgonomics}</h6>
                 <h6>Price: {totalPrice}</h6>
                 </div> : null}
-            {allWeapons ? null :   <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
-                        <th>Img</th>
-                        <th>Name</th>
-                        <th>Recoil</th>
-                        <th>Ergonomics</th>
-                        <th>Price</th>
-                        <th>Dealer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {(oneGun && allParts) ? renderParts : null}
-                    {(oneGun && buildParts) ? renderBuildParts : null}
-                </tbody>
-            </Table>}
+            {allWeapons ? null :  
+            <> 
+                <Popup trigger={<Button onClick={saveLoadout} variant="dark">Save loadout</Button>} position="center" modal>
+                    {close => (
+                        <div className="modal">
+                            <button className="close" onClick={close}>
+                            &times;
+                            </button>
+                            <div className="header"> Modal Title </div>
+                            <div className="content">
+                            {' '}
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
+                            Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
+                            delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
+                            <br />
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
+                            commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
+                            explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
+                            </div>
+                            <div className="actions">
+                            <Popup
+                                trigger={<button className="button"> Trigger </button>}
+                                position="top center"
+                                nested
+                            >
+                                <span>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
+                                magni omnis delectus nemo, maxime molestiae dolorem numquam
+                                mollitia, voluptate ea, accusamus excepturi deleniti ratione
+                                sapiente! Laudantium, aperiam doloribus. Odit, aut.
+                                </span>
+                            </Popup>
+                            <button
+                                className="button"
+                                onClick={() => {
+                                console.log('modal closed ');
+                                close();
+                                }}
+                            >
+                                close modal
+                            </button>
+                            </div>
+                        </div>
+                    )}
+                </Popup>
+                
+                <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Name</th>
+                            <th>Recoil</th>
+                            <th>Ergonomics</th>
+                            <th>Price</th>
+                            <th>Dealer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {(oneGun && allParts) ? renderParts : null}
+                        {(oneGun && buildParts) ? renderBuildParts : null}
+                    </tbody>
+                </Table>
+            </>
+            }
           
             
                 
