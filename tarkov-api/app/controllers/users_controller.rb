@@ -103,8 +103,10 @@ class UsersController < ApplicationController
     end
 
     def my_guns
-        user = User.find(params[:id])
+        user = User.find(session[:user_id])
         saved_guns = user.saved_guns
+        all_guns = saved_guns.map{|g| g.parts}
+        render json: all_guns
     end
 
     private

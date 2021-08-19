@@ -26,6 +26,9 @@ class SavedGun < ApplicationRecord
         pistol_grip = self.pistol_grip
         receiver = self.receiver
         stock = self.stock
+
+        gun_build = {id: self.id, gun: weapon, parts: [barrel, buffer_tube, foregrip, gasblock, handguard, mount, muzzle_adapter, muzzle, pistol_grip, receiver, stock]}
+        gun_build
     end
 
 end
