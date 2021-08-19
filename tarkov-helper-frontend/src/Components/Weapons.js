@@ -7,7 +7,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
 
-function Weapons({weapons, currentUser}) {
+function Weapons({weapons, currentUser, dealerImages}) {
 
     const [allWeapons, setAllWeapons] = useState(true)
     const [ars, setArs] = useState(false)
@@ -37,38 +37,38 @@ function Weapons({weapons, currentUser}) {
 
 
     let renderWeapons = weapons.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderAssaultRifles = assaultRifles.map(gun => {
-        return <Gun renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderAssaultCarbines = assaultCarbines.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSubmachineGuns = submachineGuns.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderShotguns = shotguns.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderSnipers = sniperRifles.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
     let renderMarksman = marksmanRifles.map(gun => {
-        return <Gun oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
+        return <Gun dealerImages={dealerImages} oneGun={oneGun} renderGun={renderGun} name={gun.name} image={gun.image} caliber={gun.caliber} gun_id={gun.id} key={gun.id} />
     })
 
     let renderParts = weaponParts.map(part => {
-        return <Part name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
+        return <Part dealerImages={dealerImages} name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
     })
 
     let renderBuildParts = weaponBuildParts.map(part => {
-        return <Part name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
+        return <Part dealerImages={dealerImages} name={part.name} image={part.image} ergonomics={part.ergonomics} recoil={part.recoil} price={part.price} dealerId={part.dealer_id} key={part.name} />
     })
 
     function filterGuns(e) {

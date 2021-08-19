@@ -5,21 +5,37 @@ import {useHistory} from 'react-router-dom'
 import {Container, Row, Button, Dropdown, Item, Popover, OverlayTrigger, Table} from 'react-bootstrap'
 
 
-function Part({name, image, ergonomics, recoil, price, dealerId}){
+function Part({name, image, ergonomics, recoil, price, dealerId, dealerImages}){
 
     const [displayInfo, setDisplayInfo] = useState(false)
     const [dealerPic, setDealerPic] = useState("")
+    
 
     let goodImage = image.split('/revision')[0]
 
     useEffect(() => {
-        fetch(`/dealers/${dealerId}`)
-        .then(res => res.json())
-        .then(data => {
-            let dealerImg = data.image.split('/revision')[0]
+        if (dealerId === 1) {
+            let dealer = dealerImages[0]
+            let dealerImg = dealer.split('/revision')[0]
             setDealerPic(dealerImg)
-        })
-    })
+        } else if (dealerId === 4) {
+            let dealer = dealerImages[3]
+            let dealerImg = dealer.split('/revision')[0]
+            setDealerPic(dealerImg)
+        } else if (dealerId === 5) {
+            let dealer = dealerImages[4]
+            let dealerImg = dealer.split('/revision')[0]
+            setDealerPic(dealerImg)
+        } else if (dealerId === 6) {
+            let dealer = dealerImages[5]
+            let dealerImg = dealer.split('/revision')[0]
+            setDealerPic(dealerImg)
+        } else if (dealerId === 8) {
+            let dealer = dealerImages[7]
+            let dealerImg = dealer.split('/revision')[0]
+            setDealerPic(dealerImg)
+        }
+    }, [])
 
     function handleClick(e) {
         setDisplayInfo(!displayInfo)

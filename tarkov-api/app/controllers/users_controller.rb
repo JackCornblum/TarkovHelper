@@ -109,6 +109,15 @@ class UsersController < ApplicationController
         render json: all_guns
     end
 
+    def destroy_saved_gun
+        gun = SavedGun.find(params[:id])
+        if gun.destroy
+            render json: {message: 'success'}
+        else
+            render json: {message: 'failure'}
+        end
+    end
+
     private
     def user_params
         params.permit(:username, :email, :password)

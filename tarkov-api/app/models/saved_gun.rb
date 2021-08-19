@@ -27,7 +27,55 @@ class SavedGun < ApplicationRecord
         receiver = self.receiver
         stock = self.stock
 
-        gun_build = {id: self.id, gun: weapon, parts: [barrel, buffer_tube, foregrip, gasblock, handguard, mount, muzzle_adapter, muzzle, pistol_grip, receiver, stock]}
+        parts = []
+        
+        if barrel.name == "Nil"
+        else
+            parts << barrel
+        end
+        if buffer_tube.name == "Nil"
+        else
+            parts << buffer_tube
+        end
+        if foregrip.name == "Nil"
+        else
+            parts << foregrip
+        end
+        if gasblock.name == "Nil"
+        else
+            parts << gasblock
+        end
+        if handguard.name == "Nil"
+        else
+            parts << handguard
+        end
+        if mount.name == "Nil"
+        else
+            parts << mount
+        end
+        if muzzle_adapter.name == "Nil"
+        else
+            parts << muzzle_adapter
+        end
+        if muzzle.name == "Nil"
+        else
+            parts << muzzle
+        end
+        if pistol_grip.name == "Nil"
+        else
+            parts << pistol_grip
+        end
+        if receiver.name == "Nil"
+        else
+            parts << receiver
+        end
+        if stock.name == "Nil"
+        else
+            parts << stock
+        end
+        
+
+        gun_build = {id: self.id, gun: weapon, parts: parts}
         gun_build
     end
 

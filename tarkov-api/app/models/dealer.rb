@@ -40,4 +40,11 @@ class Dealer < ApplicationRecord
         items << mounts
         items
     end
+
+    def images
+        dealers = Dealer.all
+        images = dealers.map{|d| d.image}
+        images
+    end
+
 end

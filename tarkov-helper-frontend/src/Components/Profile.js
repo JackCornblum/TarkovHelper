@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import SavedGun from './SavedGun.js'
 import {Container} from 'react-bootstrap'
 
-function Profile({currentUser}) {
+function Profile({currentUser, dealerImages}) {
     const [guns, setGuns] = useState([])
 
     useEffect(() => {
@@ -14,9 +14,22 @@ function Profile({currentUser}) {
     }, [])
     
     let renderMyGuns = guns.map(gun => {
-        return <SavedGun parts={gun.parts} weapon={gun.gun} key={gun.id} />
+        return <SavedGun handleDelete={handleDelete} id={gun.id} dealerImages={dealerImages} parts={gun.parts} weapon={gun.gun} key={gun.id} />
         
     })
+
+    function handleDelete(id) {
+        fetch(`/saved_gun/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.message === 'success') {
+                let filterGuns = guns.filter(gun => gun.id !== id)
+                setGuns(filterGuns)
+            }
+        })
+    }
 
 
     return (

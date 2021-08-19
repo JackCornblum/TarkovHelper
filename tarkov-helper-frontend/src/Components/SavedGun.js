@@ -3,21 +3,25 @@ import Button from 'react-bootstrap/Button'
 import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
-import {Row} from 'react-bootstrap'
+import {Row, Table} from 'react-bootstrap'
 import Part from './Part.js'
 
-function SavedGun({weapon, parts}) {
+function SavedGun({weapon, parts, dealerImages, id, handleDelete}) {
     const [partsRendered, setPartsRendered] = useState(false)
     
 
     let goodImage = weapon.image.split('/revision')[0]
 
     let renderParts = parts.map(p => {
-        return <Part />
+        return <Part dealerImages={dealerImages} key={p.id} name={p.name} image={p.image} recoil={p.recoil} ergonomics={p.ergonomics} price={p.price} dealerId={p.dealer_id} />
     })
 
     function showParts(e) {
+        setPartsRendered(!partsRendered)
+    }
 
+    function handleClick(e) {
+        handleDelete(id)
     }
     
     return(
@@ -28,8 +32,25 @@ function SavedGun({weapon, parts}) {
                     <Card.Img variant="bottom" src={goodImage} />
                     <Card.Subtitle style={{color:'gold'}}>{weapon.caliber}</Card.Subtitle>
                     <Button onClick={showParts}>Parts</Button>
+                    <Button onClick={handleClick}>Remove</Button>
                 </Card.Body>
             </Card>
+            {partsRendered ? <Table striped bordered hover variant="dark">
+                    <thead>
+                        <tr>
+                            <th>Img</th>
+                            <th>Name</th>
+                            <th>Recoil</th>
+                            <th>Ergonomics</th>
+                            <th>Price</th>
+                            <th>Dealer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {renderParts}
+                    </tbody>
+                </Table>
+                : null}
             
         </Row>
     )

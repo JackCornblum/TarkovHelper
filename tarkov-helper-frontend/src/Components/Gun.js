@@ -4,7 +4,7 @@ import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from "react"
 import {useHistory} from 'react-router-dom'
 
-function Gun({name, image, caliber, gun_id, renderGun, oneGun}) {
+function Gun({name, image, caliber, gun_id, renderGun, oneGun, dealerImages}) {
     
 
     let goodImage = image.split('/revision')[0]

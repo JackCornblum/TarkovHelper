@@ -4,7 +4,7 @@ import {Container, Row, Button, Dropdown, Table} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import SingleDealer from './SingleDealer.js'
 
-function Dealers({dealers, setDealerItems, setAllDealers, allDealers, renderDealers, jaegerRendered, setJaegerRendered, mechanicRendered, setMechanicRendered, peacekeeperRendered, setPeacekeeperRendered, setSkierRendered, skierRendered, setPraporRendered, praporRendered}) {
+function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDealers, renderDealers, jaegerRendered, setJaegerRendered, mechanicRendered, setMechanicRendered, peacekeeperRendered, setPeacekeeperRendered, setSkierRendered, skierRendered, setPraporRendered, praporRendered}) {
 
     // const [dealerItems, setDealerItems] = useState([])
     // const [allDealers, setAllDealers] = useState(true)

@@ -25,6 +25,7 @@ function App() {
   const [mechanicRendered, setMechanicRendered] = useState(false)
   const [jaegerRendered, setJaegerRendered] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
+  const [dealerImages, setDealerImages] = useState([])
 
   
   useEffect(() => {
@@ -35,6 +36,12 @@ function App() {
         setCurrentUser(data)
       }
     })
+  }, [])
+
+  useEffect(() => {
+    fetch('/dealer_images')
+    .then(res => res.json())
+    .then(data => setDealerImages(data))
   }, [])
   
   useEffect(() => {
@@ -106,13 +113,13 @@ function App() {
 
       <Switch>
         <Route exact path="/weapons">
-          <Weapons currentUser={currentUser} weapons={weapons}/>
+          <Weapons dealerImages={dealerImages} currentUser={currentUser} weapons={weapons}/>
         </Route>
         <Route exact path="/dealers">
-          <Dealers setDealerItems={setDealerItems} setAllDealers={setAllDealers} allDealers={allDealers} setAllDealers={setAllDealers} renderDealers={renderDealers} jaegerRendered={jaegerRendered} setJaegerRendered={setJaegerRendered} mechanicRendered={mechanicRendered} setMechanicRendered={setMechanicRendered} peacekeeperRendered={peacekeeperRendered} setPeacekeeperRendered={setPeacekeeperRendered} skierRendered={skierRendered} setSkierRendered={setSkierRendered} praporRendered={praporRendered} setPraporRendered={setPraporRendered} dealerItems={dealerItems} dealers={dealers}/>
+          <Dealers dealerImages={dealerImages} currentUser={currentUser}setDealerItems={setDealerItems} setAllDealers={setAllDealers} allDealers={allDealers} setAllDealers={setAllDealers} renderDealers={renderDealers} jaegerRendered={jaegerRendered} setJaegerRendered={setJaegerRendered} mechanicRendered={mechanicRendered} setMechanicRendered={setMechanicRendered} peacekeeperRendered={peacekeeperRendered} setPeacekeeperRendered={setPeacekeeperRendered} skierRendered={skierRendered} setSkierRendered={setSkierRendered} praporRendered={praporRendered} setPraporRendered={setPraporRendered} dealerItems={dealerItems} dealers={dealers}/>
         </Route>
         <Route exact path="/dealers/:dealerId">
-          <SingleDealer />
+          <SingleDealer dealerImages={dealerImages} />
         </Route>
         <Route exact path="/login">
           <Login setCurrentUser={setCurrentUser}/>
@@ -121,7 +128,7 @@ function App() {
           <Signup currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route exact path="/profile">
-          <Profile currentUser={currentUser} />
+          <Profile dealerImages={dealerImages} currentUser={currentUser} />
         </Route>
       </Switch>
     </div>

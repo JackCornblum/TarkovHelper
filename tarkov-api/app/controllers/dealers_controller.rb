@@ -16,4 +16,10 @@ class DealersController < ApplicationController
         render json: items
     end
 
+    def images
+        dealer = Dealer.new()
+        images = dealer.images
+        render json: images
+    end
+
 end
