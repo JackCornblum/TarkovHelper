@@ -95,3 +95,19 @@ div.signup {
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.font-face-eft {
+  font-family: "Bender";
+  color:rgba(236, 229, 189, 0.815);
+}
+
+.font-face-eft-bold {
+  font-family: "Bender";
+  font-weight: bold;
+  color:rgba(214, 201, 125, 0.562)
+}
+
+img.card-img-bottom.gun-image {
+  border: 15px solid #555;
+  
+}

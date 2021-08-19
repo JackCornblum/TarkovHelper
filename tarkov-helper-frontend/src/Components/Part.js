@@ -56,21 +56,21 @@ function Part({name, image, ergonomics, recoil, price, dealerId, dealerImages}){
                 <img className="part-img" src={goodImage} alt={name} />
             </td>
             <td>
-                <h6>{name}</h6>
+                <h6 className="font-face-eft">{name}</h6>
             </td>
-            {(recoil > 0) ?  <td style={{color: 'green'}}>
+            {(recoil > 0) ?  <td className="font-face-eft" style={{color: 'green'}}>
                 {recoil}
-            </td> :  <td style={{color: 'red'}}>
+            </td> :  <td className="font-face-eft" style={{color: 'red'}}>
                 {recoil}
             </td>}
 
-            {(ergonomics > 0) ?  <td style={{color: 'green'}}>
+            {(ergonomics > 0) ?  <td className="font-face-eft" style={{color: 'green'}}>
                 {ergonomics}
-            </td> :  <td style={{color: 'red'}}>
+            </td> :  <td className="font-face-eft" style={{color: 'red'}}>
                 {ergonomics}
             </td>}
            
-            <td>
+            <td className="font-face-eft">
                 {price}
             </td>
             <td>

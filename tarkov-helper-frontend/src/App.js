@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import eft from './tarkov.jpg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Route, Switch } from "react-router"
@@ -58,7 +59,7 @@ function App() {
     if (dealer.id === 9) {
         
     } else {
-        return <SingleDealer dealerItems={dealerItems} fetchItems={fetchItems} key={dealer.id} name={dealer.name} image={dealer.image} id={dealer.id} />
+        return <SingleDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealer.id} name={dealer.name} image={dealer.image} id={dealer.id} />
     }
   })
 

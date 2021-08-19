@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'Bender';
+  src: local("Bender"),
+    url("./fonts/Bender/Bender.otf") format("opentype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Bender';
+  src: local("Bender"),
+    url("./fonts/Bender/Bender-Bold.otf") format("opentype");
+  font-weight: bold;
+}

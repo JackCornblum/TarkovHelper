@@ -28,11 +28,11 @@ function SavedGun({weapon, parts, dealerImages, id, handleDelete}) {
         <Row>
             <Card style={{backgroundColor:'black'}} className="gunCard">
                 <Card.Body>
-                    <Card.Title style={{color:'gold'}}>{weapon.name}</Card.Title>
+                    <Card.Title className="font-face-eft">{weapon.name}</Card.Title>
                     <Card.Img variant="bottom" src={goodImage} />
-                    <Card.Subtitle style={{color:'gold'}}>{weapon.caliber}</Card.Subtitle>
-                    <Button onClick={showParts}>Parts</Button>
-                    <Button onClick={handleClick}>Remove</Button>
+                    <Card.Subtitle className="font-face-eft" >{weapon.caliber}</Card.Subtitle>
+                    <Button className="font-face-eft" variant="dark" onClick={showParts}>PARTS</Button>
+                    <Button className="font-face-eft" variant="dark" onClick={handleClick}>REMOVE</Button>
                 </Card.Body>
             </Card>
             {partsRendered ? <Table striped bordered hover variant="dark">

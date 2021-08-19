@@ -5,6 +5,8 @@ import { usePromiseTracker } from 'react-promise-tracker';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './fonts/Bender/Bender.otf'
+import './fonts/Bender/Bender-Bold.otf'
 
 ReactDOM.render(
   <Router>

@@ -72,7 +72,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
     })
 
     function filterGuns(e) {
-        if (e.target.innerText === 'Assault rifles') {
+        if (e.target.innerText === 'ASSAULT RIFLES') {
             setAllWeapons(false)
             setAssaultCarb(false)
             setSubmachine(false)
@@ -80,7 +80,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
             setSnipers(false)
             setMarksman(false)
             setArs(true)
-        } else if (e.target.innerText === 'Assault carbines') {
+        } else if (e.target.innerText === 'ASSAULT CARBINES') {
             setAllWeapons(false)
             setArs(false)
             setSubmachine(false)
@@ -88,7 +88,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
             setSnipers(false)
             setMarksman(false)
             setAssaultCarb(true)
-        } else if (e.target.innerText === 'Submachine guns') {
+        } else if (e.target.innerText === 'SUBMACHINE GUNS') {
             setAllWeapons(false)
             setArs(false)
             setSnipers(false)
@@ -96,7 +96,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
             setShotty(false)
             setMarksman(false)
             setSubmachine(true)
-        } else if (e.target.innerText === 'Shotguns') {
+        } else if (e.target.innerText === 'SHOTGUNS') {
             setAllWeapons(false)
             setArs(false)
             setSnipers(false)
@@ -104,7 +104,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
             setSubmachine(false)
             setMarksman(false)
             setShotty(true)
-        } else if (e.target.innerText === 'Sniper rifles') {
+        } else if (e.target.innerText === 'SNIPER RIFLES') {
             setAllWeapons(false)
             setArs(false)
             setAssaultCarb(false)
@@ -253,15 +253,15 @@ function Weapons({weapons, currentUser, dealerImages}) {
     return(
         <div className="weapons-container">
             <Container fluid="md">
-                    <h2>Weapons</h2>
-                    {allWeapons ? <h3>All Weapons</h3> : null}
-                    {ars ? <h3>Assault Rifles</h3> : null}
-                    {assaultCarb ? <h3>Assault Carbines</h3> : null}
-                    {submachine ? <h3>Submachine Guns</h3> : null}
-                    {shotty ? <h3>Shotguns</h3> : null}
-                    {snipers ? <h3>Sniper Rifles</h3> : null}
-                    {marksman ? <h3>Marksman Rifles</h3> : null}
-                    {oneGun ? <h3>{singleGun[0].props.name}</h3> : null}
+                    <h2 className="font-face-eft">WEAPONS</h2>
+                    {allWeapons ? <h3 className="font-face-eft">ALL WEAPONS</h3> : null}
+                    {ars ? <h3 className="font-face-eft">ASSAULT RIFLES</h3> : null}
+                    {assaultCarb ? <h3 className="font-face-eft">ASSAULT CARBINES</h3> : null}
+                    {submachine ? <h3 className="font-face-eft">SUBMACHINE GUNS</h3> : null}
+                    {shotty ? <h3 className="font-face-eft">SHOTGUNS</h3> : null}
+                    {snipers ? <h3 className="font-face-eft">SNIPER RIFLES</h3> : null}
+                    {marksman ? <h3 className="font-face-eft">MARKSMAN RIFLES</h3> : null}
+                    {oneGun ? <h3 className="font-face-eft">{singleGun[0].props.name}</h3> : null}
                 <Row md={2}>
 
                     {oneGun ? <Popup trigger={<button>Generate Gun Build</button>} position="bottom center">
@@ -277,18 +277,18 @@ function Weapons({weapons, currentUser, dealerImages}) {
                                 </div>
                               </Popup> : null}
                     
-                    {oneGun ? <Button onClick={displayAll} variant="dark">All Weapons</Button> : <Dropdown>
-                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark">
-                            Filter Weapons
+                    {oneGun ? <Button className="font-face-eft" onClick={displayAll} variant="dark">All Weapons</Button> : <Dropdown>
+                        <Dropdown.Toggle className="font-face-eft" style={{backgroundColor:'black'}}>
+                            FILTER WEAPONS
                         </Dropdown.Toggle>
 
-                        <Dropdown.Menu onClick={filterGuns} variant="dark">
-                            <Dropdown.Item>Assault rifles</Dropdown.Item>
-                            <Dropdown.Item>Assault carbines</Dropdown.Item>
-                            <Dropdown.Item>Submachine guns</Dropdown.Item>
-                            <Dropdown.Item>Shotguns</Dropdown.Item>
-                            <Dropdown.Item>Marksman rifles</Dropdown.Item>
-                            <Dropdown.Item>Sniper rifles</Dropdown.Item>
+                        <Dropdown.Menu style={{backgroundColor: 'black'}} onClick={filterGuns} variant="dark">
+                            <Dropdown.Item className="font-face-eft">ASSAULT RIFLES</Dropdown.Item>
+                            <Dropdown.Item className="font-face-eft">ASSAULT CARBINES</Dropdown.Item>
+                            <Dropdown.Item className="font-face-eft">SUBMACHINE GUNS</Dropdown.Item>
+                            <Dropdown.Item className="font-face-eft">SHOTGUNS</Dropdown.Item>
+                            <Dropdown.Item className="font-face-eft">MARKSMAN RIFLES</Dropdown.Item>
+                            <Dropdown.Item className="font-face-eft">SNIPER RIFLES</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown> }
                     
@@ -316,49 +316,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
                 </div> : null}
             {allWeapons ? null :  
             <> 
-                <Popup trigger={<Button onClick={saveLoadout} variant="dark">Save loadout</Button>} position="center" modal>
-                    {close => (
-                        <div className="modal">
-                            <button className="close" onClick={close}>
-                            &times;
-                            </button>
-                            <div className="header"> Modal Title </div>
-                            <div className="content">
-                            {' '}
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, a nostrum.
-                            Dolorem, repellat quidem ut, minima sint vel eveniet quibusdam voluptates
-                            delectus doloremque, explicabo tempore dicta adipisci fugit amet dignissimos?
-                            <br />
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sit
-                            commodi beatae optio voluptatum sed eius cumque, delectus saepe repudiandae
-                            explicabo nemo nam libero ad, doloribus, voluptas rem alias. Vitae?
-                            </div>
-                            <div className="actions">
-                            <Popup
-                                trigger={<button className="button"> Trigger </button>}
-                                position="top center"
-                                nested
-                            >
-                                <span>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae
-                                magni omnis delectus nemo, maxime molestiae dolorem numquam
-                                mollitia, voluptate ea, accusamus excepturi deleniti ratione
-                                sapiente! Laudantium, aperiam doloribus. Odit, aut.
-                                </span>
-                            </Popup>
-                            <button
-                                className="button"
-                                onClick={() => {
-                                console.log('modal closed ');
-                                close();
-                                }}
-                            >
-                                close modal
-                            </button>
-                            </div>
-                        </div>
-                    )}
-                </Popup>
+                <Button onClick={saveLoadout} variant="dark">Save Loadout</Button>
                 
                 <Table striped bordered hover variant="dark">
                     <thead>

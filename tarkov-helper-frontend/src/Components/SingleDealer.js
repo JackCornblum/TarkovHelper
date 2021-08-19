@@ -5,14 +5,14 @@ import {useHistory, useParams, Link} from 'react-router-dom'
 import {Container, Row, Button, Dropdown, Table} from 'react-bootstrap'
 import Part from './Part.js'
 
-function SingleDealer({name, image, id, fetchItems, dealerItems}){
+function SingleDealer({name, image, id, fetchItems, dealerItems, dealerImages}){
 
     const { dealerId } = useParams()
 
     let goodImage = image.split('/revision')[0]
     
     let renderItems = dealerItems.map(item => {
-        return <Part key={item.name} ergonomics={item.ergonomics} image={item.image} name={item.name} price={item.price} recoil={item.recoil} dealerId={item.dealer_id} />
+        return <Part dealerImages={dealerImages} key={item.name} ergonomics={item.ergonomics} image={item.image} name={item.name} price={item.price} recoil={item.recoil} dealerId={item.dealer_id} />
     })
 
     return(
@@ -20,7 +20,7 @@ function SingleDealer({name, image, id, fetchItems, dealerItems}){
             
             <Card className="dealerCard">
                 <Card.Body>
-                    <Card.Title onClick={e => fetchItems(id)}>{name}</Card.Title>
+                    <Card.Title className="font-face-eft" onClick={e => fetchItems(id)}>{name}</Card.Title>
                     <Card.Img variant="bottom" src={goodImage} />
                 </Card.Body>
             </Card>
@@ -29,12 +29,12 @@ function SingleDealer({name, image, id, fetchItems, dealerItems}){
                 <Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
-                            <th>Img</th>
-                            <th>Name</th>
-                            <th>Recoil</th>
-                            <th>Ergonomics</th>
-                            <th>Price</th>
-                            <th>Dealer</th>
+                            <th className="font-face-eft">IMG</th>
+                            <th className="font-face-eft">NAME</th>
+                            <th className="font-face-eft">RECOIL</th>
+                            <th className="font-face-eft">ERGONOMICS</th>
+                            <th className="font-face-eft">PRICE</th>
+                            <th className="font-face-eft">DEALER</th>
                         </tr>
                     </thead>
                     <tbody>

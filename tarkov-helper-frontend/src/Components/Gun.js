@@ -18,9 +18,9 @@ function Gun({name, image, caliber, gun_id, renderGun, oneGun, dealerImages}) {
         <>
             <Card style={{backgroundColor:'black'}} onClick={handleClick} className="gunCard">
                 <Card.Body>
-                    <Card.Title style={{color:'gold'}}>{name}</Card.Title>
-                    <Card.Img variant="bottom" src={goodImage} />
-                    <Card.Subtitle style={{color:'gold'}}>{caliber}</Card.Subtitle>
+                    <Card.Title className="font-face-eft" >{name}</Card.Title>
+                    <Card.Img className="gun-image" variant="bottom" src={goodImage} />
+                    <Card.Subtitle className="font-face-eft" >{caliber}</Card.Subtitle>
                 </Card.Body>
             </Card>
             {/* {oneGun ? : } */}

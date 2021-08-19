@@ -22,16 +22,16 @@ function NavBar({currentUser, setCurrentUser}) {
 
     return (
         <div>
-             <Navbar style={{height: '5rem'}} className="tarkov-nav" bg="dark" variant="dark">
+             <Navbar style={{height: '5rem', backgroundColor:'black'}} className="tarkov-nav" variant="dark">
                 <Container>
-                    <Navbar.Brand href="/">Tarkov Helper</Navbar.Brand>
-                    {currentUser.id ? <Navbar.Brand href="/">{currentUser.username}</Navbar.Brand> : null}
+                    <Navbar.Brand className="font-face-eft" href="/">TARKOV HELPER</Navbar.Brand>
+                    {currentUser.id ? <Navbar.Brand className="font-face-eft" href="/">{currentUser.username}</Navbar.Brand> : null}
+                        {currentUser.id ? <Nav.Link className="font-face-eft" href="/profile">PROFILE</Nav.Link> : null}
+                        <Nav.Link className="font-face-eft" href="/dealers">DEALERS</Nav.Link>
+                        <Nav.Link className="font-face-eft" href="/weapons">WEAPONS</Nav.Link>
+                        <Nav.Link className="font-face-eft" href="/tasks">TASKS</Nav.Link>
+                        {currentUser.id ? <Nav.Link className="font-face-eft" onClick={handleLogout}>LOG OUT</Nav.Link> : <Nav.Link className="font-face-eft" href="/login">Log In</Nav.Link> }
                     <Nav className="me-auto">
-                        <Nav.Link href="/dealers">Dealers</Nav.Link>
-                        <Nav.Link href="/weapons">Weapons</Nav.Link>
-                        <Nav.Link href="/tasks">Tasks</Nav.Link>
-                        {currentUser.id ? <Nav.Link href="/profile">Profile</Nav.Link> : null}
-                        {currentUser.id ? <Nav.Link onClick={handleLogout}>Log out</Nav.Link> : <Nav.Link href="/login">Log In</Nav.Link> }
                         
                     </Nav>
                 </Container>
