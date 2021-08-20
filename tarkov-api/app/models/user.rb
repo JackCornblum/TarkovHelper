@@ -6,4 +6,6 @@ class User < ApplicationRecord
     validates :password, presence: true
     validates :username, length: {in: 4..20}
     validates :email, uniqueness: true
+    has_many :completed_tasks
+    has_many :in_progress_tasks
 end

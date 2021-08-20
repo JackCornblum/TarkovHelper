@@ -137,7 +137,7 @@ function App() {
           <Profile dealerImages={dealerImages} currentUser={currentUser} />
         </Route>
         <Route exact path="/tasks">
-          <Tasks dealerImages={dealerImages} tasks={tasks}/>
+          <Tasks currentUser={currentUser} dealerImages={dealerImages} tasks={tasks}/>
         </Route>
       </Switch>
     </div>

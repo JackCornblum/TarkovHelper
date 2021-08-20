@@ -118,6 +118,25 @@ class UsersController < ApplicationController
         end
     end
 
+    def complete_task
+        user = User.find(session[:user_id])
+        user_tasks = user.completed_tasks
+        message = "Success"
+        user_tasks.each do |task|
+            if task.id == params[:id]
+                message = "Task already exists"
+            end
+        end
+        if message == "Success"
+            CompletedTask.create(user_id: session[:user_id], task_id: params[:id])
+        end
+      
+        render json: {status: message}
+    end
+
+    def in_progress_task
+    end
+
     private
     def user_params
         params.permit(:username, :email, :password)

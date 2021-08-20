@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-function SingleTask({id, dealerId, name, description, rewards, dealerImages}){
+function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
     const [dealerPic, setDealerPic] = useState('')
 
     console.log(dealerImages)
@@ -44,6 +44,20 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages}){
         }
     })
 
+    function handleComplete(e) {
+        let task = {
+            id
+        }
+
+        fetch('/completed_task', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(task)
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+
     
 
     return (
@@ -62,6 +76,12 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages}){
             <td>
                 <img className='part-img' src={dealerPic} alt="dealer"/>
             </td>
+            {currentUser.id ?
+             <td style={{textAlign: 'left'}}>
+                <p onClick={handleComplete}>Mark as Complete</p>
+                <p>In Progress</p>
+             </td>
+             : null}
         </tr>
     )
 }

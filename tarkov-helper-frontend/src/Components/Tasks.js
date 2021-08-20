@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
 import SingleTask from "./SingleTask"
 
-function Tasks({tasks, dealerImages}) {
+function Tasks({tasks, dealerImages, currentUser}) {
     const [splitImages, setSplitImages] = useState([])
 
     // let praporImage = dealerImages[0].split('/revision')[0]
@@ -16,7 +16,7 @@ function Tasks({tasks, dealerImages}) {
     
 
     let renderTasks = tasks.map(t => {
-        return <SingleTask dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     return(
@@ -29,6 +29,7 @@ function Tasks({tasks, dealerImages}) {
                         <th>OBJETIVES</th>
                         <th>REWARDS</th>
                         <th>DEALER</th>
+                        {currentUser.id ? <th>Completed ?</th> : null}
                     </tr>
                 </thead>
                 <tbody>
