@@ -8,4 +8,5 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     has_many :completed_tasks
     has_many :in_progress_tasks
+    has_many :saved_tasks
 end

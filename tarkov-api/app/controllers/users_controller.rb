@@ -128,13 +128,33 @@ class UsersController < ApplicationController
             end
         end
         if message == "Success"
-            CompletedTask.create(user_id: session[:user_id], task_id: params[:id])
+            SavedTask.create(user_id: session[:user_id], task_id: params[:id], completed: true)
         end
       
         render json: {status: message}
     end
 
     def in_progress_task
+        user = User.find(session[:user_id])
+        user_tasks = user.in_progress_tasks
+        message = "Success"
+        user_tasks.each do |task|
+            if task.id === params[:id]
+                message = "Task already exists"
+            end
+        end
+        if message == "Success"
+            SavedTask.create(user_id: session[:user_id], task_id: params[:id], completed: false)
+        end
+
+        render json: {status: message}
+    end
+
+    def my_tasks
+        user = User.find(session[:user_id])
+        all_tasks = user.saved_tasks
+        byebug
+        render json: {tasks: all_tasks}
     end
 
     private
