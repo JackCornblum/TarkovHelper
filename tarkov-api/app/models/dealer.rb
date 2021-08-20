@@ -11,6 +11,7 @@ class Dealer < ApplicationRecord
     has_many :gasblocks
     has_many :handguards
     has_many :mounts
+    has_many :tasks
 
     def all_items
         items = []

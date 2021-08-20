@@ -14,6 +14,7 @@ import SingleDealer from './Components/SingleDealer';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Profile from './Components/Profile';
+import Tasks from './Components/Tasks';
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -27,6 +28,7 @@ function App() {
   const [jaegerRendered, setJaegerRendered] = useState(false)
   const [currentUser, setCurrentUser] = useState('')
   const [dealerImages, setDealerImages] = useState([])
+  const [tasks, setTasks] = useState([])
 
   
   useEffect(() => {
@@ -37,15 +39,15 @@ function App() {
         setCurrentUser(data)
       }
     })
-  }, [])
 
-  useEffect(() => {
     fetch('/dealer_images')
     .then(res => res.json())
     .then(data => setDealerImages(data))
-  }, [])
-  
-  useEffect(() => {
+
+    fetch('/tasks')
+    .then(res => res.json())
+    .then (data => setTasks(data))
+
     fetch('/weapons')
     .then(res => res.json())
     .then(data => setWeapons(data))
@@ -53,7 +55,10 @@ function App() {
     fetch('/dealers')
     .then(res => res.json())
     .then(data => setDealers(data))
+
+    
   }, [])
+
   
   let renderDealers = dealers.map(dealer => {
     if (dealer.id === 9) {
@@ -130,6 +135,9 @@ function App() {
         </Route>
         <Route exact path="/profile">
           <Profile dealerImages={dealerImages} currentUser={currentUser} />
+        </Route>
+        <Route exact path="/tasks">
+          <Tasks dealerImages={dealerImages} tasks={tasks}/>
         </Route>
       </Switch>
     </div>

@@ -78,6 +78,8 @@ MountForegrip.destroy_all
 MountForegrip.reset_pk_sequence
 SavedGun.destroy_all
 SavedGun.reset_pk_sequence
+Task.destroy_all
+Task.reset_pk_sequence
 
 puts "seeding dealers..."
 
@@ -2645,6 +2647,563 @@ User.create(username: 'jack', email:'email@email.com', password: 'hello')
 SavedGun.create(user_id: 1, pistol_grip_id: 2, weapon_id: 1, mount_id: Mount.last.id, receiver_id: 1, stock_id: 1, foregrip_id: Foregrip.last.id, barrel_id: Barrel.last.id, gasblock_id: 1, muzzle_id: 1, muzzle_adapter_id: 1, handguard_id: 2, buffer_tube_id: 2)
 
 
+puts "seeding tasks"
+
+Task.create(name: 'Debut', dealer_id: 1, description: 'Eliminate 5 Scavs on Customs..
+Obtain and hand over 2 MP-133 shotguns to Prapor..', rewards: '+1,700 EXP..
+Prapor Rep +0.02..
+15,000 Roubles..
+1x PP-91 Kedr 9x18PM SMG..
+60x 9x19mm Pst gzh..
+Unlocks purchase of Kalashnikov AKS-74U 5.45x39 at Prapor LL1..')
+Task.create(name: 'Search Mission', dealer_id: 1, description: 'Find Prapors missing convoy on Woods..
+Locate the temporary USEC camp..
+Survive and extract from the location..', rewards: '+2,800 EXP..
+Prapor Rep +0.02..
+22,000 Roubles..
+1x EYE MK2 professional hand-held compass..
+1x Woods plan map..')
+Task.create(name: 'Checking', dealer_id: 1, description: 'Obtain the Bronze pocket watch on Customs..
+(Optional) Obtain the key to the fuel tanker truck..
+Hand over the Bronze pocket watch to Prapor..', rewards: '+1,800 EXP..
+Prapor Rep +0.03..
+15,000 Roubles..
+1x Stechkin Automatic Pistol 9x18PM..
+3x Standard APS 9x18PM 20-round magazine..')
+Task.create(name: 'Shootout Picnic', dealer_id: 1, description: 'Eliminate 15 Scavs on Woods..', rewards: '+2,000 EXP..
+Prapor Rep +0.03..
+20,000 Roubles..
+1x Kalashnikov AKS-74U 5.45x39..
+3x 6L20 30-round 5.45x39 magazine for AK-74 and compatible weapons..')
+Task.create(name: 'Delivery from the past', dealer_id: 1, description: 'Obtain the secure case in the Tarcone Directors office at the customs terminal..
+Stash the case in the Factory break room, located on the 2nd floor near Gate 3..
+Survive and extract from Factory..', rewards: '+4,000 EXP..
+Prapor Rep +0.03..
+20,000 Roubles..
+1x Saiga 12ga ver. 10 12/76 shotgun..
+4x Sb.5 5-round 12/76 magazine for SOK-12 and compatible weapons..
+40x 12x70 7mm Buckshot..
+Unlocks purchase of 5.45x39mm PS gs at Prapor LL1..')
+Task.create(name: 'BP depot', dealer_id: 1, description: 'Mark the first fuel tank with an MS2000 Marker on Customs..
+Mark the second fuel tank with an MS2000 Marker on Customs..
+Mark the third fuel tank with an MS2000 Marker on Customs..
+Mark the fourth fuel tank with an MS2000 Marker on Customs..
+Survive and extract from the location..', rewards: '+2,800 EXP..
+Prapor Rep +0.03..
+Jaeger Rep -0.01..
+30,000 Roubles..
+2x MS2000 Marker..
+1x Expeditionary fuel tank..')
+Task.create(name: 'The bunker - Part 1', dealer_id: 1, description: 'Find the underground bunker..
+Locate the control room in the underground bunker..
+Survive and extract from the location..', rewards: '+5,700 EXP..
+Prapor Rep +0.03..
+20,000 Roubles..
+1x AK-105 5.45x39 assault rifle..
+60x 5.45x39mm PPBS gs "Igolnik"..
+30x 5.45x39mm BT gs..')
+Task.create(name: 'The bunker - Part 2', dealer_id: 1, description: 'Locate the hermetic door leading to the hospital (white bishop)..
+Locate one of two hermetic doors leading to the academy building (black bishop)..
+Locate one of two hermetic doors leading to barracks №1 (black pawn)..
+Locate one of two hermetic doors leading to barracks №2 (white pawn)..
+Locate the hermetic door leading to the building of the air control center (white king)..
+Survive and extract from the location..', rewards: '+9,200 EXP..
+Prapor Rep +0.03..
+25,000 Roubles..
+1x Kalashnikov AKS-74UB 5.45x39..
+120x 5.45x39mm BS gs..
+1x CAA RS47 foregrip for AK-compatible systems..
+1x CAA AKTS AK-74 Buffer Tube for AK and compatible (foldable)..')
+Task.create(name: 'Bad rep evidence', dealer_id: 1, description: 'Obtain Secure Folder 0031 in a bunkhouse on Customs..
+(Optional) Gain access to the locked room on the third floor in the Factory office hallway..
+(Optional) Obtain the Portable bunkhouse key..
+Hand over the Secure Folder 0031 to Prapor..
+Survive and extract from Customs..', rewards: '+4,100 EXP..
+Prapor Rep +0.03..
+35,000 Roubles..
+1x PP-91-01 Kedr-B 9x18PM SMG..
+3x Standard 9x18PM 30-round magazine for PP-91..
+120x 9x18mm PM PS gs PPO..
+Unlocks purchase of Zenit-Belomo PSO 1M2-1 4x24 scope at Prapor LL2..')
+Task.create(name: 'Ice cream cones', dealer_id: 1, description: 'Find 3 AK-74 5.45x39 6L31 60-round magazines in raid (can be crafted in the Hideout)..
+(Optional) Find the key to the bunker in the TerraGroup employees dorm room..
+(Optional) Locate the correct bunker in Woods..
+Hand over 3 AK-74 5.45x39 6L31 60-round magazines to Prapor..', rewards: '+5,200 EXP..
+Prapor Rep +0.02..
+17,000 Roubles..
+1x RPK-16 5.45x39 light machine gun..
+200x 5.45x39mm PP gs..
+Unlocks barter for 60-round 6L31 5.45x39 magazine for AK-74 and compatibles at Prapor LL2..')
+Task.create(name: 'No place for renegades', dealer_id: 1, description: 'Eliminate 5 Raiders in the command bunker on Reserve..', rewards: '+8,500 EXP..
+Prapor Rep +0.03..
+40,000 Roubles..
+1x AK-103 7.62x39 assault rifle..
+3x 30-round 7.62x39 magazine for AK-103 and compatible weapons..
+150x 7.62x39mm PS gzh..')
+Task.create(name: 'Documents', dealer_id: 1, description: 'Obtain Military documents №1 on Reserve..
+Obtain Military documents №2 on Reserve..
+Obtain Military documents №3 on Reserve..
+Hand over the first documents to Prapor..
+Hand over the second documents to Prapor..
+Hand over the third documents to Prapor..', rewards: '+7,800 EXP..
+Prapor Rep +0.04..
+45,000 Roubles..
+1x NSPU-M night Scope..
+1x Zenit 2P Klesch flashlight + laser designator..
+1x PBS-1 7.62x39 silencer..')
+Task.create(name: 'Postman Pat - Part 1', dealer_id: 1, description: 'Obtain the letter on the messengers body on Factory..
+Survive and extract from Factory..
+Hand over the letter to Therapist..', rewards: '+5,900 EXP..
+Prapor Rep +0.02..
+40,000 Roubles..
+1x Ana tactical Beta 2 battle backpack..
+1x 6B2 armor (flora)..')
+Task.create(name: 'Shaking up teller', dealer_id: 1, description: 'Obtain the valuable item in dorm room 203 on Customs..
+(Optional) Gain access to dorm room 214..
+Hand over the valuable item to Prapor..', rewards: '+5,900 EXP..
+Prapor Rep +0.02..
+Jaeger Rep -0.01..
+75,000 Roubles..
+1x Geiger-Muller counter..
+Unlocks purchase of PBS-4 5.45x39 Silencer at Prapor LL3..
+Unlocks purchase of Hexagon 12K sound suppressor at Prapor LL2..')
+Task.create(name: 'The Punisher - Part 1', dealer_id: 1, description: 'Eliminate 15 Scavs on Shoreline while using AKM series weapon..', rewards: '+10,200 EXP..
+Prapor Rep +0.02..
+40,000 Roubles..
+1x 6B43 Zabralo-Sh 6A Armor..
+Unlocks purchase of SV-98 bolt-action sniper rifle at Prapor LL3..')
+Task.create(name: 'The Punisher - Part 2', dealer_id: 1, description: 'Eliminate 12 Scavs on Shoreline while using a suppressed weapon..
+Find 7 Lower half-masks in raid..
+Hand over 7 Lower half-masks to Prapor..', rewards: '+13,100 EXP..
+Prapor Rep +0.03..
+50,000 Roubles..
+2x Military cable..
+1x AK-104 7.62x39 assault rifle..')
+Task.create(name: 'The Punisher - Part 3', dealer_id: 1, description: 'Eliminate 25 Scavs on Customs while using AKS-74U..', rewards: '+11,700 EXP..
+Prapor Rep +0.04..
+Skier Rep +0.02..
+2,500 Dollars..
+1x DVL-10 Saboteur sniper rifle..
+Unlocks purchase of 7.62x54R BT gzh at Prapor LL4..')
+Task.create(name: 'The Punisher - Part 4', dealer_id: 1, description: 'Eliminate 10 Scavs on Woods while using a 12 gauge shotgun..
+Eliminate 10 PMCs on Shoreline while wearing a balaclava (any type) and Scav Vest..
+Find 5 Bars A-2607 knives in raid..
+Hand over 5 Bars A-2607 knives to Prapor..', rewards: '+18,000 EXP..
+Prapor Rep +0.03..
+Jaeger Rep -0.01..
+100,000 Roubles..
+1x Colt M4A1 5.56x45 Assault Rifle (variant M4A1 SOPMOD II)..
+Unlocks purchase of 5.45x39mm BT gs at Prapor LL3..')
+Task.create(name: 'The Punisher - Part 5', dealer_id: 1, description: 'Find 1 AK-74N assault rifle in raid..
+Hand over 1 AK-74N assault rifle to Prapor..
+Find 1 M4A1 assault rifle in raid..
+Hand over 1 M4A1 assault rifle to Prapor..
+Find 2 PM 9x18PM pistols in raid..
+Hand over 2 PM 9x18PM pistols to Prapor..
+Eliminate 10 PMCs while wearing a PACA body armor and 6B47 helmet..', rewards: '+18,200 EXP..
+Prapor Rep +0.03..
+5,000 Dollars..
+1x Pistol case..
+1x Documents case..
+Unlocks purchase of 7.62x39mm BP gzh at Prapor LL3..')
+Task.create(name: 'The Punisher - Part 6', dealer_id: 1, description: 'Eliminate 15 PMCs while using an SVD sniper rifle..
+Find 7 BEAR PMC dogtags in raid..
+Hand over 7 BEAR PMC dogtags..
+Find 7 USEC PMC dogtags in raid..
+Hand over 7 USEC PMC dogtags..', rewards: '+19,400 EXP..
+Prapor Rep +0.04..
+Therapist Rep +0.05..
+Skier Rep +0.01..
+250,000 Roubles..
+1x Secure container Epsilon..')
+Task.create(name: 'Anesthesia', dealer_id: 1, description: 'Mark the first trading post with an MS2000 Marker on Shoreline..
+Mark the second trading post with an MS2000 Marker on Shoreline..
+Mark the third trading post with an MS2000 Marker on Shoreline..
+Survive and extract from the location..', rewards: '+18,100 EXP..
+Prapor Rep +0.04..
+50,000 Roubles..
+1x AS VAL..
+100x 9x39mm SPP gs..
+100x 9x39 mm SP6 gs..')
+Task.create(name: 'Grenadier', dealer_id: 1, description: 'Eliminate 12 PMCs with grenades..', rewards: '+18,000 EXP..
+Prapor Rep +0.02..
+75,000 Roubles..
+5x F-1 hand grenade..
+240x 5.45x39mm BT gs..
+Unlocks barter for 9x39 BP gs 8 pcs. ammo pack at Prapor LL4..
+Unlocks purchase of 12.7x55 mm PS12B at Prapor LL4..')
+Task.create(name: 'Insomnia', dealer_id: 1, description: 'Kill 30 PMCs during nighttime (22 to 05)..', rewards: '+18,200 EXP..
+Prapor Rep +0.02..
+85,000 Roubles..
+2x PNV-10T Night Vision..')
+Task.create(name: 'Test drive - Part 1', dealer_id: 1, description: 'Kill 5 PMCs using an M1A with a Hybrid 46 silencer and a Trijicon REAP-IR thermal scope..', rewards: '+18,200 EXP..
+Prapor Rep +0.02..
+300,000 Roubles..
+2x RPK-16 5.45x39 light machine gun..
+6x 95-round 5.45x39 magazine for RPK-16 and compatibles..
+5x Golden neck chain..
+Unlocks purchase of 9x39mm SPP gs at Prapor LL4..')
+Task.create(name: 'Perfect mediator', dealer_id: 1, description: 'Reach level 4 loyalty with Ragman..
+Reach level 4 loyalty with Skier..
+Reach level 4 loyalty with Mechanic..
+Reach level 4 loyalty with Peacekeeper..
+Reach level 4 loyalty with Prapor..
+Reach level 4 loyalty with Therapist..', rewards: '+20,900 EXP..
+Prapor Rep +0.02..
+55,000 Roubles..
+1x T H I C C Weapon case..')
+Task.create(name: 'Polikhim hobo', dealer_id: 1, description: 'Eliminate 25 Scavs on Customs..', rewards: '+5,900 EXP..
+Prapor Rep +0.02..
+50,000 Roubles..
+3x F-1 hand grenade..
+3x RDG-2B Smoke grenade..
+1x Zarya stun grenade..')
+Task.create(name: 'Regulated materials', dealer_id: 1, description: 'Find 1 6-STEN-140-M military battery in raid..
+Hand over 1 6-STEN-140-M military battery to Prapor..
+Find 5 OFZ 30x160mm shells in raid (can be crafted in the Hideout)..
+Hand over 5 OFZ 30x160mm shells to Prapor..', rewards: '+14,800 EXP..
+Prapor Rep +0.02..
+150,000 Roubles..
+Unlocks barter for ASh-12 12.7x55 assault rifle at Prapor LL4..')
+Task.create(name: 'Big customer', dealer_id: 1, description: 'Find the transport with the chemicals..
+Mark the chemical transport vehicle with an MS2000 Marker..
+Survive and extract from Customs..', rewards: '+8,100 EXP..
+Prapor Rep +0.03..
+Jaeger Rep -0.01..
+200,000 Roubles..
+1x 6B2 armor (flora)..
+2x Ammunition case..')
+Task.create(name: 'No offence', dealer_id: 1, description: 'Obtain 10 M67 grenades..
+Hand over 10 M67 grenades to Prapor..', rewards: 'Prapor Rep +0.25..')
+Task.create(name: 'Capturing Outposts', dealer_id: 1, description: 'Eliminate 15 PMCs at the Scav base on Customs..
+Eliminate 15 PMCs at the Scav base on Woods..
+Eliminate 15 PMCs at the pier on Shoreline..', rewards: '+84,000 EXP..
+1x ASh-12 12.7x55 assault rifle..
++1.5 Throwables Levels..')
+Task.create(name: 'Intimidator', dealer_id: 1, description: 'Eliminate 40 Scavs with headshots..', rewards: '+84,000 EXP..
++1 Aim Drills Level..
++0.5 Assault Rifles Level..')
+Task.create(name: 'Shortage', dealer_id: 2, description: 'Find 3 Salewa first aid kits in raid (can be crafted in the Hideout)..
+Hand over 3 Salewa first aid kits to Therapist..', rewards: '+2,000 EXP..
+Therapist Rep +0.03..
+15,000 Roubles..
+4x Analgin painkillers..
+4x AI-2 medikit..
+4x Immobilizing splint..')
+Task.create(name: 'Operation Aquarius - Part 1', dealer_id: 2, description: 'Find the water hidden inside of the dorms on Customs..
+Survive and extract from the location..', rewards: '+3,300 EXP..
+Therapist Rep +0.03..
+Skier Rep -0.02..
+14,000 Roubles..
+5x 0.6 liter water bottle..
+Water filter..')
+Task.create(name: 'Operation Aquarius - Part 2', dealer_id: 2, description: 'Eliminate 15 Scavs on Customs..', rewards: '+3,400 EXP..
+Therapist Rep +0.03..
+Skier Rep -0.02..
+20,000 Roubles..
+3x Esmarch tourniquet..
+Immobilizing splint (alu)..
+Unlocks purchase of Army bandage at Therapist LL2..')
+Task.create(name: 'Sanitary Standards - Part 1', dealer_id: 2, description: 'Find 1 Gas analyzer in raid..
+(Optional) Gain access to the locked pumping station on Factory..
+Hand over 1 Gas analyzer to Therapist..', rewards: '+2,200 EXP..
+Therapist Rep +0.03..
+14,000 Roubles..
+2x Car first aid kit..
+Unlocks purchase of Car first aid kit at Therapist LL1..')
+Task.create(name: 'Sanitary Standards - Part 2', dealer_id: 2, description: 'Find 2 Gas analyzers in raid..
+Hand over 2 Gas analyzers to Therapist..', rewards: '+4,500 EXP..
+Therapist Rep +0.03..
+30,000 Roubles..
+Propital regenerative stimulant injector..')
+Task.create(name: 'Painkiller', dealer_id: 2, description: 'Find 4 Morphine injectors in raid (can be crafted in the Hideout)..
+Hand over 4 Morphine injectors to Therapist..', rewards: '+4,500 EXP..
+Therapist Rep +0.03..
+17,000 Roubles..
+5x Disposable syringe..
+Silicone tube..
+2x Analgin painkillers..
+2x Pile of meds..')
+Task.create(name: 'Pharmacist', dealer_id: 2, description: 'Obtain the case containing the device on Customs..
+(Optional) Find the paramedics car on Customs..
+(Optional) Get into two-story dorm room 114 on Customs..
+Hand over the case to Therapist..', rewards: '+5,700 EXP..
+Therapist Rep +0.04..
+25,000 Roubles..
+AFAK personal tactical first aid kit..
+3x Pile of meds..
+Unlocks barter for 6B47 Helmet with cover (flora digital) at Ragman LL2..')
+Task.create(name: 'Car repair', dealer_id: 2, description: 'Find 4 Car batteries in raid (can be crafted in the Hideout)..
+Find 8 Spark plugs in raid (can be crafted in the Hideout)..
+Hand over 4 Car batteries to Therapist..
+Hand over 8 Spark plugs to Therapist..', rewards: '+6,900 EXP..
+Therapist Rep +0.04..
+1,500 Dollars..
+Grizzly First Aid Kit..
+eTG-change regenerative stimulant injector..
+Adrenaline injector..')
+Task.create(name: 'Hippocratic Oath', dealer_id: 2, description: 'Hand over 500 USD to Therapist..', rewards: 'Therapist Rep +0.2..')
+Task.create(name: 'Disease history', dealer_id: 2, description: 'Obtain Medical record #1 on Reserve..
+Obtain Medical record #2 on Reserve..
+Hand over the first journal to Therapist..
+Hand over the second journal to Therapist..', rewards: '+7,200 EXP..
+Therapist Rep +0.03..
+30,000 Roubles..
+2x Grizzly First Aid Kit..
+Grizzly First Aid Kit..
+Ibuprofen painkillers..
+5x CALOK-B Hemostatic..')
+Task.create(name: 'Supply plans', dealer_id: 2, description: 'Obtain the Secure Folder 0052 in the sawmill on Woods..
+Hand over Secure Folder 0052 to Therapist..', rewards: '+7,500 EXP..
+Therapist Rep +0.04..
+75,000 Roubles..
+CMS kit..')
+Task.create(name: 'Health Care Privacy - Part 1', dealer_id: 2, description: 'Find and mark the first ambulance with an MS2000 Marker on Shoreline..
+Find and mark the second ambulance with an MS2000 Marker on Shoreline..
+Find and mark the third ambulance with an MS2000 Marker on Shoreline..
+Survive and extract from the location..', rewards: '+4,800 EXP..
+Therapist Rep +0.03..
+22,000 Roubles..
+2x IFAK personal tactical first aid kit..
+Unlocks purchase of IFAK personal tactical first aid kit at Therapist LL3..')
+Task.create(name: 'Health Care Privacy - Part 2', dealer_id: 2, description: 'Search the room in the Health Resort for any documents about TerraGroups research..
+Hand over the retrieved information..
+Survive and extract from the location..', rewards: '+5,900 EXP..
+Therapist Rep +0.04..
+24,000 Roubles..
+4x Salewa FIRST AID KIT..')
+Task.create(name: 'Health Care Privacy - Part 3', dealer_id: 2, description: 'Find the van that belonged to the head of the health resort Medical Services..
+Take a sample of the blood..
+Hand over the blood sample..
+Survive and extract from the location..', rewards: '+5,900 EXP..
+Therapist Rep +0.04..
+26,000 Roubles..
+2x Morphine injector..
+2x Adrenaline injector..
+Unlocks purchase of Morphine injector at Therapist LL4..')
+Task.create(name: 'An Apple a day keeps the Doctor away', dealer_id: 2, description: 'Hand over 400,000 RUB to Therapist..', rewards: '+2 Health skill levels..')
+Task.create(name: 'Health Care Privacy - Part 4', dealer_id: 2, description: 'Reach the required Health skill level of 4..', rewards: '+6,000 EXP..
+Therapist Rep +0.04..
+29,000 Roubles..
+2x Grizzly First Aid Kit..
+2x Saline solution..')
+Task.create(name: 'Athlete', dealer_id: 2, description: 'Reach the required Health skill level of 10..', rewards: '+21,900 EXP..
+Therapist Rep +0.04..
+110,000 Roubles..
+Dundukk sport sunglasses..
+3x Zagustin hemostatic drug injector..
+3x Adrenaline injector..
+Unlocks purchase of Adrenaline injector at Therapist LL4..')
+Task.create(name: 'Private clinic', dealer_id: 2, description: 'Find 1 Ophthalmoscope in raid..
+Find 1 LEDX Skin Transilluminator in raid..
+Hand over 1 Ophthalmoscope to Therapist..
+Hand over 1 LEDX Skin Transilluminator to Therapist..', rewards: '+30,600 EXP..
+Therapist Rep +0.05..
+130,000 Roubles..
+1x T H I C C Items case..
+1x Health Resort west wing room 306 key..')
+Task.create(name: 'Health Care Privacy - Part 5', dealer_id: 2, description: 'Locate the drop spot on Factory at night..
+Obtain 3 packs of Gunpowder "Kite" and stash them in the designated spot..', rewards: '+7,300 EXP..
+Therapist Rep +0.04..
+35,000 Roubles..
+Meds case..')
+Task.create(name: 'Decontamination service', dealer_id: 2, description: 'Eliminate 40 Scavs on Interchange in close range (less than 60 meters) while wearing specific gear..', rewards: '+7,400 EXP..
+Therapist Rep +0.05..
+300,000 Roubles..
+3x Morphine injector..
+3x IFAK personal tactical first aid kit..
+3x GP-7 gasmask..')
+Task.create(name: 'General wares', dealer_id: 2, description: 'Find 15 Small cans of beef stew in raid (can be crafted in the Hideout)..
+Hand over 15 Small cans of beef stew to Therapist..', rewards: '+4,800 EXP..
+Therapist Rep +0.03..
+30,000 Roubles..
+4x Can of pacific saury..
+2x Iskra lunch box..
+2x Majaica Coffee..')
+Task.create(name: 'Colleagues - Part 1', dealer_id: 2, description: 'Locate the group that was sent to the Health Resort..
+Locate the group that was sent to the pier..
+Locate the group that was sent to the cottages..
+Survive and extract from the location..', rewards: '+12,300 EXP..
+Therapist Rep +0.04..
+45,000 Roubles..
+2x SJ1 TGLabs combat stimulant injector..
+2x SJ6 TGLabs combat stimulant injector..')
+Task.create(name: 'Colleagues - Part 2', dealer_id: 2, description: 'Obtain Sanitars Surgery kit marked with a blue symbol..
+Hand over Sanitar.s Surgery kit to Therapist..
+Obtain Sanitars ophtalmoscope..
+Hand over Sanitars optalmoscope to Therapist..', rewards: '+12,400 EXP..
+Therapist Rep +0.04..
+60,000 Roubles..
+Surv12 field surgical kit..
+P22 injector..')
+Task.create(name: 'Postman Pat - Part 2', dealer_id: 2, description: 'Hand over the letter from the messenger to Therapist..', rewards: '+3,500 EXP..
+Therapist Rep +0.02..
+5,000 Roubles..
+Unlocks purchase of Salewa FIRST AID KIT at Therapist LL2..')
+Task.create(name: 'Out of curiosity', dealer_id: 2, description: 'Find the transport with the chemicals on Customs..
+Mark the vehicle with an MS2000 Marker..
+Survive and extract from Customs..', rewards: '+7,700 EXP..
+Therapist Rep +0.04..
+170,000 Roubles..
+Meds case..')
+Task.create(name: 'Supplier', dealer_id: 4, description: 'Hand over 1 found in raid Module-3M armor to Skier..
+Hand over 1 found in raid TOZ-106 shotgun to Skier..', rewards: '+3,300 EXP..
+Skier Rep +0.05..
+60,000 Roubles..
+Saiga-9 9x19 Carbine..
+Unlocks purchase of Saiga-9 9x19 Carbine at Skier LL1..')
+Task.create(name: 'The Extortionist', dealer_id: 4, description: 'Obtain the hidden valuable cargo on Customs..
+(Optional) Find the messengers body..
+(Optional) Findthe place where the messenger hid the cargo..
+Hand over the valuable cargo to Skier..', rewards: '+3,200 EXP..
+Skier Rep +0.04..
+500 Dollars..
+Vepr AKM / VPO-209 366TKM carbine..
+3x Izhmash AK magazine (issued ‘55 or later) 30-round for 7.62x39 AK and compatibles..
+20x .366 TKM AP-M..')
+Task.create(name: 'Stirrup', dealer_id: 4, description: 'Eliminate 3 PMCs while using pistols', rewards: '+5,300 EXP..
+Skier Rep +0.05..
+Prapor Rep -0.05..
+Therapist Rep -0.02..
+70,000 Roubles..
+Camelbak Tri-Zip Backpack..
+Unlocks purchase of Vepr AKM / VPO-209 366TKM carbine at Skier LL1..')
+Task.create(name: 'Whats on the flash drive?', dealer_id: 4, description: '	
+Find 2 Secure flash drives in raid (can be crafted in the Hideout)..
+Hand over 2 Secure flash drives to Skier..', rewards: '+4,500 EXP..
+Skier Rep +0.04..
+Jaeger Rep -0.01..
+30,000 Roubles..
+Simonov Semi-Automatic Carbine SKS 7.62x39 Hunting Rifle Version..
+2x ProMag SKS-A5 7.62x39 20-round SKS magazine..
+1x AK Hexagon DTKP MK.2 7.62x39 sound suppressor..')
+Task.create(name: 'Golden Swag', dealer_id: 4, description: 'Find the Gilded Zibbo lighter..
+Stash the Gilded Zibbo lighter in the bunkhouse in the trailer parking lot on Customs..', rewards: '+4,500 EXP..
+Skier Rep +0.04..
++17,000 Roubles..
+STM-9 Gen.2 9x19 carbine..
+2x Glock 9x19 "Big Stick" 33-round magazine..
+120x 9x19mm T gzh..
+Unlocks purchase of VOMZ Pilad P1X42 "WEAVER" reflex sight at Skier LL2..')
+Task.create(name: 'Chemical - Part 1', dealer_id: 4, description: 'Obtain information about the Deputy Chiefs past life on Customs..
+(Optional) Find the sleeping place of the former Deputy Chief of Security on Customs..
+Hand over the information to Skier..
+Obtain items that can help the investigation..
+Hand over the items to Skier..', rewards: '+4,800 EXP..
+Skier Rep +0.04..
+15,000 Roubles..
+MSA ACH TC-2002 MICH Series Helmet..')
+Task.create(name: 'Chemical - Part 2', dealer_id: 4, description: 'Find any evidence on Customs that could help with the investigation..
+Hand over the evidence to Skier..
+Find any information on Customs that could help with the investigation..
+Hand over the info to Skier..', rewards: '+4,800 EXP..
+Skier Rep +0.04..
+15,000 Roubles..
+3x F-1 hand grenade..
+2x TP-200 TNT brick..
+Unlocks purchase of SAI-02 10-round 12x76 magazine for SOK-12 and compatible weapons at Jaeger LL2..')
+Task.create(name: 'Chemical - Part 3', dealer_id: 4, description: 'Obtain the chemical-filled syringe hidden in Factory..
+Hand over the chemical-filled syring to Skier..', rewards: '+5,400 EXP..
+Skier Rep +0.04..
+Jaeger Rep -0.01..
+22,000 Roubles..
+Zenit-Belomo PSO 1M2-1 4x24 scope..
+4x Zarya stun grenade..')
+Task.create(name: 'Chemical - Part 4', dealer_id: 4, description: 'Find the transport with the chemicals..
+Mark the chemical transport vehicle with an MS2000 Marker..
+Survive and extract from Customs..', rewards: '+6,500 EXP..
+Skier Rep +0.04..
+Jaeger Rep -0.01..
+35,000 Roubles..
+1x Grenade case..
+Unlocks purchase of ZSh-1-2M helmet (black) at Ragman LL3..')
+Task.create(name: 'Fishing Gear', dealer_id: 5, description: 'Find the boat hidden next to the breakwater on Shoreline..
+Stash 1 sniper rifle in the boat..
+Stash 1 multitool in the boat..
+Survive and extract from the location..', rewards: '+5,400 EXP..
+Peacekeeper Rep +0.02..
+800 Dollars..
+Kiver-M Helmet..
+Unlocks purchase of Aimpoint Micro T-1 reflex sight at Peacekeeper LL1..')
+Task.create(name: 'The Cult - Part 1', dealer_id: 5, description: 'Find the missing informant on Shoreline..
+Survive and extract from the location..', rewards: '+6,700 EXP..
+Peacekeeper Rep +0.06..
+700 Dollars..
+3x Golden neck chain..
+Unlocks purchase of 5.56x45mm M856A1 at Peacekeeper LL2..')
+Task.create(name: 'The Cult - Part 2', dealer_id: 5, description: 'Put the MS2000 Marker in the first ritual spot on Woods..
+Put the MS2000 Marker in the ritual spot on Customs..
+Put the MS2000 Marker in the second ritual spot on Woods..
+Put the MS2000 Marker in the ritual spot on Shoreline..', rewards: '+8,200 EXP..
+Peacekeeper Rep +0.07..
+850 Dollars..
+3x Gas analyzer..
+3x Geiger-Muller counter..')
+Task.create(name: 'Cargo X - Part 1', dealer_id: 5, description: 'Obtain the data in the computer room in the east wing of the Health Resort..
+Hand over the retrieved data to Peacekeeper..', rewards: '+10,400 EXP..
+Peacekeeper Rep +0.07..
+700 Dollars..
+Pistol case..')
+Task.create(name: 'Cargo X - Part 2', dealer_id: 5, description: 'Find the room with reservoirs in the Health Resort..
+Obtain any information about the second part of the cargo shipment..
+Hand over the retrieved information to Peacekeeper..', rewards: '+8,600 EXP..
+Peacekeeper Rep +0.07..
+850 Dollars..
+Unlocks purchase of KAC QDSS NT-4 5.56x45 silencer (Black) at Peacekeeper LL3..')
+Task.create(name: 'Cargo X - Part 3', dealer_id: 5, description: 'Find the hidden TerraGroup cargo on Shoreline..
+Survive and extract from the location..', rewards: '+10,700 EXP..
+Peacekeeper Rep +0.07..
+900 Dollars..
+HK MP5 9x19 submachinegun (Navy 3 Round Burst)..
+3x Standard MP5 30-round 9x19 magazine..')
+Task.create(name: 'Gunsmith - Part 1', dealer_id: 6, description: 'Modify an MP-133 to comply with the required specification..', rewards: '+6,500 EXP..
+Mechanic Rep +0.04..
+20,000 Roubles..
+GLOCK 17 9x19 pistol..
+50x 9x19mm Pst gzh..')
+Task.create(name: 'Gunsmith - Part 2', dealer_id: 6, description: 'Modify an AKS-74U to comply with the given specifications..', rewards: '+6,000 EXP..
+Mechanic Rep +0.04..
+60,000 Roubles..')
+Task.create(name: 'Gunsmith - Part 3', dealer_id: 6, description: 'Modify an MP5 to comply with the given specifications..', rewards: '+8,000 EXP..
+Mechanic Rep +0.05..
+500 Euros..
+Submachinegun PP-19-01 Vityaz-SN 9x19..')
+Task.create(name: 'Gunsmith - Part 4', dealer_id: 6, description: 'Modify an M4A1 to comply with the given specifications..', rewards: '+10,100 EXP..
+Mechanic Rep +0.05..
+800 Euros..
+Physical bitcoin..')
+Task.create(name: 'Gunsmith - Part 5', dealer_id: 6, description: 'Modify a DVL-10 to comply with the given specifications..', rewards: '+13,900 EXP..
+Mechanic Rep +0.06..
+200,000 Roubles..')
+Task.create(name: 'Gunsmith - Part 6', dealer_id: 6, description: 'Modify an R11 RSASS to comply with the given specifications..', rewards: '+14,900 EXP..
+Mechanic Rep +0.06..
+1,000 Euros..
+2x Physical bitcoin..')
+Task.create(name: 'Gunsmith - Part 7', dealer_id: 6, description: 'Modify a Remington Model 870 to comply with the given specifications..', rewards: '+16,000 EXP..
+Mechanic Rep +0.06..
+100,000 Roubles..
+GLOCK 17 9x19 pistol..')
+Task.create(name: 'Acquaintance', dealer_id: 8, description: 'Find 3 Iskra ration pack in raid (can be crafted in the Hideout)..
+Find 2 Emelya rye croutons in raid..
+Find 2 Large can of beef stew in raid..', rewards: '+3,900 EXP..
+Jaeger Rep +0.01..
+50,000 Roubles..
+1x SurvL Survivor Lighter..')
+Task.create(name: 'The survivalist path - Unprotected, but dangerous', dealer_id: 8, description: 'Eliminate 5 Scavs on Woods without wearing any body armor..', rewards: '+5,600 EXP..
+Jaeger Rep +0.02..
+35,000 Roubles..
+1x AKMSN 7.62x39 assault rifle..
+200x 7.62x39mm PS gzh..')
+Task.create(name: 'The survivalist path - Zhivchik', dealer_id: 8, description: 'Survive for 5 minutes while being completely dehydrated..
+Survive and extract from the location..', rewards: '+5,700 EXP..
+Jaeger Rep +0.02..
+30,000 Roubles..
+2x Water bottle with a filter Aquamari..
+2x water filters..')
+Task.create(name: 'The survivalist path - Wounded beast', dealer_id: 8, description: 'Eliminate 3 Scavs while suffering from pain effect..', rewards: 'Jaeger Rep +0.02..
++5,800 EXP..
+65,000 Roubles..
+Stress Resistance+1 level..')
 
 
 

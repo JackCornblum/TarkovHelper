@@ -18,7 +18,7 @@ class DealersController < ApplicationController
 
     def images
         dealer = Dealer.new()
-        images = dealer.images
+        images = [Dealer.find(1).image, Dealer.find(2).image, Dealer.find(3).image, Dealer.find(4).image, Dealer.find(5).image, Dealer.find(6).image, Dealer.find(7).image, Dealer.find(8).image]
         render json: images
     end
 

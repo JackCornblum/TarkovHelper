@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :weapons, only: [:index]
   resources :dealers, only: [:index, :show]
   resources :users, only: [:create]
+  resources :tasks, only: [:index]
   
 
   get "/recoil_build/:id", to: "weapons#recoil_build"
