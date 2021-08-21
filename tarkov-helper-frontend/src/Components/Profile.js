@@ -6,8 +6,8 @@ import ProfileTask from './ProfileTask.js'
 
 function Profile({currentUser}) {
     const [guns, setGuns] = useState([])
-    const [savedGuns, setSavedGuns] = useState(true)
-    const [savedTasks, setSavedTasks] = useState(true)
+    const [savedGuns, setSavedGuns] = useState(false)
+    const [savedTasks, setSavedTasks] = useState(false)
     const [inProgressTasks, setInProgressTasks] = useState([])
     const [completedTasks, setCompletedTasks] = useState([])
     const [allTasks, setAllTasks] = useState([])
@@ -59,126 +59,6 @@ function Profile({currentUser}) {
 
      
 
-    //      renderInProgress = inProgressTasks.map(task => {
-
-    //     let objectives = task.description.split("..")
-    //     let renderObjectives = objectives.map(o => {
-    //         if (o !== "") {
-    //             return <li>{o}</li>
-    //         }
-    //     })
-    //     let splitRewards = task.rewards.split("..")
-    //     let renderRewards = splitRewards.map(r => {
-    //         if (r !== "") {
-    //             return <li>{r}</li>
-    //         }
-    //     })
-
-    //     let img = ""
-
-    //      if (task.dealer_id === 1){
-    //          img = dealerImages[0].split('/revision')[0]
-            
-    //     } else if (task.dealer_id === 2){
-    //          img = dealerImages[1].split('/revision')[0]
-            
-    //     } else if (task.dealer_id === 4) {
-    //          img = dealerImages[3].split('/revision')[0]
-            
-    //     } else if (task.dealer_id === 5) {
-    //          img = dealerImages[4].split('/revision')[0]
-            
-    //     } else if (task.dealer_id === 6) {
-    //          img = dealerImages[5].split('/revision')[0]
-            
-    //     } else if (task.dealer_id ===8) {
-    //          img = dealerImages[7].split('/revision')[0]
-            
-    //     }
-    //     return (
-    //         <tr>
-    //         <td>{task.name}</td>
-    //         <td>
-    //             <ul style={{textAlign: 'left'}}>
-    //                 {renderObjectives}
-    //             </ul>
-    //         </td>
-    //         <td>
-    //             <ul style={{textAlign: 'left'}}>
-    //                 {renderRewards}
-    //             </ul>
-    //         </td>
-    //         <td>
-    //             <img className='part-img' src={img} alt="dealer"/>
-    //         </td>
-    //     </tr>
-    //     )
-    // }) 
-
-    
-
-    // allTasks.forEach(task => {
-    //     let completed = ""
-    //     if (task.completed){
-
-    //         let objectives = task.description.split("..")
-    //         let renderObjectives = objectives.map(o => {
-    //             if (o !== "") {
-    //                 return <li>{o}</li>
-    //             }
-    //         })
-    //         let splitRewards = task.rewards.split("..")
-    //         let renderRewards = splitRewards.map(r => {
-    //             if (r !== "") {
-    //                 return <li>{r}</li>
-    //             }
-    //         })
-
-    //         let img = ""
-
-    //         if (task.dealer_id === 1){
-    //             img = dealerImages[0].split('/revision')[0]
-                
-    //         } else if (task.dealer_id === 2){
-    //             img = dealerImages[1].split('/revision')[0]
-                
-    //         } else if (task.dealer_id === 4) {
-    //             img = dealerImages[3].split('/revision')[0]
-                
-    //         } else if (task.dealer_id === 5) {
-    //             img = dealerImages[4].split('/revision')[0]
-                
-    //         } else if (task.dealer_id === 6) {
-    //             img = dealerImages[5].split('/revision')[0]
-                
-    //         } else if (task.dealer_id ===8) {
-    //             img = dealerImages[7].split('/revision')[0]
-                
-    //         }
-    //         completed = (
-    //             <tr>
-    //             <td>{task.name}</td>
-    //             <td>
-    //                 <ul style={{textAlign: 'left'}}>
-    //                     {renderObjectives}
-    //                 </ul>
-    //             </td>
-    //             <td>
-    //                 <ul style={{textAlign: 'left'}}>
-    //                     {renderRewards}
-    //                 </ul>
-    //             </td>
-    //             <td>
-    //                 <img className='part-img' src={img} alt="dealer"/>
-    //             </td>
-    //         </tr>
-    //         )
-    //         renderCompleted.push(completed)
-    //     }
-    // })
-
-    console.log(completedTasks)
-
 
     
     let renderMyGuns = guns.map(gun => {
@@ -203,16 +83,20 @@ function Profile({currentUser}) {
 
     function showGuns(e) {
         setSavedTasks(false)
-        setSavedGuns(true)
+        setSavedGuns(!savedGuns)
     }
 
+    function showTasks(e){
+        setSavedGuns(false)
+        setSavedTasks(!savedTasks)
+    }
 
     return (
         <>
         <h2>Welcome, {currentUser.username}</h2>
         <div>
             <Button onClick={showGuns}>My Saved Guns</Button>
-            <Button>My Tasks</Button>
+            <Button onClick={showTasks}>My Tasks</Button>
 
             {savedGuns ? <Container className="saved-guns">
                 {renderMyGuns}

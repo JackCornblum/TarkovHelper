@@ -2,14 +2,21 @@ import { useEffect, useState } from "react"
 import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
 import SingleTask from "./SingleTask"
 
-function Tasks({tasks, dealerImages, currentUser}) {
+function Tasks({tasks, currentUser}) {
     const [splitImages, setSplitImages] = useState([])
+    const [dealerImages, setDealerImages] = useState([])
 
     // let praporImage = dealerImages[0].split('/revision')[0]
-    console.log(dealerImages)
+
     useEffect(() => {
-        let images = dealerImages.map(img => img.split('/revision')[0])
-        setSplitImages(images)
+        fetch('/dealer_images')
+        .then(res => res.json())
+        .then(data => {
+            setDealerImages(data)
+            let images = data.map(img => img.split('/revision')[0])
+            setSplitImages(images)
+        })
+
         
     }, [])
 

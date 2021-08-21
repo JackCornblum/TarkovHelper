@@ -314,9 +314,10 @@ function Weapons({weapons, currentUser, dealerImages}) {
                 <h6>Total Ergonomics: {totalErgonomics}</h6>
                 <h6>Price: {totalPrice}</h6>
                 </div> : null}
+            {currentUser.id && buildParts ? <Button onClick={saveLoadout} variant="dark">Save Loadout</Button> : null }
             {allWeapons ? null :  
             <> 
-                <Button onClick={saveLoadout} variant="dark">Save Loadout</Button>
+                
                 
                 <Table striped bordered hover variant="dark">
                     <thead>

@@ -28,6 +28,7 @@ function Login({setCurrentUser}) {
                 setCurrentUser(data)
                 history.push('/')
             } else {
+                console.log(data.error)
                 setErrors(data.error)
                 setIsErrors(true)
             }
@@ -41,13 +42,21 @@ function Login({setCurrentUser}) {
             <Form onSubmit={handleLogin}>
                 <Form.Group id="username" >
                     <Form.Label>Username</Form.Label>
-                    <Form.Control onChange={e => setUsername(e.target.value)} type="text" placeholder="Enter username" />
+                    <Form.Control onChange={e => {
+                        setUsername(e.target.value)
+                        setErrors(false)
+                        }} type="text" placeholder="Enter username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
+                    <Form.Control onChange={e => {
+                        setPassword(e.target.value)
+                        setErrors(false)
+                    }} type="password" placeholder="Password" />
                 </Form.Group>
+
+                {isErrors ? <p>{errors[0]}</p> : null}
                 
                 <p>Don't have an account? <Link className="signup" to='/signup'>Sign up</Link></p>
                 <Button variant="dark" type="submit">
