@@ -75,23 +75,23 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
     
 
     return (
-        <tr>
-            <td>{name}</td>
-            <td>
+        <tr className="font-face-eft">
+            <td className="font-face-eft">{name}</td>
+            <td className="font-face-eft">
                 <ul style={{textAlign: 'left'}}>
                     {renderObjectives}
                 </ul>
             </td>
-            <td>
+            <td className="font-face-eft">
                 <ul style={{textAlign: 'left'}}>
                     {renderRewards}
                 </ul>
-            </td>
-            <td>
+            </td >
+            <td className="font-face-eft">
                 <img className='part-img' src={dealerPic} alt="dealer"/>
             </td>
             {currentUser.id ?
-             <td style={{textAlign: 'left'}}>
+             <td className="font-face-eft" style={{textAlign: 'left'}}>
                 <p onClick={handleComplete}>Mark as Complete</p>
                 <p onClick={handleInProgress}>In Progress</p>
              </td>

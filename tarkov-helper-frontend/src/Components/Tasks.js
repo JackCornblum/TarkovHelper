@@ -28,10 +28,10 @@ function Tasks({tasks, currentUser, dealerImages}) {
 
     return(
         <div>
-            <h2>All Tasks</h2>
-            <Table striped bordered hover variant="dark">
-                <thead>
-                    <tr>
+            <h2 className="margin" className="font-face-eft">ALL TASKS</h2>
+            <Table className="part-table" striped bordered hover>
+                <thead className="font-face-eft">
+                    <tr className="font-face-eft">
                         <th>NAME</th>
                         <th>OBJETIVES</th>
                         <th>REWARDS</th>
@@ -39,7 +39,7 @@ function Tasks({tasks, currentUser, dealerImages}) {
                         {currentUser.id ? <th>Completed ?</th> : null}
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="font-face-eft">
                     {renderTasks}
                 </tbody>
             </Table>

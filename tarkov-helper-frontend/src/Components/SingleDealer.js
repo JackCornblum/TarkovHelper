@@ -18,7 +18,7 @@ function SingleDealer({name, image, id, fetchItems, dealerItems, dealerImages}){
     return(
         <>
             
-            <Card className="dealerCard">
+            <Card className="gunCard">
                 <Card.Body>
                     <Card.Title className="font-face-eft" onClick={e => fetchItems(id)}>{name}</Card.Title>
                     <Card.Img variant="bottom" src={goodImage} />
@@ -26,7 +26,7 @@ function SingleDealer({name, image, id, fetchItems, dealerItems, dealerImages}){
             </Card>
             {(dealerItems.length > 0) ? <Container fluid="md">
                 
-                <Table striped bordered hover variant="dark">
+                <Table className="part-table" striped bordered hover>
                     <thead>
                         <tr>
                             <th className="font-face-eft">IMG</th>

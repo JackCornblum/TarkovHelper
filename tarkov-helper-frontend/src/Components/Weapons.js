@@ -254,7 +254,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
         <div className="weapons-container">
             <Container fluid="md">
                     <h2 className="font-face-eft">WEAPONS</h2>
-                    {allWeapons ? <h3 className="font-face-eft">ALL WEAPONS</h3> : null}
+                    {allWeapons ? <h3 className="mg-top" className="font-face-eft">ALL WEAPONS</h3> : null}
                     {ars ? <h3 className="font-face-eft">ASSAULT RIFLES</h3> : null}
                     {assaultCarb ? <h3 className="font-face-eft">ASSAULT CARBINES</h3> : null}
                     {submachine ? <h3 className="font-face-eft">SUBMACHINE GUNS</h3> : null}
@@ -264,20 +264,21 @@ function Weapons({weapons, currentUser, dealerImages}) {
                     {oneGun ? <h3 className="font-face-eft">{singleGun[0].props.name}</h3> : null}
                 <Row md={2}>
 
-                    {oneGun ? <Popup trigger={<button>Generate Gun Build</button>} position="bottom center">
-                                <div onChange={handleRadio}>
-                                <form onSubmit={handleSubmit}>
-                                    <div className="inline-radio">
-                                        <Form.Check inline type='radio' name="group1" label="recoil" value="recoil"/>
-                                        <Form.Check inline type='radio' name="group1" label="ergonomics" value="ergonomics"/>
-                                        <Form.Check inline type='radio' name="group1" label="price" value="price"/>
+                
+
+                    {oneGun ? <Popup className="part-popup" trigger={<Button variant="dark" className="font-face-eft" >Generate Gun Build</Button>} position="bottom center">
+                                <div style={{backgroundColor: 'black'}} onChange={handleRadio}>
+                                <form style={{backgroundColor: 'black'}} onSubmit={handleSubmit}>
+                                    <div style={{backgroundColor: 'black'}} className="inline-radio">
+                                        <Form.Check style={{backgroundColor: 'black'}} className="font-face-eft" inline type='radio' name="group1" label="RECOIL" value="recoil"/>
+                                        <Form.Check style={{backgroundColor: 'black'}} className="font-face-eft" inline type='radio' name="group1" label="ERGONOMICS" value="ergonomics"/>
                                     </div>
-                                    <Button type="submit">Generate Parts</Button>
+                                    <Button variant="dark" className="font-face-eft" type="submit">GENERATE PARTS</Button>
                                 </form>
                                 </div>
                               </Popup> : null}
                     
-                    {oneGun ? <Button className="font-face-eft" onClick={displayAll} variant="dark">All Weapons</Button> : <Dropdown>
+                    {oneGun ? <Button className="font-face-eft" onClick={displayAll} variant="dark">ALL WEAPONS</Button> : <Dropdown>
                         <Dropdown.Toggle className="font-face-eft" style={{backgroundColor:'black'}}>
                             FILTER WEAPONS
                         </Dropdown.Toggle>
@@ -309,12 +310,12 @@ function Weapons({weapons, currentUser, dealerImages}) {
                 </Container>
             <Container fluid="md">
             {oneGun ? singleGun : null}
-            {(oneGun && buildParts) ? <div>
-                <h6>Total Recoil: {totalRecoil}</h6>
-                <h6>Total Ergonomics: {totalErgonomics}</h6>
-                <h6>Price: {totalPrice}</h6>
+            {(oneGun && buildParts) ? <div className="font-face-eft">
+                <h6>TOTAL RECOIL: {totalRecoil}</h6>
+                <h6>TOTAL ERGONOMICS: {totalErgonomics}</h6>
+                <h6>PRICE: {totalPrice}</h6>
                 </div> : null}
-            {currentUser.id && buildParts ? <Button onClick={saveLoadout} variant="dark">Save Loadout</Button> : null }
+            {currentUser.id && buildParts ? <Button className="font-face-eft" onClick={saveLoadout} variant="dark">SAVE LOADOUT</Button> : null }
             {allWeapons ? null :  
             <> 
                 

@@ -35,9 +35,9 @@ function SavedGun({weapon, parts, dealerImages, id, handleDelete}) {
                     <Button className="font-face-eft" variant="dark" onClick={handleClick}>REMOVE</Button>
                 </Card.Body>
             </Card>
-            {partsRendered ? <Table striped bordered hover variant="dark">
+            {partsRendered ? <Table className="part-table" striped bordered hover>
                     <thead>
-                        <tr>
+                        <tr className="font-face-eft">
                             <th>Img</th>
                             <th>Name</th>
                             <th>Recoil</th>

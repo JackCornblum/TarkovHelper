@@ -50,22 +50,22 @@ function ProfileTask({id, dealerId, name, description, rewards, dealerImages, cu
    
 
     return (
-        <tr>
-            <td>{name}</td>
-            <td>
+        <tr className="font-face-eft">
+            <td className="font-face-eft">{name}</td>
+            <td className="font-face-eft">
                 <ul style={{textAlign: 'left'}}>
                     {renderObjectives}
                 </ul>
             </td>
-            <td>
+            <td className="font-face-eft">
                 <ul style={{textAlign: 'left'}}>
                     {renderRewards}
                 </ul>
             </td>
-            <td>
+            <td className="font-face-eft">
                 <img className='part-img' src={dealerPic} alt="dealer"/>
             </td>
-            {inProgress ? <td style={{textAlign: 'left'}}><p onClick={addToComplete}>Add to Completed Tasks</p></td> : null}
+            {inProgress ? <td className="font-face-eft" style={{textAlign: 'left'}}><p onClick={addToComplete}>Add to Completed Tasks</p></td> : null}
         </tr>
     )
 }

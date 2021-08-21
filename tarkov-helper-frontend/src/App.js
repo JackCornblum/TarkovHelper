@@ -123,8 +123,9 @@ function App() {
   }
 
   return (
+    <>
+    <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
     <div className="App">
-      <NavBar setCurrentUser={setCurrentUser} currentUser={currentUser} />
 
       <Switch>
         <Route exact path="/weapons">
@@ -150,6 +151,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+    </>
   );
 }
 

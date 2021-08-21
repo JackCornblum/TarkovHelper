@@ -40,8 +40,8 @@ function Login({setCurrentUser}) {
     return (
         <div className="login">
             <Form onSubmit={handleLogin}>
-                <Form.Group id="username" >
-                    <Form.Label className="font-face-eft ">Username</Form.Label>
+                <Form.Group  id="username" >
+                    <Form.Label className="font-face-eft ">USERNAME</Form.Label>
                     <Form.Control onChange={e => {
                         setUsername(e.target.value)
                         setErrors(false)

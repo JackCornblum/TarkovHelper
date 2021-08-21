@@ -92,10 +92,10 @@ function Profile({currentUser}) {
 
     return (
         <>
-        <h2>Welcome, {currentUser.username}</h2>
+        <h2 className="font-face-eft">Welcome, {currentUser.username}</h2>
         <div>
-            <Button onClick={showGuns}>My Saved Guns</Button>
-            <Button onClick={showTasks}>My Tasks</Button>
+            <Button className="font-face-eft" variant="dark" onClick={showGuns}>My Saved Guns</Button>
+            <Button className="font-face-eft" variant="dark" onClick={showTasks}>My Tasks</Button>
 
             {savedGuns ? <Container className="saved-guns">
                 {renderMyGuns}
@@ -104,10 +104,10 @@ function Profile({currentUser}) {
             {savedTasks && inProgressTasks.length > 0 ? 
                 
                 <>
-                <h3>In Progress</h3>
-                 <Table striped bordered hover variant="dark">
-                 <thead>
-                     <tr>
+                <h3 className="font-face-eft">IN PROGRESS</h3>
+                 <Table className="part-table" striped bordered hover>
+                 <thead className="font-face-eft">
+                     <tr className="font-face-eft">
                          <th>NAME</th>
                          <th>OBJETIVES</th>
                          <th>REWARDS</th>
@@ -124,10 +124,10 @@ function Profile({currentUser}) {
 
             {(savedTasks && completedTasks.length > 0) ? 
                 <>
-                <h3>Completed</h3>
-                <Table striped bordered hover variant="dark">
+                <h3 className="font-face-eft">COMPLETED</h3>
+                <Table className="part-table" striped bordered hover>
                 <thead>
-                    <tr>
+                    <tr className="font-face-eft">
                         <th>NAME</th>
                         <th>OBJETIVES</th>
                         <th>REWARDS</th>
