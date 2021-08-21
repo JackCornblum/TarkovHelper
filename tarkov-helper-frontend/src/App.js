@@ -33,6 +33,10 @@ function App() {
 
   
   useEffect(() => {
+    fetch('/dealer_images')
+    .then(res => res.json())
+    .then(data => setDealerImages(data))
+    
     fetch('/me')
     .then(res => res.json())
     .then(data => {
@@ -41,9 +45,6 @@ function App() {
       }
     })
 
-    fetch('/dealer_images')
-    .then(res => res.json())
-    .then(data => setDealerImages(data))
 
     fetch('/tasks')
     .then(res => res.json())
