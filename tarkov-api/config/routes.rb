@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   delete '/saved_gun/:id', to: 'users#destroy_saved_gun'
   post '/completed_task', to: "users#complete_task"
   post '/in_progress_task', to: "users#in_progress_task"
-  get '/my_tasks', to: "users#my_tasks"
+  get '/my_completed_tasks', to: "users#my_completed_tasks"
+  get 'my_in_progress_tasks', to: "users#my_in_progress_tasks"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

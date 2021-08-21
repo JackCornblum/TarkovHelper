@@ -29,6 +29,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState('')
   const [dealerImages, setDealerImages] = useState([])
   const [tasks, setTasks] = useState([])
+  const [userTasks, setUserTasks] = useState([])
 
   
   useEffect(() => {
@@ -56,6 +57,19 @@ function App() {
     .then(res => res.json())
     .then(data => setDealers(data))
 
+    if (currentUser.id) {
+      console.log('user signed in')
+      fetch('/my_tasks')
+        .then(res => res.json())
+        .then(data => {
+            setUserTasks(data.tasks)
+            console.log(data)
+        })
+    }
+    
+  }, [])
+
+  useEffect(() => {
     
   }, [])
 

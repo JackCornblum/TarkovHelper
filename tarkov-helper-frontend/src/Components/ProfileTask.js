@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
+function ProfileTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
     const [dealerPic, setDealerPic] = useState('')
 
     console.log(dealerImages)
@@ -44,35 +44,7 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
         }
     })
 
-    function handleComplete(e) {
-        let task = {
-            id
-        }
-
-        fetch('/completed_task', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(task)
-        })
-        .then(res => res.json())
-        .then(console.log)
-    }
-
-    function handleInProgress(e) {
-        let task = {
-            id
-        }
-
-        fetch('/in_progress_task', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(task)
-        })
-        .then(res => res.json())
-        .then(console.log)
-    }
-
-    
+   
 
     return (
         <tr>
@@ -90,14 +62,8 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             <td>
                 <img className='part-img' src={dealerPic} alt="dealer"/>
             </td>
-            {currentUser.id ?
-             <td style={{textAlign: 'left'}}>
-                <p onClick={handleComplete}>Mark as Complete</p>
-                <p onClick={handleInProgress}>In Progress</p>
-             </td>
-             : null}
         </tr>
     )
 }
 
-export default SingleTask
+export default ProfileTask

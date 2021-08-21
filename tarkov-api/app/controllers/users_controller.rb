@@ -128,7 +128,7 @@ class UsersController < ApplicationController
             end
         end
         if message == "Success"
-            SavedTask.create(user_id: session[:user_id], task_id: params[:id], completed: true)
+            CompletedTask.create(user_id: session[:user_id], task_id: params[:id])
         end
       
         render json: {status: message}
@@ -144,17 +144,32 @@ class UsersController < ApplicationController
             end
         end
         if message == "Success"
-            SavedTask.create(user_id: session[:user_id], task_id: params[:id], completed: false)
+            InProgressTask.create(user_id: session[:user_id], task_id: params[:id])
         end
 
         render json: {status: message}
     end
 
-    def my_tasks
+    def my_completed_tasks
         user = User.find(session[:user_id])
-        all_tasks = user.saved_tasks
-        byebug
-        render json: {tasks: all_tasks}
+        tasks = user.completed_tasks
+        all_tasks = tasks.map{|t| t.task}
+        if all_tasks.count > 0
+            render json: {tasks: all_tasks}
+        else
+            render json: {message: 'No completed tasks'}
+        end
+    end
+
+    def my_in_progress_tasks
+        user = User.find(session[:user_id])
+        tasks = user.in_progress_tasks
+        all_tasks = tasks.map{|t| t.task}
+        if all_tasks.count > 0
+            render json: {tasks: all_tasks}
+        else
+            render json: {message: 'No completed tasks'}
+        end
     end
 
     private

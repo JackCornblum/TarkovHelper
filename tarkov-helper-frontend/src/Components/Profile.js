@@ -2,36 +2,60 @@ import {useState, useEffect} from 'react'
 import SavedGun from './SavedGun.js'
 import {Container, Button, Table} from 'react-bootstrap'
 import { render } from 'react-dom'
+import ProfileTask from './ProfileTask.js'
 
-function Profile({currentUser, dealerImages}) {
+function Profile({currentUser}) {
     const [guns, setGuns] = useState([])
     const [savedGuns, setSavedGuns] = useState(true)
     const [savedTasks, setSavedTasks] = useState(true)
     const [inProgressTasks, setInProgressTasks] = useState([])
     const [completedTasks, setCompletedTasks] = useState([])
     const [allTasks, setAllTasks] = useState([])
+    const [dealerImages, setDealerImages] = useState([])
+
+    console.log(dealerImages)
 
     useEffect(() => {
+
+        fetch('/dealer_images')
+        .then(res => res.json())
+        .then(data => setDealerImages(data))
+
         fetch('/my_guns')
         .then(res => res.json())
         .then(data => {
             setGuns(data)
         })
 
-        fetch('/my_tasks')
+        fetch('/my_completed_tasks')
         .then(res => res.json())
         .then(data => {
-            setAllTasks(data.tasks)
-            let inProgress = data.tasks.filter(t => t.completed === false)
-            console.log(data)
-            setInProgressTasks(inProgress)
-            let completed = data.tasks.filter(t => t.completed === true)
-            console.log(completed)
-            setCompletedTasks(completed)
+            if (data.tasks){
+                setCompletedTasks(data.tasks)
+            }
         })
+
+        fetch('/my_in_progress_tasks')
+        .then(res => res.json())
+        .then(data => {
+            if (data.tasks){
+                setInProgressTasks(data.tasks)
+            }
+        })
+        
     }, [])
-    let renderInProgress = []
-    let renderCompleted = []
+    let renderInProgress = inProgressTasks.map(t => {
+        if (t.id) {
+            return <ProfileTask key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
+        }
+    })
+    let renderCompleted = completedTasks.map(t => {
+        if (t.id) {
+            return <ProfileTask key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
+        }
+    })
+
+
 
      
 
@@ -91,65 +115,67 @@ function Profile({currentUser, dealerImages}) {
     //     )
     // }) 
 
-    allTasks.forEach(task => {
-        let completed = ""
-        if (task.completed){
+    
 
-            let objectives = task.description.split("..")
-            let renderObjectives = objectives.map(o => {
-                if (o !== "") {
-                    return <li>{o}</li>
-                }
-            })
-            let splitRewards = task.rewards.split("..")
-            let renderRewards = splitRewards.map(r => {
-                if (r !== "") {
-                    return <li>{r}</li>
-                }
-            })
+    // allTasks.forEach(task => {
+    //     let completed = ""
+    //     if (task.completed){
 
-            let img = ""
+    //         let objectives = task.description.split("..")
+    //         let renderObjectives = objectives.map(o => {
+    //             if (o !== "") {
+    //                 return <li>{o}</li>
+    //             }
+    //         })
+    //         let splitRewards = task.rewards.split("..")
+    //         let renderRewards = splitRewards.map(r => {
+    //             if (r !== "") {
+    //                 return <li>{r}</li>
+    //             }
+    //         })
 
-            if (task.dealer_id === 1){
-                img = dealerImages[0].split('/revision')[0]
+    //         let img = ""
+
+    //         if (task.dealer_id === 1){
+    //             img = dealerImages[0].split('/revision')[0]
                 
-            } else if (task.dealer_id === 2){
-                img = dealerImages[1].split('/revision')[0]
+    //         } else if (task.dealer_id === 2){
+    //             img = dealerImages[1].split('/revision')[0]
                 
-            } else if (task.dealer_id === 4) {
-                img = dealerImages[3].split('/revision')[0]
+    //         } else if (task.dealer_id === 4) {
+    //             img = dealerImages[3].split('/revision')[0]
                 
-            } else if (task.dealer_id === 5) {
-                img = dealerImages[4].split('/revision')[0]
+    //         } else if (task.dealer_id === 5) {
+    //             img = dealerImages[4].split('/revision')[0]
                 
-            } else if (task.dealer_id === 6) {
-                img = dealerImages[5].split('/revision')[0]
+    //         } else if (task.dealer_id === 6) {
+    //             img = dealerImages[5].split('/revision')[0]
                 
-            } else if (task.dealer_id ===8) {
-                img = dealerImages[7].split('/revision')[0]
+    //         } else if (task.dealer_id ===8) {
+    //             img = dealerImages[7].split('/revision')[0]
                 
-            }
-            completed = (
-                <tr>
-                <td>{task.name}</td>
-                <td>
-                    <ul style={{textAlign: 'left'}}>
-                        {renderObjectives}
-                    </ul>
-                </td>
-                <td>
-                    <ul style={{textAlign: 'left'}}>
-                        {renderRewards}
-                    </ul>
-                </td>
-                <td>
-                    <img className='part-img' src={img} alt="dealer"/>
-                </td>
-            </tr>
-            )
-            renderCompleted.push(completed)
-        }
-    })
+    //         }
+    //         completed = (
+    //             <tr>
+    //             <td>{task.name}</td>
+    //             <td>
+    //                 <ul style={{textAlign: 'left'}}>
+    //                     {renderObjectives}
+    //                 </ul>
+    //             </td>
+    //             <td>
+    //                 <ul style={{textAlign: 'left'}}>
+    //                     {renderRewards}
+    //                 </ul>
+    //             </td>
+    //             <td>
+    //                 <img className='part-img' src={img} alt="dealer"/>
+    //             </td>
+    //         </tr>
+    //         )
+    //         renderCompleted.push(completed)
+    //     }
+    // })
 
     console.log(completedTasks)
 
@@ -192,7 +218,7 @@ function Profile({currentUser, dealerImages}) {
                 {renderMyGuns}
             </Container> : null}
 
-            {savedTasks && allTasks.length > 0 ? 
+            {savedTasks && inProgressTasks.length > 0 ? 
                 
                 <>
                 <h3>In Progress</h3>
@@ -212,7 +238,7 @@ function Profile({currentUser, dealerImages}) {
              </>
             :null}
 
-            {(savedTasks === true && completedTasks.length > 0) ? 
+            {(savedTasks && completedTasks.length > 0) ? 
                 <>
                 <h3>Completed</h3>
                 <Table striped bordered hover variant="dark">
