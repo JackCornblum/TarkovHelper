@@ -13,7 +13,6 @@ function Profile({currentUser}) {
     const [allTasks, setAllTasks] = useState([])
     const [dealerImages, setDealerImages] = useState([])
 
-    console.log(dealerImages)
 
     useEffect(() => {
 
@@ -46,12 +45,12 @@ function Profile({currentUser}) {
     }, [])
     let renderInProgress = inProgressTasks.map(t => {
         if (t.id) {
-            return <ProfileTask key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
+            return <ProfileTask inProgress={true} key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
         }
     })
     let renderCompleted = completedTasks.map(t => {
         if (t.id) {
-            return <ProfileTask key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
+            return <ProfileTask inProgress={false} key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
         }
     })
 
@@ -113,6 +112,7 @@ function Profile({currentUser}) {
                          <th>OBJETIVES</th>
                          <th>REWARDS</th>
                          <th>DEALER</th>
+                         <th>COMPLETED?</th>
                      </tr>
                  </thead>
                  <tbody>

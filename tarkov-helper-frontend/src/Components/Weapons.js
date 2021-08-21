@@ -319,9 +319,9 @@ function Weapons({weapons, currentUser, dealerImages}) {
             <> 
                 
                 
-                <Table striped bordered hover variant="dark">
+                <Table className="part-table" striped bordered hover>
                     <thead>
-                        <tr>
+                        <tr className="font-face-eft ">
                             <th>Img</th>
                             <th>Name</th>
                             <th>Recoil</th>

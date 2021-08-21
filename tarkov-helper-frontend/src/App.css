@@ -3,8 +3,23 @@
   
 }
 
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 body {
-  background-color: rgba(0, 0, 0, 0.705);
+  /* The image used */
+  background-image: url("https://images3.alphacoders.com/720/720688.png");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 img.part-img {
@@ -111,3 +126,13 @@ img.card-img-bottom.gun-image {
   border: 15px solid #555;
   
 }
+
+.gunCard.card {
+  background-color: rgba(10, 10, 10, 0.623);
+}
+
+table.part-table.table.table-striped.table-bordered.table-hover {
+  background-color: rgba(10, 10, 10, 0.815);
+}
+
+

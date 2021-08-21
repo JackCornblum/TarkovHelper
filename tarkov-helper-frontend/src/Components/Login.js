@@ -41,26 +41,26 @@ function Login({setCurrentUser}) {
         <div className="login">
             <Form onSubmit={handleLogin}>
                 <Form.Group id="username" >
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label className="font-face-eft ">Username</Form.Label>
                     <Form.Control onChange={e => {
                         setUsername(e.target.value)
                         setErrors(false)
-                        }} type="text" placeholder="Enter username" />
+                        }} type="text" className="font-face-eft " placeholder="Enter username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label className="font-face-eft" >PASSWORD</Form.Label>
                     <Form.Control onChange={e => {
                         setPassword(e.target.value)
                         setErrors(false)
-                    }} type="password" placeholder="Password" />
+                    }} type="password" className="font-face-eft" placeholder="Password" />
                 </Form.Group>
 
                 {isErrors ? <p>{errors[0]}</p> : null}
                 
-                <p>Don't have an account? <Link className="signup" to='/signup'>Sign up</Link></p>
-                <Button variant="dark" type="submit">
-                    Submit
+                <p className="font-face-eft ">DON'T HAVE AN ACCOUNT? <Link className="signup" to='/signup'>SIGN UP</Link></p>
+                <Button className="font-face-eft " variant="dark" type="submit">
+                    LOG IN
                 </Button>
                 
             </Form>

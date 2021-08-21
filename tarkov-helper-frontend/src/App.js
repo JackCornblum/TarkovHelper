@@ -59,12 +59,7 @@ function App() {
 
     if (currentUser.id) {
       console.log('user signed in')
-      fetch('/my_tasks')
-        .then(res => res.json())
-        .then(data => {
-            setUserTasks(data.tasks)
-            console.log(data)
-        })
+      
     }
     
   }, [])
@@ -151,7 +146,7 @@ function App() {
           <Profile dealerImages={dealerImages} currentUser={currentUser} />
         </Route>
         <Route exact path="/tasks">
-          <Tasks currentUser={currentUser} dealerImages={dealerImages} tasks={tasks}/>
+          <Tasks dealerImages={dealerImages} currentUser={currentUser} tasks={tasks}/>
         </Route>
       </Switch>
     </div>

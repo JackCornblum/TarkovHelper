@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 
 
-function ProfileTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
+function ProfileTask({id, dealerId, name, description, rewards, dealerImages, currentUser, inProgress}){
     const [dealerPic, setDealerPic] = useState('')
 
-    console.log(dealerImages)
 
     useEffect(() => {
         if (dealerId === 1){
@@ -44,6 +43,10 @@ function ProfileTask({id, dealerId, name, description, rewards, dealerImages, cu
         }
     })
 
+    function addToComplete(e) {
+        console.log('adding to complete')
+    }
+
    
 
     return (
@@ -62,6 +65,7 @@ function ProfileTask({id, dealerId, name, description, rewards, dealerImages, cu
             <td>
                 <img className='part-img' src={dealerPic} alt="dealer"/>
             </td>
+            {inProgress ? <td style={{textAlign: 'left'}}><p onClick={addToComplete}>Add to Completed Tasks</p></td> : null}
         </tr>
     )
 }

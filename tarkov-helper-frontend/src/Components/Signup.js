@@ -43,25 +43,25 @@ function Signup({setCurrentUser}) {
     return (
         <>
         <div className="signup">
-        <h3>Create an account</h3>
+        <h3 className="font-face-eft ">CREATE AN ACCOUNT</h3>
             <Form onSubmit={handleSignup}>
                 <Form.Group id="username" >
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control onChange={e => setUsername(e.target.value)} type="text" placeholder="Enter username" />
+                    <Form.Label className="font-face-eft ">USERNAME</Form.Label>
+                    <Form.Control className="font-face-eft " onChange={e => setUsername(e.target.value)} type="text" placeholder="Enter username" />
                 </Form.Group>
 
                 <Form.Group id="email" controlId="formBasicEmail" >
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={e => setEmail(e.target.value)} type="email" placeholder="Enter email address" />
+                    <Form.Label className="font-face-eft ">EMAIL ADDRESS</Form.Label>
+                    <Form.Control className="font-face-eft " onChange={e => setEmail(e.target.value)} type="email" placeholder="Enter email address" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
+                    <Form.Label className="font-face-eft ">PASSWORD</Form.Label>
+                    <Form.Control className="font-face-eft " onChange={e => setPassword(e.target.value)} type="password" placeholder="Password" />
                 </Form.Group>
                 
-                <Button variant="dark" type="submit">
-                    Signup
+                <Button className="font-face-eft " variant="dark" type="submit">
+                    SIGNUP
                 </Button>
                 
             </Form>
