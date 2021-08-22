@@ -132,7 +132,13 @@ img.card-img-bottom.gun-image {
 
 .gunCard.card {
   background-color: rgba(10, 10, 10, 0.623);
+  border-radius: 0px;
   /* margin-bottom: 5%; */
+}
+
+h2.font-face-eft {
+  margin-top: 3%;
+  margin-bottom: 3%;
 }
 
 table.part-table.table.table-striped.table-bordered.table-hover {

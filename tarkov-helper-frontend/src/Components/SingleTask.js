@@ -4,7 +4,6 @@ import { useEffect, useState } from "react"
 function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
     const [dealerPic, setDealerPic] = useState('')
 
-    console.log(dealerImages)
 
     useEffect(() => {
         if (dealerId === 1){

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react'
 import SavedGun from './SavedGun.js'
-import {Container, Button, Table} from 'react-bootstrap'
+import {Container, Button, Table, Row} from 'react-bootstrap'
 import { render } from 'react-dom'
 import ProfileTask from './ProfileTask.js'
 
@@ -12,6 +12,8 @@ function Profile({currentUser}) {
     const [completedTasks, setCompletedTasks] = useState([])
     const [allTasks, setAllTasks] = useState([])
     const [dealerImages, setDealerImages] = useState([])
+    const [oneGun, setOneGun] = useState(false)
+    const [renderSingleGun, setRenderSingleGun] = useState([])
 
 
     useEffect(() => {
@@ -61,9 +63,17 @@ function Profile({currentUser}) {
 
     
     let renderMyGuns = guns.map(gun => {
-        return <SavedGun handleDelete={handleDelete} id={gun.id} dealerImages={dealerImages} parts={gun.parts} weapon={gun.gun} key={gun.id} />
+        return <SavedGun oneGun={oneGun} renderOneGun={renderOneGun} handleDelete={handleDelete} id={gun.id} dealerImages={dealerImages} parts={gun.parts} weapon={gun.gun} key={gun.id} />
         
     })
+
+    function renderOneGun(id) {
+        let singleGun = renderMyGuns.filter(g => g.props.id === id)
+        setRenderSingleGun(singleGun)
+        setSavedGuns(false)
+        setOneGun(true)
+
+    }
 
     function handleDelete(id) {
         fetch(`/saved_gun/${id}`, {
@@ -82,11 +92,13 @@ function Profile({currentUser}) {
 
     function showGuns(e) {
         setSavedTasks(false)
+        setOneGun(false)
         setSavedGuns(!savedGuns)
     }
 
     function showTasks(e){
         setSavedGuns(false)
+        setOneGun(false)
         setSavedTasks(!savedTasks)
     }
 
@@ -98,7 +110,14 @@ function Profile({currentUser}) {
             <Button className="font-face-eft" variant="dark" onClick={showTasks}>My Tasks</Button>
 
             {savedGuns ? <Container className="saved-guns">
-                {renderMyGuns}
+                <Row md={3}>
+
+                    {renderMyGuns}
+                </Row>
+            </Container> : null}
+
+            {oneGun ? <Container className="saved-guns">
+                {renderSingleGun}
             </Container> : null}
 
             {savedTasks && inProgressTasks.length > 0 ? 

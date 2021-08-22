@@ -6,8 +6,11 @@ import {useHistory} from 'react-router-dom'
 import {Row, Table} from 'react-bootstrap'
 import Part from './Part.js'
 
-function SavedGun({weapon, parts, dealerImages, id, handleDelete}) {
+function SavedGun({weapon, parts, dealerImages, id, handleDelete, renderOneGun, oneGun}) {
     const [partsRendered, setPartsRendered] = useState(false)
+    const [oneWeapon, setOneWeapon] = useState(false)
+
+    console.log(oneGun)
     
 
     let goodImage = weapon.image.split('/revision')[0]
@@ -20,19 +23,25 @@ function SavedGun({weapon, parts, dealerImages, id, handleDelete}) {
         setPartsRendered(!partsRendered)
     }
 
+    function showOne(e) {
+        renderOneGun(id)
+    
+    }
+
     function handleClick(e) {
         handleDelete(id)
     }
     
     return(
         <Row>
-            <Card style={{backgroundColor:'black'}} className="gunCard">
+            <Card onClick={showOne} className="gunCard">
                 <Card.Body>
                     <Card.Title className="font-face-eft">{weapon.name}</Card.Title>
                     <Card.Img variant="bottom" src={goodImage} />
                     <Card.Subtitle className="font-face-eft" >{weapon.caliber}</Card.Subtitle>
                     <Button className="font-face-eft" variant="dark" onClick={showParts}>PARTS</Button>
                     <Button className="font-face-eft" variant="dark" onClick={handleClick}>REMOVE</Button>
+                    
                 </Card.Body>
             </Card>
             {partsRendered ? <Table className="part-table" striped bordered hover>
