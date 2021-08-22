@@ -44,7 +44,11 @@ function ProfileTask({id, dealerId, name, description, rewards, dealerImages, cu
     })
 
     function addToComplete(e) {
-        console.log('adding to complete')
+        fetch(`in_progress_task/${id}`, {
+            method: 'DELETE'
+        })
+        .then(res => res.json())
+        .then(console.log)
     }
 
    

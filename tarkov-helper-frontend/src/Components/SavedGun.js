@@ -41,7 +41,6 @@ function SavedGun({weapon, parts, dealerImages, id, handleDelete, renderOneGun, 
                     <Card.Subtitle className="font-face-eft" >{weapon.caliber}</Card.Subtitle>
                     <Button className="font-face-eft" variant="dark" onClick={showParts}>PARTS</Button>
                     <Button className="font-face-eft" variant="dark" onClick={handleClick}>REMOVE</Button>
-                    
                 </Card.Body>
             </Card>
             {partsRendered ? <Table className="part-table" striped bordered hover>

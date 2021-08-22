@@ -172,6 +172,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy_in_progress
+        user_tasks = InProgressTask.select{|t| t[:user_id] == session[:user_id]}
+        task_id = params[:id].to_i
+        in_progress_task = user_tasks.select{|t| t[:task_id] == task_id}
+        if in_progress_task[0].destroy 
+            completed_task = CompletedTask.create(user_id: session[:user_id], task_id: params[:id])
+            render json: {completed: completed_task, deleted: in_progress_task}
+        else
+            render json: {status: 'Failed'}
+        end
+    end
+
     private
     def user_params
         params.permit(:username, :email, :password)
