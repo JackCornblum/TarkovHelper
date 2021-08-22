@@ -45,9 +45,21 @@ function Profile({currentUser}) {
         })
         
     }, [])
+
+    function changeState(task) {
+        let taskId = task.task_id
+        let tasks = inProgressTasks.filter(t => t.id !== taskId)
+        let task1 = inProgressTasks.filter(t => t.id === taskId)
+        setInProgressTasks(tasks)
+        let newCompleted = [...completedTasks, task1[0]]
+        console.log(newCompleted)
+        setCompletedTasks(newCompleted)
+        
+    }
+
     let renderInProgress = inProgressTasks.map(t => {
         if (t.id) {
-            return <ProfileTask inProgress={true} key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
+            return <ProfileTask changeState={changeState} inProgress={true} key={t.id} id={t.id} name={t.name} description={t.description} rewards={t.rewards} dealerId={t.dealer_id} dealerImages={dealerImages} />
         }
     })
     let renderCompleted = completedTasks.map(t => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-function ProfileTask({id, dealerId, name, description, rewards, dealerImages, currentUser, inProgress}){
+function ProfileTask({id, dealerId, name, description, rewards, dealerImages, currentUser, inProgress, changeState}){
     const [dealerPic, setDealerPic] = useState('')
 
 
@@ -48,7 +48,11 @@ function ProfileTask({id, dealerId, name, description, rewards, dealerImages, cu
             method: 'DELETE'
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(data => {
+            if (data.completed) {
+                changeState(data.completed)
+            }
+        })
     }
 
    
