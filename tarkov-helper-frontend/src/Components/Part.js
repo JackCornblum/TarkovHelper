@@ -71,7 +71,7 @@ function Part({name, image, ergonomics, recoil, price, dealerId, dealerImages}){
             </td>}
            
             <td className="font-face-eft">
-                {price}
+            &#8381; {price}
             </td>
             <td>
                 <img className='part-img' src={dealerPic} alt="dealer"/>

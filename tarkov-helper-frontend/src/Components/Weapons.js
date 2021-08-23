@@ -313,11 +313,10 @@ function Weapons({weapons, currentUser, dealerImages}) {
             {(oneGun && buildParts) ? <div className="font-face-eft">
                 <h6>TOTAL RECOIL: {totalRecoil}</h6>
                 <h6>TOTAL ERGONOMICS: {totalErgonomics}</h6>
-                <h6>PRICE: {totalPrice}</h6>
+                <h6>PRICE: &#8381; {totalPrice}</h6>
                 </div> : null}
             {currentUser.id && buildParts ? <Button className="font-face-eft" onClick={saveLoadout} variant="dark">SAVE LOADOUT</Button> : null }
-            {allWeapons ? null :  
-            <> 
+            {oneGun ?  <> 
                 
                 
                 <Table className="part-table" striped bordered hover>
@@ -336,7 +335,8 @@ function Weapons({weapons, currentUser, dealerImages}) {
                         {(oneGun && buildParts) ? renderBuildParts : null}
                     </tbody>
                 </Table>
-            </>
+            </> :  null
+           
             }
           
             

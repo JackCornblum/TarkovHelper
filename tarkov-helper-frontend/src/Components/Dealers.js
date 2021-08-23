@@ -20,9 +20,10 @@ function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDeale
     return(
         <div className="dealers-container">
                 <h3 className="font-face-eft">DEALERS</h3>
-                <Button variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>
+                {allDealers ? null : <Button variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>}
+                
                 {allDealers ? <Container fluid="md">
-                <Row md={3}>
+                <Row md={4}>
                     {allDealers ? renderDealers : null}
                 </Row>
             </Container> : null}
