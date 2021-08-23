@@ -13,10 +13,30 @@ function Tasks({tasks, currentUser, dealerImages}) {
     const [peacekeeperRendered, setPeacekeeperRendered] = useState(false)
     const [mechanicRendered, setMechanicRendered] = useState(false)
     const [jaegerRendered, setJaegerRendered] = useState(false)
-    const [show, setShow] = useState(false);
+    const [completedTasks, setCompletedTasks] = useState([])
+    const [inProgressTasks, setInProgressTasks] = useState([])
+
+   useEffect(() => {
+    
+    fetch('/my_completed_tasks')
+        .then(res => res.json())
+        .then(data => {
+            if (data.tasks){
+                setCompletedTasks(data.tasks)
+            }
+        })
+
+        fetch('/my_in_progress_tasks')
+        .then(res => res.json())
+        .then(data => {
+            if (data.tasks){
+                setInProgressTasks(data.tasks)
+            }
+        })
+   }, [])
 
     // let praporImage = dealerImages[0].split('/revision')[0]
-
+    
     let praporTasks = tasks.filter(t => t.dealer_id === 1)
     let therapistTasks = tasks.filter(t => t.dealer_id === 2)
     let skierTasks = tasks.filter(t => t.dealer_id === 4)
@@ -26,31 +46,31 @@ function Tasks({tasks, currentUser, dealerImages}) {
     
 
     let renderTasks = tasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderPrapor = praporTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderTherapist = therapistTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderSkier = skierTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderPeacekeeper = peacekeeperTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderMechanic = mechanicTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     let renderJaeger = jaegerTasks.map(t => {
-        return <SingleTask currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
+        return <SingleTask completedTasks={completedTasks} inProgressTasks={inProgressTasks} currentUser={currentUser} dealerImages={dealerImages} key={t.id} id={t.id} dealerId={t.dealer_id} name={t.name} description={t.description} rewards={t.rewards} />
     })
 
     function filterDealers(e) {
@@ -109,18 +129,7 @@ function Tasks({tasks, currentUser, dealerImages}) {
 
 
 
-  if (show) {
-    return (
-      <Alert variant="dark" onClose={() => setShow(false)} dismissible>
-        <Alert.Heading className="font-face-eft">Oh snap! You got an error!</Alert.Heading>
-        <p className="font-face-eft">
-          Change this and that and try again. Duis mollis, est non commodo
-          luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-          Cras mattis consectetur purus sit amet fermentum.
-        </p>
-      </Alert>
-    );
-  }
+  
 
     return(
         <div>

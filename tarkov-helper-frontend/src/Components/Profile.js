@@ -4,23 +4,15 @@ import {Container, Button, Table, Row} from 'react-bootstrap'
 import { render } from 'react-dom'
 import ProfileTask from './ProfileTask.js'
 
-function Profile({currentUser}) {
+function Profile({currentUser, completedTasks, inProgressTasks, setInProgressTasks, setCompletedTasks, dealerImages}) {
     const [guns, setGuns] = useState([])
     const [savedGuns, setSavedGuns] = useState(false)
     const [savedTasks, setSavedTasks] = useState(false)
-    const [inProgressTasks, setInProgressTasks] = useState([])
-    const [completedTasks, setCompletedTasks] = useState([])
-    const [allTasks, setAllTasks] = useState([])
-    const [dealerImages, setDealerImages] = useState([])
+    // const [dealerImages, setDealerImages] = useState([])
     const [oneGun, setOneGun] = useState(false)
     const [renderSingleGun, setRenderSingleGun] = useState([])
 
-
     useEffect(() => {
-
-        fetch('/dealer_images')
-        .then(res => res.json())
-        .then(data => setDealerImages(data))
 
         fetch('/my_guns')
         .then(res => res.json())
@@ -28,22 +20,6 @@ function Profile({currentUser}) {
             setGuns(data)
         })
 
-        fetch('/my_completed_tasks')
-        .then(res => res.json())
-        .then(data => {
-            if (data.tasks){
-                setCompletedTasks(data.tasks)
-            }
-        })
-
-        fetch('/my_in_progress_tasks')
-        .then(res => res.json())
-        .then(data => {
-            if (data.tasks){
-                setInProgressTasks(data.tasks)
-            }
-        })
-        
     }, [])
 
     function changeState(task) {

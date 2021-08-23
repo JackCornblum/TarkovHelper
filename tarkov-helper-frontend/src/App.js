@@ -30,6 +30,8 @@ function App() {
   const [dealerImages, setDealerImages] = useState([])
   const [tasks, setTasks] = useState([])
   const [userTasks, setUserTasks] = useState([])
+  const [inProgressTasks, setInProgressTasks] = useState([])
+  const [completedTasks, setCompletedTasks] = useState([])
 
   
   useEffect(() => {
@@ -58,16 +60,32 @@ function App() {
     .then(res => res.json())
     .then(data => setDealers(data))
 
-    if (currentUser.id) {
-      console.log('user signed in')
-      
-    }
+        fetch('/my_completed_tasks')
+        .then(res => res.json())
+        .then(data => {
+            if (data.tasks){
+                setCompletedTasks(data.tasks)
+            }
+        })
+
+        fetch('/my_in_progress_tasks')
+        .then(res => res.json())
+        .then(data => {
+            if (data.tasks){
+                setInProgressTasks(data.tasks)
+            }
+        })
+
     
   }, [])
 
   useEffect(() => {
-    
-  }, [])
+      
+        console.log('heello')
+
+        
+      
+  }, [currentUser])
 
   
   let renderDealers = dealers.map(dealer => {
@@ -145,7 +163,7 @@ function App() {
           <Signup currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route exact path="/profile">
-          <Profile dealerImages={dealerImages} currentUser={currentUser} />
+          <Profile dealerImages={dealerImages} setInProgressTasks={setInProgressTasks} setCompletedTasks={setCompletedTasks} completedTasks={completedTasks} inProgressTasks={inProgressTasks} dealerImages={dealerImages} currentUser={currentUser} />
         </Route>
         <Route exact path="/tasks">
           <Tasks dealerImages={dealerImages} currentUser={currentUser} tasks={tasks}/>

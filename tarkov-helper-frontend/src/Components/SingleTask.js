@@ -3,9 +3,12 @@ import {Alert} from 'react-bootstrap'
 import Popup from 'reactjs-popup'
 
 
-function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
+function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser, completedTasks, inProgressTasks}){
     const [dealerPic, setDealerPic] = useState('')
     const [show, setShow] = useState(false);
+    const [isComplete, setIsComplete] = useState(false)
+    const [isInProgress, setIsInProgress] = useState(false)
+    const [refresh, setRefresh] = useState(false)
 
 
     useEffect(() => {
@@ -28,7 +31,25 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             let img = dealerImages[7].split('/revision')[0]
             setDealerPic(img)
         }
-    }, [])
+        
+        completedTasks.forEach(t => {
+            if (t.id === id) {
+                setIsComplete(true)
+            }
+        })
+
+        inProgressTasks.forEach(t => {
+            if (t.id === id) {
+                if (isComplete) {
+                    setIsInProgress(false)
+                } else {
+                    setIsInProgress(true)
+                }
+            }
+        })
+
+
+    }, [refresh])
 
     
     let objectives = description.split("..")
@@ -57,7 +78,8 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             body: JSON.stringify(task)
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(data => setRefresh(!refresh))
+
     }
 
     function handleInProgress(e) {
@@ -71,21 +93,10 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             body: JSON.stringify(task)
         })
         .then(res => res.json())
-        .then(console.log)
+        .then(data => setRefresh(!refresh))
+
     }
 
-    if (show) {
-        return (
-          <Alert variant="dark" onClose={() => setShow(false)} dismissible>
-            <Alert.Heading className="font-face-eft">Oh snap! You got an error!</Alert.Heading>
-            <p className="font-face-eft">
-              Change this and that and try again. Duis mollis, est non commodo
-              luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-              Cras mattis consectetur purus sit amet fermentum.
-            </p>
-          </Alert>
-        );
-      }
 
     
 
@@ -107,8 +118,16 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             </td>
             {currentUser.id ?
              <td className="font-face-eft" style={{textAlign: 'left'}}>
-                <p className="pointer" onClick={handleComplete}>Mark as Complete</p>
-                <p className="pointer" onClick={handleInProgress}>In Progress</p>
+                 {isComplete ? <p>Completed&#10003;</p> : (
+                     <>
+                     {isInProgress ? <p>In Progress&#10003;</p> : 
+                     <>
+                        <p className="pointer" onClick={handleComplete}>Mark as Complete</p>
+                        <p className="pointer" onClick={handleInProgress}>In Progress</p>
+                    </>
+                     }
+                 </>
+                 )}
              </td>
              : null}
         </tr>
