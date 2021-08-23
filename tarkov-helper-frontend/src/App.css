@@ -133,6 +133,7 @@ img.card-img-bottom.gun-image {
 .gunCard.card {
   background-color: rgba(10, 10, 10, 0.623);
   border-radius: 0px;
+  cursor: pointer;
   /* margin-bottom: 5%; */
 }
 
@@ -190,6 +191,10 @@ button.font-face-eft.btn.btn-dark:hover {
   color: #ece5bdd0;
   border-color: #ece5bdd0;
   border-radius: 0px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 

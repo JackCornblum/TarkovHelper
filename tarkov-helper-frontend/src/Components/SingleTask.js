@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
+import {Alert} from 'react-bootstrap'
+import Popup from 'reactjs-popup'
 
 
 function SingleTask({id, dealerId, name, description, rewards, dealerImages, currentUser}){
     const [dealerPic, setDealerPic] = useState('')
+    const [show, setShow] = useState(false);
 
 
     useEffect(() => {
@@ -71,6 +74,19 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
         .then(console.log)
     }
 
+    if (show) {
+        return (
+          <Alert variant="dark" onClose={() => setShow(false)} dismissible>
+            <Alert.Heading className="font-face-eft">Oh snap! You got an error!</Alert.Heading>
+            <p className="font-face-eft">
+              Change this and that and try again. Duis mollis, est non commodo
+              luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+              Cras mattis consectetur purus sit amet fermentum.
+            </p>
+          </Alert>
+        );
+      }
+
     
 
     return (
@@ -91,11 +107,12 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             </td>
             {currentUser.id ?
              <td className="font-face-eft" style={{textAlign: 'left'}}>
-                <p onClick={handleComplete}>Mark as Complete</p>
-                <p onClick={handleInProgress}>In Progress</p>
+                <p className="pointer" onClick={handleComplete}>Mark as Complete</p>
+                <p className="pointer" onClick={handleInProgress}>In Progress</p>
              </td>
              : null}
         </tr>
+        
     )
 }
 

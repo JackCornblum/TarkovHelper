@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
+import {Container, Row, Button, Dropdown, Form, Table, Alert} from 'react-bootstrap'
 import SingleTask from "./SingleTask"
 
 function Tasks({tasks, currentUser, dealerImages}) {
@@ -13,6 +13,7 @@ function Tasks({tasks, currentUser, dealerImages}) {
     const [peacekeeperRendered, setPeacekeeperRendered] = useState(false)
     const [mechanicRendered, setMechanicRendered] = useState(false)
     const [jaegerRendered, setJaegerRendered] = useState(false)
+    const [show, setShow] = useState(false);
 
     // let praporImage = dealerImages[0].split('/revision')[0]
 
@@ -105,6 +106,21 @@ function Tasks({tasks, currentUser, dealerImages}) {
         }
 
     }
+
+
+
+  if (show) {
+    return (
+      <Alert variant="dark" onClose={() => setShow(false)} dismissible>
+        <Alert.Heading className="font-face-eft">Oh snap! You got an error!</Alert.Heading>
+        <p className="font-face-eft">
+          Change this and that and try again. Duis mollis, est non commodo
+          luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
+          Cras mattis consectetur purus sit amet fermentum.
+        </p>
+      </Alert>
+    );
+  }
 
     return(
         <div>
