@@ -9,6 +9,8 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
     const [isComplete, setIsComplete] = useState(false)
     const [isInProgress, setIsInProgress] = useState(false)
     const [refresh, setRefresh] = useState(false)
+    const [completedTasks1, setCompletedTasks1] = useState(completedTasks)
+    const [inProgressTasks1, setInProgressTasks1] = useState(inProgressTasks)
 
 
     useEffect(() => {
@@ -31,14 +33,18 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             let img = dealerImages[7].split('/revision')[0]
             setDealerPic(img)
         }
+
+       
+
         
-        completedTasks.forEach(t => {
+        
+        completedTasks1.forEach(t => {
             if (t.id === id) {
                 setIsComplete(true)
             }
         })
 
-        inProgressTasks.forEach(t => {
+        inProgressTasks1.forEach(t => {
             if (t.id === id) {
                 if (isComplete) {
                     setIsInProgress(false)
@@ -49,7 +55,7 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
         })
 
 
-    }, [refresh])
+    }, [])
 
     
     let objectives = description.split("..")
@@ -78,7 +84,7 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             body: JSON.stringify(task)
         })
         .then(res => res.json())
-        .then(data => setRefresh(!refresh))
+        .then(data => setIsComplete(true))
 
     }
 
@@ -93,7 +99,9 @@ function SingleTask({id, dealerId, name, description, rewards, dealerImages, cur
             body: JSON.stringify(task)
         })
         .then(res => res.json())
-        .then(data => setRefresh(!refresh))
+        .then(data => {
+            setIsInProgress(true)
+        })
 
     }
 
