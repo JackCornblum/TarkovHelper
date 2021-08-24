@@ -134,6 +134,7 @@ img.card-img-bottom.gun-image {
   background-color: rgba(10, 10, 10, 0.623);
   border-radius: 0px;
   cursor: pointer;
+  max-width: 600px;
   /* margin-bottom: 5%; */
 }
 
@@ -144,6 +145,15 @@ h2.font-face-eft {
 
 table.part-table.table.table-striped.table-bordered.table-hover {
   background-color: rgba(10, 10, 10, 0.815);
+}
+
+.row.row-cols-md-2 {
+  margin-left: 30%;
+}
+
+.row.row-cols-md-1 {
+  /* text-align: center; */
+  margin-left: 27%;
 }
 
 

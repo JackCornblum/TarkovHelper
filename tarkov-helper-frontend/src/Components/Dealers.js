@@ -19,8 +19,13 @@ function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDeale
 
     return(
         <div className="dealers-container">
-                <h3 className="font-face-eft">DEALERS</h3>
-                {allDealers ? null : <Button variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>}
+                
+                {praporRendered ? <h3 className="font-face-eft">PRAPOR</h3> : null}
+                {skierRendered ? <h3 className="font-face-eft">SKIER</h3> : null}
+                {peacekeeperRendered ? <h3 className="font-face-eft">PEACEKEEPER</h3> : null}
+                {mechanicRendered ? <h3 className="font-face-eft">MECHANIC</h3> : null}
+                {jaegerRendered ? <h3 className="font-face-eft">JAEGER</h3> : null}
+                {allDealers ? <h3 className="font-face-eft">DEALERS</h3> : <Button variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>}
                 
                 {allDealers ? <Container fluid="md">
                 <Row md={4}>
@@ -28,6 +33,7 @@ function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDeale
                 </Row>
             </Container> : null}
             <Container fluid="md">
+            
                 {praporRendered ? 
                     renderDealers[0] : null
                 }

@@ -1,6 +1,6 @@
 import Gun from './Gun.js'
 import { useEffect, useState } from "react"
-import {Container, Row, Button, Dropdown, Form, Table} from 'react-bootstrap'
+import {Container, Row, Button, Dropdown, Form, Table, Alert} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import Part from './Part.js'
 import Popup from 'reactjs-popup';
@@ -277,6 +277,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
                                 </form>
                                 </div>
                               </Popup> : null}
+
                     
                     {oneGun ? <Button className="font-face-eft" onClick={displayAll} variant="dark">ALL WEAPONS</Button> : <Dropdown>
                         <Dropdown.Toggle className="font-face-eft" style={{backgroundColor:'black'}}>
@@ -308,8 +309,18 @@ function Weapons({weapons, currentUser, dealerImages}) {
                     
                     </Row>
                 </Container>
-            <Container fluid="md">
-            {oneGun ? singleGun : null}
+            <div fluid="md">
+                <Row style={{textAlign: 'center'}} md={1}>
+                    <div></div>
+                    {oneGun ? singleGun : null}
+                    <div></div>
+                </Row>
+            {successfulSave ? <Alert className="font-face-eft" style={{backgroundColor: 'rgba(10, 10, 10, 0.623)'}} onClose={() => setSuccessfulSave(false)} dismissible>
+                                <Alert.Heading className="font-face-eft">Weapon Saved Successfully</Alert.Heading>
+                                    <p className="font-face-eft">
+                                        Go to your profile page to view your saved weapons
+                                    </p>
+                             </Alert> : null}
             {(oneGun && buildParts) ? <div className="font-face-eft">
                 <h6>TOTAL RECOIL: {totalRecoil}</h6>
                 <h6>TOTAL ERGONOMICS: {totalErgonomics}</h6>
@@ -342,7 +353,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
             
                 
                 
-            </Container>
+            </div>
 
         </div>
     )
