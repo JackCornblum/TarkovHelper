@@ -34,9 +34,9 @@ function SavedGun({weapon, parts, dealerImages, id, handleDelete, renderOneGun, 
     
     return(
         <Row>
-            <Card onClick={showOne} className="gunCard">
+            <Card className="gunCard">
                 <Card.Body>
-                    <Card.Title className="font-face-eft">{weapon.name}</Card.Title>
+                    <Card.Title onClick={showOne} className="font-face-eft">{weapon.name}</Card.Title>
                     <Card.Img variant="bottom" src={goodImage} />
                     <Card.Subtitle className="font-face-eft" >{weapon.caliber}</Card.Subtitle>
                     <Button className="font-face-eft" variant="dark" onClick={showParts}>PARTS</Button>
