@@ -25,6 +25,25 @@ body {
   background-size: cover;
 }
 
+.my-auto {
+  /* text-align: center; */
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.dropdown {
+  margin-left: auto;
+}
+
+.dealerCard {
+  margin-left: 27%;
+  background-color: rgba(10, 10, 10, 0.623);
+  border-radius: 0px;
+  cursor: pointer;
+  max-width: 600px;
+}
+
 img.part-img {
   max-width: 100px;
   height: auto;

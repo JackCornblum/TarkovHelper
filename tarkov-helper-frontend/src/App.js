@@ -15,6 +15,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Profile from './Components/Profile';
 import Tasks from './Components/Tasks';
+import OneDealer from './Components/OneDealer';
 
 function App() {
   const [weapons, setWeapons] = useState([])
@@ -79,13 +80,6 @@ function App() {
     
   }, [])
 
-  useEffect(() => {
-      
-        console.log('heello')
-
-        
-      
-  }, [currentUser])
 
   
   let renderDealers = dealers.map(dealer => {
@@ -95,6 +89,22 @@ function App() {
         return <SingleDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealer.id} name={dealer.name} image={dealer.image} id={dealer.id} />
     }
   })
+
+  let renderPrapor = []
+  let renderSkier = []
+  let renderPeacekeeper = []
+  let renderMechanic = []
+  let renderJaeger = []
+
+  if (dealers.length > 0) {
+
+    renderPrapor = <OneDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealers[0].id} name={dealers[0].name} image={dealers[0].image} id={dealers[0].id} />
+    renderSkier = <OneDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealers[3].id} name={dealers[3].name} image={dealers[3].image} id={dealers[3].id} />
+    renderPeacekeeper = <OneDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealers[4].id} name={dealers[4].name} image={dealers[4].image} id={dealers[4].id} />
+    renderMechanic = <OneDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealers[5].id} name={dealers[5].name} image={dealers[5].image} id={dealers[5].id} />
+    renderJaeger = <OneDealer dealerImages={dealerImages} dealerItems={dealerItems} fetchItems={fetchItems} key={dealers[7].id} name={dealers[7].name} image={dealers[7].image} id={dealers[7].id} />
+  }
+
 
   function fetchItems(id) {
     fetch(`/dealer_items/${id}`)
@@ -151,7 +161,7 @@ function App() {
           <Weapons dealerImages={dealerImages} currentUser={currentUser} weapons={weapons}/>
         </Route>
         <Route exact path="/dealers">
-          <Dealers dealerImages={dealerImages} currentUser={currentUser}setDealerItems={setDealerItems} setAllDealers={setAllDealers} allDealers={allDealers} setAllDealers={setAllDealers} renderDealers={renderDealers} jaegerRendered={jaegerRendered} setJaegerRendered={setJaegerRendered} mechanicRendered={mechanicRendered} setMechanicRendered={setMechanicRendered} peacekeeperRendered={peacekeeperRendered} setPeacekeeperRendered={setPeacekeeperRendered} skierRendered={skierRendered} setSkierRendered={setSkierRendered} praporRendered={praporRendered} setPraporRendered={setPraporRendered} dealerItems={dealerItems} dealers={dealers}/>
+          <Dealers renderJaeger={renderJaeger} renderMechanic={renderMechanic} renderPeacekeeper={renderPeacekeeper} renderSkier={renderSkier} renderPrapor={renderPrapor} dealerImages={dealerImages} currentUser={currentUser}setDealerItems={setDealerItems} setAllDealers={setAllDealers} allDealers={allDealers} setAllDealers={setAllDealers} renderDealers={renderDealers} jaegerRendered={jaegerRendered} setJaegerRendered={setJaegerRendered} mechanicRendered={mechanicRendered} setMechanicRendered={setMechanicRendered} peacekeeperRendered={peacekeeperRendered} setPeacekeeperRendered={setPeacekeeperRendered} skierRendered={skierRendered} setSkierRendered={setSkierRendered} praporRendered={praporRendered} setPraporRendered={setPraporRendered} dealerItems={dealerItems} dealers={dealers}/>
         </Route>
         <Route exact path="/dealers/:dealerId">
           <SingleDealer dealerImages={dealerImages} />

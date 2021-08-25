@@ -4,7 +4,7 @@ import {Container, Row, Button, Dropdown, Table} from 'react-bootstrap'
 import Col from 'react-bootstrap/Col'
 import SingleDealer from './SingleDealer.js'
 
-function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDealers, renderDealers, jaegerRendered, setJaegerRendered, mechanicRendered, setMechanicRendered, peacekeeperRendered, setPeacekeeperRendered, setSkierRendered, skierRendered, setPraporRendered, praporRendered}) {
+function Dealers({dealers, renderPrapor, renderJaeger, renderMechanic, renderPeacekeeper, renderSkier, dealerImages, setDealerItems, setAllDealers, allDealers, renderDealers, jaegerRendered, setJaegerRendered, mechanicRendered, setMechanicRendered, peacekeeperRendered, setPeacekeeperRendered, setSkierRendered, skierRendered, setPraporRendered, praporRendered}) {
 
 
     function renderAllDealers(){
@@ -20,34 +20,34 @@ function Dealers({dealers, dealerImages, setDealerItems, setAllDealers, allDeale
     return(
         <div className="dealers-container">
                 
-                {praporRendered ? <h3 className="font-face-eft">PRAPOR</h3> : null}
-                {skierRendered ? <h3 className="font-face-eft">SKIER</h3> : null}
-                {peacekeeperRendered ? <h3 className="font-face-eft">PEACEKEEPER</h3> : null}
-                {mechanicRendered ? <h3 className="font-face-eft">MECHANIC</h3> : null}
-                {jaegerRendered ? <h3 className="font-face-eft">JAEGER</h3> : null}
-                {allDealers ? <h3 className="font-face-eft">DEALERS</h3> : <Button variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>}
+                {praporRendered ? <h3 style={{marginTop: '3%'}} className="font-face-eft">PRAPOR</h3> : null}
+                {skierRendered ? <h3 style={{marginTop: '3%'}} className="font-face-eft">SKIER</h3> : null}
+                {peacekeeperRendered ? <h3 style={{marginTop: '3%'}} className="font-face-eft">PEACEKEEPER</h3> : null}
+                {mechanicRendered ? <h3 style={{marginTop: '3%'}} className="font-face-eft">MECHANIC</h3> : null}
+                {jaegerRendered ? <h3 style={{marginTop: '3%'}} className="font-face-eft">JAEGER</h3> : null}
+                {allDealers ? <h3 style={{marginTop: '3%', marginBottom: '3%'}} className="font-face-eft">DEALERS</h3> : <Button  variant="dark" className="font-face-eft" onClick={renderAllDealers}>ALL DEALERS</Button>}
                 
                 {allDealers ? <Container fluid="md">
                 <Row md={4}>
                     {allDealers ? renderDealers : null}
                 </Row>
             </Container> : null}
-            <Container fluid="md">
+            <Container className="my-auto" >
             
                 {praporRendered ? 
-                    renderDealers[0] : null
+                    renderPrapor : null
                 }
                 {skierRendered ? 
-                    renderDealers[3] : null
+                    renderSkier : null
                 }
                 {peacekeeperRendered ? 
-                    renderDealers[4] : null
+                    renderPeacekeeper : null
                 }
                 {mechanicRendered ? 
-                    renderDealers[5] : null
+                    renderMechanic : null
                 }
                 {jaegerRendered ? 
-                    renderDealers[7] : null
+                    renderJaeger : null
                 }
             </Container>
         </div>

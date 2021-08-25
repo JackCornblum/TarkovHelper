@@ -266,7 +266,7 @@ function Weapons({weapons, currentUser, dealerImages}) {
 
                 
 
-                    {oneGun ? <Popup className="part-popup" trigger={<Button variant="dark" className="font-face-eft" >Generate Gun Build</Button>} position="bottom center">
+                    {oneGun ? <Popup style={{backgroundColor: 'black'}} className="part-popup" trigger={<Button variant="dark" className="font-face-eft" >Generate Gun Build</Button>} position="bottom center">
                                 <div style={{backgroundColor: 'black'}} onChange={handleRadio}>
                                 <form style={{backgroundColor: 'black'}} onSubmit={handleSubmit}>
                                     <div style={{backgroundColor: 'black'}} className="inline-radio">
@@ -322,9 +322,9 @@ function Weapons({weapons, currentUser, dealerImages}) {
                                     </p>
                              </Alert> : null}
             {(oneGun && buildParts) ? <div className="font-face-eft">
-                <h6>TOTAL RECOIL: {totalRecoil}</h6>
-                <h6>TOTAL ERGONOMICS: {totalErgonomics}</h6>
-                <h6>PRICE: &#8381; {totalPrice}</h6>
+                <h5>TOTAL RECOIL: {totalRecoil}</h5>
+                <h5>TOTAL ERGONOMICS: {totalErgonomics}</h5>
+                <h5>PRICE: &#8381; {totalPrice}</h5>
                 </div> : null}
             {currentUser.id && buildParts ? <Button className="font-face-eft" onClick={saveLoadout} variant="dark">SAVE LOADOUT</Button> : null }
             {oneGun ?  <> 
